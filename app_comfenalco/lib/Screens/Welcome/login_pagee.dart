@@ -1,4 +1,3 @@
-
 import 'package:app_comfenalco/models/users.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/header_widget.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../constantes.dart';
+import 'package:app_comfenalco/validators/validators.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -18,10 +18,10 @@ class _LoginPageState extends State<LoginPage> {
   final _fromKey = GlobalKey<FormState>();
   String email = '', password = '';
   String error = '';
+  final Validators validator = new Validators();
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<Users>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -132,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(29)),
       child: TextFormField(
         validator: (val) {
-          if (isEmail(val) == true) {
+          if (validator.isEmail(val) == true) {
             return null;
           } else {
             return 'Email invalido';
@@ -246,12 +246,12 @@ class _LoginPageState extends State<LoginPage> {
   //   Navigator.pushReplacementNamed(context, 'menup');
   // }
   //
-  bool isEmail(String em) {
-    String p =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  // bool isEmail(String em) {
+  //   String p =
+  //       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-    RegExp regExp = new RegExp(p);
+  //   RegExp regExp = new RegExp(p);
 
-    return regExp.hasMatch(em);
-  }
+  //   return regExp.hasMatch(em);
+  // }
 }

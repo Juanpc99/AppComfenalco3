@@ -1,36 +1,19 @@
 import 'package:app_comfenalco/components/custom_surfix_icon.dart';
+import 'package:app_comfenalco/services/auth.dart';
+import 'package:app_comfenalco/validators/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:app_comfenalco/theme.dart';
 
 import '../../../constantes.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    // return SingleChildScrollView(
-    //   child: SafeArea(
-    //     child: SizedBox(
-    //       width: double.infinity,
-    //       child: Padding(
-    //         padding: EdgeInsets.symmetric(horizontal: 20),
-    //         child: Container(
-    //           child: Column(
-    //             children: [
-    //               _titulo(),
-    //               SizedBox(height: 20),
-    //               _descripcion(),
-    //               SizedBox(height: 20),
-    //               RegistroForm(),
-    //               SizedBox(height: 20),
-    //               _botonRegistrar(context),
-    //               SizedBox(height: 100),
-    //             ],
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -54,8 +37,6 @@ class Body extends StatelessWidget {
                 SizedBox(height: 20),
                 RegistroForm(),
                 SizedBox(height: 20),
-                _botonRegistrar(context),
-                SizedBox(height: 100),
               ],
             ),
           ),
@@ -87,32 +68,6 @@ class Body extends StatelessWidget {
       textAlign: TextAlign.center,
     );
   }
-
-  Widget _botonRegistrar(BuildContext context) {
-    return Container(
-      height: 50.0,
-      width: 330.0,
-      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 0.0),
-      margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(100.0),
-        child: FlatButton(
-          height: 45.0,
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, 'cuentaCreada');
-          },
-          child: Text(
-            'Registrar',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: colorPrimarioClaro),
-          ),
-          color: colorPrimario,
-        ),
-      ),
-    );
-  }
 }
 
 class RegistroForm extends StatefulWidget {
@@ -121,9 +76,14 @@ class RegistroForm extends StatefulWidget {
 }
 
 class _RegistroFormState extends State<RegistroForm> {
+  final AuthService _auth = AuthService();
+  final _fromKey = GlobalKey<FormState>();
+  final Validators validator = new Validators();
+  String email = '', password = '';
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _fromKey,
       child: Column(
         children: [
           buildNameFormField(),
@@ -144,6 +104,10 @@ class _RegistroFormState extends State<RegistroForm> {
           SizedBox(height: 20),
           buildPasswordFormField(),
           SizedBox(height: 20),
+          _botonRegistrar(context),
+          SizedBox(
+            height: 20.0,
+          )
         ],
       ),
     );
@@ -255,6 +219,14 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildCorreoFormField() {
     return TextFormField(
+      validator: (val) {
+        if (validator.isEmail(val) == true) {
+          return null;
+        } else {
+          return 'Email invalido';
+        }
+      },
+      onChanged: (val) => email = val,
       decoration: InputDecoration(
         labelText: "Correo",
         hintText: 'Ingrese su correo electronico',
@@ -268,6 +240,8 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      validator: (val) => val.length < 5 ? 'Minimo 6 caracteres' : null,
+      onChanged: (val) => password = val,
       decoration: InputDecoration(
         labelText: "Contraseña",
         hintText: 'Cree una contraseña',
@@ -303,6 +277,41 @@ class _RegistroFormState extends State<RegistroForm> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _botonRegistrar(BuildContext context) {
+    return Container(
+      height: 50.0,
+      width: 330.0,
+      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 0.0),
+      margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100.0),
+        child: FlatButton(
+          height: 45.0,
+          onPressed: () async {
+            if (_fromKey.currentState.validate()) {
+              dynamic result = await _auth.signUp(email, password);
+              if (result == null) {
+                setState(() {
+                  // error = 'Por favor ingrese un e-mail valido';
+                });
+              } else {
+                Navigator.pushReplacementNamed(context, 'cuentaCreada');
+              }
+            }
+          },
+          child: Text(
+            'Registrar',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: colorPrimarioClaro),
+          ),
+          color: colorPrimario,
+        ),
+      ),
     );
   }
 }
