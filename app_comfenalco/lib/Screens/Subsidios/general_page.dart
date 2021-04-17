@@ -1,0 +1,237 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:app_comfenalco/constantes.dart';
+import 'package:flutter/rendering.dart';
+import 'package:background_app_bar/background_app_bar.dart';
+
+class InfoGeneral extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage("assets/images/fondo4.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.transparent,
+        body: CustomScrollView(
+          slivers: <Widget>[
+            _appbarNormal(context),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(height: 10.0),
+                  _video(context),
+                  SizedBox(height: 10.0),
+                  _afiliados(context),
+                  SizedBox(height: 10.0),
+                  _noAfiliados(context),
+                  SizedBox(height: 70.0),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _appbarNormal(BuildContext context) {
+    return SliverAppBar(
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
+      expandedHeight: 180.0,
+      pinned: true,
+      floating: false,
+      flexibleSpace: BackgroundFlexibleSpaceBar(
+        title: Text(
+          'Subsidio de Vivienda de Interés Social',
+          //overflow: TextOverflow.ellipsis,
+          textHeightBehavior:
+              TextHeightBehavior(applyHeightToFirstAscent: true),
+          textAlign: TextAlign.end,
+          style: TextStyle(
+            color: Colors.grey[350],
+            fontSize: 12,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        centerTitle: true,
+        titlePadding: const EdgeInsets.only(left: 20.0, bottom: 20.0),
+        background: ClipRect(
+          child: Container(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+            ),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/Postulate.png"),
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+        ),
+      ),
+      leading: Builder(
+        builder: (BuildContext context) {
+          return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pushNamed(context, 'subsidios');
+              });
+        },
+      ),
+    );
+  }
+
+  Widget _video(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      margin: EdgeInsets.all(15),
+      elevation: 10,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: const ListTile(
+                title: Text(
+                  '¡Conoce como puedes postularte!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: colorNaranja,
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                FlatButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'subsidioAfiliados');
+                  }, // aqui va redireccionado a la otra vista
+                  child: Text(
+                    'Más Información...',
+                    style: TextStyle(color: colorNaranja),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _afiliados(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            child: ListTile(
+              title: Text(
+                'Subsidio Familiar de Vivienda de Interés Social para afiliados',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                  color: Colors.orange[800].withOpacity(.76),
+                ),
+              ),
+              subtitle: Text(
+                '\n'
+                'Es un aporte en dinero, que se otorga por una sola vez al hogar del'
+                ' beneficiario, sin cargo de restitución, que constituye un complemento '
+                'del ahorro y/o los recursos que le permitan adquirir, construir en sitio'
+                ' propio, o mejorar una vivienda de interés social.',
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+          FlatButton(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            onPressed: () {
+              Navigator.pushNamed(context, 'subsidioAfiliados');
+            }, // aqui va redireccionado a la otra vista
+            child: Text(
+              'Leer más...',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: colorNaranja,
+                fontSize: 20,
+                height: -0.6,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _noAfiliados(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            child: ListTile(
+              title: Text(
+                'Subsidio Familiar de Vivienda para No Afiliados a Caja de Compensación Familiar',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                  color: Colors.orange[800].withOpacity(.76),
+                ),
+              ),
+              subtitle: Text(
+                '\n'
+                'El Gobierno Nacional a través del Fondo Nacional de Vivienda,'
+                'celebró contrato de encargo de gestión con las Cajas de'
+                'Compensación Familiar de todo el País,  para que apoyen el'
+                'trámite para la obtención del subsidio familiar de vivienda'
+                'de interés social a las familias que no cuenten con'
+                'afiliación a Caja de Compensación Familiar.',
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+          FlatButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'subsidioNoAfiliados');
+            }, // aqui va redireccionado a la otra vista
+            child: Text(
+              'Leer más...',
+              style: TextStyle(
+                color: colorNaranja,
+                fontSize: 20,
+                height: -0.04,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
