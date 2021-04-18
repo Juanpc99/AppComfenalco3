@@ -1,4 +1,7 @@
 import 'package:app_comfenalco/components/custom_surfix_icon.dart';
+import 'package:app_comfenalco/models/registro.dart';
+import 'package:app_comfenalco/models/users.dart';
+import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/validators/validators.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +82,10 @@ class _RegistroFormState extends State<RegistroForm> {
   final AuthService _auth = AuthService();
   final _fromKey = GlobalKey<FormState>();
   final Validators validator = new Validators();
+  final userProvider = new UsuariosProvider();
+  Usuarios usuario = new Usuarios();
   String email = '', password = '';
+  bool _guardando = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -115,6 +121,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildNameFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.nombre = val,
       decoration: InputDecoration(
         labelText: "Nombre",
         hintText: 'Ingrese su nombre completo',
@@ -141,6 +148,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildApellidoFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.apellido = val,
       decoration: InputDecoration(
         labelText: "Apellidos",
         hintText: 'Ingrese sus apellidos',
@@ -154,6 +162,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildTipoIDFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.idTipoDoc = int.parse(val),
       decoration: InputDecoration(
         labelText: "Tipo Documento",
         hintText: 'Seleccione tipo documento',
@@ -167,6 +176,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildDocumentoFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.numeroDocumento = int.parse(val),
       decoration: InputDecoration(
         labelText: "No. Documento",
         hintText: 'Ingrese su documento',
@@ -180,6 +190,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildPaisFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.idPais = int.parse(val),
       decoration: InputDecoration(
         labelText: "País",
         hintText: 'Ingrese su pais de origen',
@@ -193,6 +204,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildCiudadFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.idCiudad = int.parse(val),
       decoration: InputDecoration(
         labelText: "Ciudad",
         hintText: 'Ingrese la ciudad donde nacio',
@@ -206,6 +218,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildGeneroFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.idGnr = int.parse(val),
       decoration: InputDecoration(
         labelText: "Genero",
         hintText: 'Seleccione su genero',
@@ -219,6 +232,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildCorreoFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.email = val,
       validator: (val) {
         if (validator.isEmail(val) == true) {
           return null;
@@ -240,6 +254,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      onSaved: (val) => usuario.password = val,
       validator: (val) => val.length < 5 ? 'Minimo 6 caracteres' : null,
       onChanged: (val) => password = val,
       decoration: InputDecoration(
@@ -293,6 +308,7 @@ class _RegistroFormState extends State<RegistroForm> {
           onPressed: () async {
             if (_fromKey.currentState.validate()) {
               dynamic result = await _auth.signUp(email, password);
+              (_guardando) ? null : _submit();
               if (result == null) {
                 setState(() {
                   // error = 'Por favor ingrese un e-mail valido';
@@ -313,5 +329,16 @@ class _RegistroFormState extends State<RegistroForm> {
         ),
       ),
     );
+  }
+
+  void _submit() async {
+    if (!_fromKey.currentState.validate()) return;
+    _fromKey.currentState.save();
+    setState(() {
+      _guardando = true;
+    });
+    if (usuario.idUsuario == null) {
+      userProvider.crearUsuario(usuario);
+    }
   }
 }

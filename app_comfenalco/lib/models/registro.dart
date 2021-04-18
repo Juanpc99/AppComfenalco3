@@ -1,0 +1,71 @@
+// To parse this JSON data, do
+//
+//     final usuarios = usuariosFromJson(jsonString);
+
+import 'dart:convert';
+
+Usuarios usuariosFromJson(String str) => Usuarios.fromJson(json.decode(str));
+
+String usuariosToJson(Usuarios data) => json.encode(data.toJson());
+
+class Usuarios {
+
+  int idUsuario;
+  String nombre;
+  String apellido;
+  String fechaNacimiento;
+  int idGnr;
+  int numeroDocumento;
+  String email;
+  int idCiudad;
+  int idPais;
+  int idTipoDoc;
+  String password;
+  int idTipoUsr;
+
+  Usuarios({
+    this.idUsuario,
+    this.nombre = '',
+    this.apellido = '',
+    this.fechaNacimiento ='',
+    this.idGnr = 0,
+    this.numeroDocumento = 0,
+    this.email = '',
+    this.idCiudad = 0,
+    this.idPais = 0,
+    this.idTipoDoc = 0,
+    this.password = '',
+    this.idTipoUsr = 0,
+  });
+
+
+  factory Usuarios.fromJson(Map<String, dynamic> json) => Usuarios(
+        idUsuario: json["idUsuario"],
+        nombre: json["nombre"],
+        apellido: json["apellido"],
+        fechaNacimiento: json["fechaNacimiento"],
+        idGnr: json["idGnr"],
+        numeroDocumento: json["numeroDocumento"],
+        email: json["email"],
+        idCiudad: json["idCiudad"],
+        idPais: json["idPais"],
+        idTipoDoc: json["idTipoDoc"],
+        password: json["password"],
+        idTipoUsr: json["idTipoUsr"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "idUsuario": idUsuario,
+        "nombre": nombre,
+        "apellido": apellido,
+        "fechaNacimiento": fechaNacimiento,
+        "idGnr": idGnr,
+        "numeroDocumento": numeroDocumento,
+        "email": email,
+        "idCiudad": idCiudad,
+        "idPais": idPais,
+        "idTipoDoc": idTipoDoc,
+        "password": password,
+        "idTipoUsr": idTipoUsr,
+      };
+}

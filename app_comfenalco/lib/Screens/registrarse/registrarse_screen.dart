@@ -1,8 +1,15 @@
 import 'package:app_comfenalco/Screens/registrarse/components/body.dart';
 import 'package:flutter/material.dart';
 
-class RegistrarseScreen extends StatelessWidget {
+class RegistrarseScreen extends StatefulWidget {
   static String routName = 'registrar';
+
+  @override
+  _RegistrarseScreenState createState() => _RegistrarseScreenState();
+}
+
+class _RegistrarseScreenState extends State<RegistrarseScreen> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,6 +21,7 @@ class RegistrarseScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
+        key: scaffoldKey,
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
