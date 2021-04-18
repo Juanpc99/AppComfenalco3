@@ -9,4 +9,3 @@ class Users {
 
   Users({this.uid});
 }
-
