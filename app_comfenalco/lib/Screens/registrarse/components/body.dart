@@ -101,13 +101,25 @@ class _RegistroFormState extends State<RegistroForm> {
   ];
   // para el campo de pais
   String _opcSelectPais = 'País de Origen';
-  List<String> _paises = [ 'País de Origen','Colombia', 'Mexico', 'Venezuela', 'Peru'];
+  List<String> _paises = [
+    'País de Origen',
+    'Colombia',
+    'Mexico',
+    'Venezuela',
+    'Peru'
+  ];
   // para la ciudad del valle donde se encuentra
   String _opcSelectCity = 'Ciudad donde habita';
-  List<String> _city = ['Ciudad donde habita','Cali', 'Cartago', 'Palmira', 'Jamundi'];
+  List<String> _city = [
+    'Ciudad donde habita',
+    'Cali',
+    'Cartago',
+    'Palmira',
+    'Jamundi'
+  ];
   // para el campo de genero
   String _opcSelectGenero = 'Genero';
-  List<String> _genero = ['Genero','Femenino', 'Masculino', 'No especificar'];
+  List<String> _genero = ['Genero', 'Femenino', 'Masculino', 'No especificar'];
 
   bool _guardando = false;
 
@@ -458,13 +470,16 @@ class _RegistroFormState extends State<RegistroForm> {
   }
 
   Future<void> _register() async {
+    if (_fromKey.currentState.validate()) return;
+    _fromKey.currentState.save();
+
     try {
       final User user = (await _auth.createUserWithEmailAndPassword(
         email: email.text.trim(),
         password: password.text.trim(),
       ))
           .user;
-
+      userProvider.crearUsuario(usuario);
       print('Se creo');
       Navigator.pushReplacementNamed(context, 'cuentaCreada');
     } catch (e) {
