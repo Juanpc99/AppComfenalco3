@@ -7,6 +7,7 @@ import 'package:app_comfenalco/Screens/nueva_contrase%C3%B1a_page.dart';
 import 'package:app_comfenalco/Screens/perfil.dart';
 import 'package:app_comfenalco/Screens/recuperar_contrase%C3%B1a_page.dart';
 import 'package:app_comfenalco/Screens/registrarse/registrarse_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 //import 'package:app_comfenalco/Screens/registro_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidios_page.dart';
 import 'package:app_comfenalco/services/auth.dart';
@@ -47,6 +48,16 @@ class MyApp extends StatelessWidget {
         // initialData: null,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          // lenguajes soportados en la app
+          supportedLocales: [
+            const Locale('en', 'US'), // English
+            const Locale('es', 'ES'), // Spanish
+          ],
           title: 'Bienvenidos a App mis solicitudes',
           initialRoute: '/',
           routes: {
