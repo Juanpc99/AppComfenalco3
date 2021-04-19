@@ -1,5 +1,6 @@
 import 'package:app_comfenalco/models/users.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,27 +17,27 @@ class AuthService {
 
 // Ingresar con contraseña y correo
 
-  Future signIn(String email, String password) async {
+  Future<void> signIn(
+      String email, String password, BuildContext context, String ruta) async {
     try {
-      UserCredential result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      User user = result.user;
-      return _userFromFirebaseUser(user);
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
+      final User user = (await _auth.signInWithEmailAndPassword(
+        email: email.trim(),
+        password: password.trim(),
+      ))
+          .user;
 
-  Future signUp(String email, String password) async {
-    try {
-      UserCredential result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      User user = result.user;
-      return _userFromFirebaseUser(user);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${user.email} inicio sesión'),
+        ),
+      );
+      Navigator.pushReplacementNamed(context, ruta);
     } catch (e) {
-      print(e.toString());
-      return null;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Email o contraseña incorrecta'),
+        ),
+      );
     }
   }
 }

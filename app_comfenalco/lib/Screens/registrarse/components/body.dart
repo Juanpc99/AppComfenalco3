@@ -4,6 +4,7 @@ import 'package:app_comfenalco/models/users.dart';
 import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/validators/validators.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:app_comfenalco/theme.dart';
 
@@ -79,13 +80,16 @@ class RegistroForm extends StatefulWidget {
 }
 
 class _RegistroFormState extends State<RegistroForm> {
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
+  FirebaseAuth _auth = FirebaseAuth.instance;
   final _fromKey = GlobalKey<FormState>();
   final Validators validator = new Validators();
   final userProvider = new UsuariosProvider();
   Usuarios usuario = new Usuarios();
-  String email = '', password = '';
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   bool _guardando = false;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -232,6 +236,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildCorreoFormField() {
     return TextFormField(
+      controller: email,
       onSaved: (val) => usuario.email = val,
       validator: (val) {
         if (validator.isEmail(val) == true) {
@@ -240,7 +245,6 @@ class _RegistroFormState extends State<RegistroForm> {
           return 'Email invalido';
         }
       },
-      onChanged: (val) => email = val,
       decoration: InputDecoration(
         labelText: "Correo",
         hintText: 'Ingrese su correo electronico',
@@ -254,9 +258,9 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      controller: password,
       onSaved: (val) => usuario.password = val,
       validator: (val) => val.length < 5 ? 'Minimo 6 caracteres' : null,
-      onChanged: (val) => password = val,
       decoration: InputDecoration(
         labelText: "Contraseña",
         hintText: 'Cree una contraseña',
@@ -306,17 +310,7 @@ class _RegistroFormState extends State<RegistroForm> {
         child: FlatButton(
           height: 45.0,
           onPressed: () async {
-            if (_fromKey.currentState.validate()) {
-              dynamic result = await _auth.signUp(email, password);
-              (_guardando) ? null : _submit();
-              if (result == null) {
-                setState(() {
-                  // error = 'Por favor ingrese un e-mail valido';
-                });
-              } else {
-                Navigator.pushReplacementNamed(context, 'cuentaCreada');
-              }
-            }
+            await _register();
           },
           child: Text(
             'Registrar',
@@ -331,14 +325,31 @@ class _RegistroFormState extends State<RegistroForm> {
     );
   }
 
-  void _submit() async {
-    if (!_fromKey.currentState.validate()) return;
-    _fromKey.currentState.save();
-    setState(() {
-      _guardando = true;
-    });
-    if (usuario.idUsuario == null) {
-      userProvider.crearUsuario(usuario);
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
+  Future<void> _register() async {
+    try {
+      final User user = (await _auth.createUserWithEmailAndPassword(
+        email: email.text.trim(),
+        password: password.text.trim(),
+      ))
+          .user;
+
+      print('Se creo');
+      Navigator.pushReplacementNamed(context, 'cuentaCreada');
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('El usuario con este email ya existe'),
+        ),
+      );
+      _guardando = false;
+      print('No se creo');
     }
   }
 }

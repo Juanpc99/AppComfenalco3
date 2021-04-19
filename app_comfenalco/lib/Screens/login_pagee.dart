@@ -1,8 +1,8 @@
-
 import 'package:app_comfenalco/models/users.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/header_widget.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,11 +14,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
   final AuthService _auth = AuthService();
   final _fromKey = GlobalKey<FormState>();
-  String email = '', password = '';
+  TextEditingController email;
+  TextEditingController password;
   String error = '';
-
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<Users>(context);
@@ -100,14 +103,9 @@ class _LoginPageState extends State<LoginPage> {
         child: FlatButton(
           onPressed: () async {
             if (_fromKey.currentState.validate()) {
-              dynamic result = await _auth.signIn(email, password);
-              if (result == null) {
-                setState(() {
-                  error = 'Por favor ingrese un e-mail valido';
-                });
-              } else {
-                Navigator.pushReplacementNamed(context, 'menup');
-              }
+              _auth.signIn(_emailController.text, _passwordController.text,
+                  context, 'menup');
+              // Navigator.pushReplacementNamed(context, 'cuentaCreada');
             }
           },
           child: Text(
@@ -123,6 +121,13 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   Widget _colocarEmail(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40.0),
@@ -131,8 +136,8 @@ class _LoginPageState extends State<LoginPage> {
           color: colorVerdeLimon.withOpacity(.66),
           borderRadius: BorderRadius.circular(29)),
       child: TextFormField(
+        controller: _emailController,
         validator: (val) {
-          
           if (isEmail(val) == true) {
             return null;
           } else {
@@ -141,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
         },
         onChanged: (val) {
           setState(() {
-            email = val;
+            email.text = val;
           });
         },
         style: TextStyle(color: colorPrimario),
@@ -177,10 +182,11 @@ class _LoginPageState extends State<LoginPage> {
         borderRadius: BorderRadius.circular(29),
       ),
       child: TextFormField(
+        controller: _passwordController,
         validator: (val) => val.length < 5 ? 'Minimo 6 caracteres' : null,
         onChanged: (val) {
           setState(() {
-            password = val;
+            password.text = val;
           });
         },
         obscureText: true,
