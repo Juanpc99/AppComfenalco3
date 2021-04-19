@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:app_comfenalco/components/custom_surfix_icon.dart';
 import 'package:app_comfenalco/models/registro.dart';
 import 'package:app_comfenalco/models/users.dart';
 import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/validators/validators.dart';
-import 'package:flutter/material.dart';
 import 'package:app_comfenalco/theme.dart';
+import 'package:intl/intl.dart';
 
 import '../../../constantes.dart';
 
@@ -28,7 +29,7 @@ class _BodyState extends State<Body> {
             margin: EdgeInsets.symmetric(
               vertical: 30.0,
             ),
-            padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 20.0),
+            padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
             decoration: BoxDecoration(
               color: Colors.transparent,
             ),
@@ -85,13 +86,27 @@ class _RegistroFormState extends State<RegistroForm> {
   final userProvider = new UsuariosProvider();
   Usuarios usuario = new Usuarios();
   String email = '', password = '';
-  String _opcSelectId = 'Cedula de Ciudadania';
+  String _fecha = "";
+  TextEditingController _inputFieldFechaController =
+      new TextEditingController();
+  // para el campo de tipo documento
+  String _opcSelectId = 'Tipo Documento';
   List<String> _idTipo = [
+    'Tipo Documento',
     'Cedula de Ciudadania',
     'Cedula de Extranjeria',
     'Pasaporte',
     'Tarjeta de Identidad'
   ];
+  // para el campo de pais
+  String _opcSelectPais = 'País de Origen';
+  List<String> _paises = [ 'País de Origen','Colombia', 'Mexico', 'Venezuela', 'Peru'];
+  // para la ciudad del valle donde se encuentra
+  String _opcSelectCity = 'Ciudad donde habita';
+  List<String> _city = ['Ciudad donde habita','Cali', 'Cartago', 'Palmira', 'Jamundi'];
+  // para el campo de genero
+  String _opcSelectGenero = 'Genero';
+  List<String> _genero = ['Genero','Femenino', 'Masculino', 'No especificar'];
 
   bool _guardando = false;
 
@@ -108,6 +123,8 @@ class _RegistroFormState extends State<RegistroForm> {
           buildTipoIDFormField(),
           SizedBox(height: 20),
           buildDocumentoFormField(),
+          SizedBox(height: 20),
+          buildFechaFormField(),
           SizedBox(height: 20),
           buildPaisFormField(),
           SizedBox(height: 20),
@@ -171,21 +188,15 @@ class _RegistroFormState extends State<RegistroForm> {
     );
   }
 
-  List<DropdownMenuItem<String>> getOpcionesId() {
-    List<DropdownMenuItem<String>> listaId = new List();
-
-    _idTipo.forEach((ids) {
-      listaId.add(DropdownMenuItem(
-        child: Text(ids),
-        value: ids,
-      ));
-    });
-  }
-
   DropdownButtonFormField buildTipoIDFormField() {
     return DropdownButtonFormField(
       value: _opcSelectId,
-      items: getOpcionesId(), //
+      items: _idTipo.map((value) {
+        return DropdownMenuItem(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(), //
       onChanged: (opt) {
         setState(() {
           _opcSelectId = opt;
@@ -194,6 +205,7 @@ class _RegistroFormState extends State<RegistroForm> {
       onSaved: (val) => usuario.idTipoDoc = int.parse(val),
       decoration: InputDecoration(
         labelText: "Tipo Documento",
+        hintStyle: TextStyle(color: Colors.grey[800], fontSize: 12),
         hintText: 'Seleccione tipo documento',
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(
@@ -217,8 +229,71 @@ class _RegistroFormState extends State<RegistroForm> {
     );
   }
 
-  TextFormField buildPaisFormField() {
+  TextFormField buildFechaFormField() {
     return TextFormField(
+      enableInteractiveSelection: false,
+      controller: _inputFieldFechaController,
+      onSaved: (val) => usuario.apellido = val,
+      decoration: InputDecoration(
+        labelText: "Fecha de Nacimiento",
+        hintText: 'Fecha de Nacimiento',
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(Icons.perm_contact_calendar),
+      ),
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        _selectDate(context);
+      },
+    );
+  }
+
+  _selectDate(BuildContext context) async {
+    //String fechaS = "";
+    DateTime fechaSeleccionada = await showDatePicker(
+      context: context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(1930),
+      lastDate: new DateTime(2025),
+      locale: Locale('es', 'Español'),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: ColorScheme.highContrastLight(
+              primary: colorVerdeLimon,
+              onPrimary: Colors.white,
+              surface: colorVerdeLimon,
+              onSurface: Colors.black26,
+            ),
+            dialogBackgroundColor: Colors.white,
+          ),
+          child: child,
+        );
+      },
+    );
+    if (fechaSeleccionada != null) {
+      setState(() {
+        //_fecha = fechaSeleccionada.toString();
+        var _fechaF = DateFormat.yMMMMd().format(fechaSeleccionada);
+        _fecha = _fechaF.toString();
+        _inputFieldFechaController.text = _fecha;
+      });
+    }
+  }
+
+  DropdownButtonFormField buildPaisFormField() {
+    return DropdownButtonFormField(
+      value: _opcSelectPais,
+      items: _paises.map((value) {
+        return DropdownMenuItem(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(), //
+      onChanged: (opt) {
+        setState(() {
+          _opcSelectPais = opt;
+        });
+      },
       onSaved: (val) => usuario.idPais = int.parse(val),
       decoration: InputDecoration(
         labelText: "País",
@@ -231,8 +306,20 @@ class _RegistroFormState extends State<RegistroForm> {
     );
   }
 
-  TextFormField buildCiudadFormField() {
-    return TextFormField(
+  DropdownButtonFormField buildCiudadFormField() {
+    return DropdownButtonFormField(
+      value: _opcSelectCity,
+      items: _city.map((value) {
+        return DropdownMenuItem(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(), //
+      onChanged: (opt) {
+        setState(() {
+          _opcSelectCity = opt;
+        });
+      },
       onSaved: (val) => usuario.idCiudad = int.parse(val),
       decoration: InputDecoration(
         labelText: "Ciudad",
@@ -245,8 +332,20 @@ class _RegistroFormState extends State<RegistroForm> {
     );
   }
 
-  TextFormField buildGeneroFormField() {
-    return TextFormField(
+  DropdownButtonFormField buildGeneroFormField() {
+    return DropdownButtonFormField(
+      value: _opcSelectGenero,
+      items: _genero.map((value) {
+        return DropdownMenuItem(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(), //
+      onChanged: (opt) {
+        setState(() {
+          _opcSelectGenero = opt;
+        });
+      },
       onSaved: (val) => usuario.idGnr = int.parse(val),
       decoration: InputDecoration(
         labelText: "Genero",
