@@ -117,6 +117,7 @@ class _RegistroPageState extends State<RegistroPage> {
           color: Colors.grey[350].withOpacity(.66),
           borderRadius: BorderRadius.circular(29)),
       child: TextField(
+        textCapitalization: TextCapitalization.sentences,
         style: TextStyle(color: _colorEmail),
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
@@ -218,14 +219,15 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildNameFormField() {
     return TextFormField(
-          decoration: InputDecoration(
-            labelText: "Nombre",
-            hintText: 'Ingrese su nombre completo',
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            suffixIcon: CustomSurffixIcon(
-              svgIcon: "assets/icons/facebook.svg",
-            ),
-          ),
-        );
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        labelText: "Nombre",
+        hintText: 'Ingrese su nombre completo',
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSurffixIcon(
+          svgIcon: "assets/icons/facebook.svg",
+        ),
+      ),
+    );
   }
 }

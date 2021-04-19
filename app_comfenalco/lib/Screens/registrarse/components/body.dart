@@ -85,7 +85,16 @@ class _RegistroFormState extends State<RegistroForm> {
   final userProvider = new UsuariosProvider();
   Usuarios usuario = new Usuarios();
   String email = '', password = '';
+  String _opcSelectId = 'Cedula de Ciudadania';
+  List<String> _idTipo = [
+    'Cedula de Ciudadania',
+    'Cedula de Extranjeria',
+    'Pasaporte',
+    'Tarjeta de Identidad'
+  ];
+
   bool _guardando = false;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -121,6 +130,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildNameFormField() {
     return TextFormField(
+      textCapitalization: TextCapitalization.sentences,
       onSaved: (val) => usuario.nombre = val,
       decoration: InputDecoration(
         labelText: "Nombre",
@@ -148,6 +158,7 @@ class _RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildApellidoFormField() {
     return TextFormField(
+      textCapitalization: TextCapitalization.sentences,
       onSaved: (val) => usuario.apellido = val,
       decoration: InputDecoration(
         labelText: "Apellidos",
@@ -160,8 +171,26 @@ class _RegistroFormState extends State<RegistroForm> {
     );
   }
 
-  TextFormField buildTipoIDFormField() {
-    return TextFormField(
+  List<DropdownMenuItem<String>> getOpcionesId() {
+    List<DropdownMenuItem<String>> listaId = new List();
+
+    _idTipo.forEach((ids) {
+      listaId.add(DropdownMenuItem(
+        child: Text(ids),
+        value: ids,
+      ));
+    });
+  }
+
+  DropdownButtonFormField buildTipoIDFormField() {
+    return DropdownButtonFormField(
+      value: _opcSelectId,
+      items: getOpcionesId(), //
+      onChanged: (opt) {
+        setState(() {
+          _opcSelectId = opt;
+        });
+      },
       onSaved: (val) => usuario.idTipoDoc = int.parse(val),
       decoration: InputDecoration(
         labelText: "Tipo Documento",
