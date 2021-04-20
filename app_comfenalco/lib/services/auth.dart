@@ -1,22 +1,9 @@
-import 'package:app_comfenalco/models/users.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-// Crear objeto basado en firebase
-  Users _userFromFirebaseUser(User user) {
-    return user != null ? Users(uid: user.uid) : null;
-  }
-
-// Auth stream
-  Stream<Users> get user {
-    return _auth.authStateChanges().map(_userFromFirebaseUser);
-  }
-
 // Ingresar con contraseña y correo
-
   Future<void> signIn(
       String email, String password, BuildContext context, String ruta) async {
     try {
@@ -26,18 +13,50 @@ class AuthService {
       ))
           .user;
 
+      ;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('${user.email} inicio sesión'),
+          content: Row(
+            children: [
+              Icon(
+                Icons.check_circle_outline_rounded,
+                color: Colors.green,
+                size: 40.0,
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+              Text('${user.email} inicio sesión'),
+            ],
+          ),
+          duration: Duration(seconds: 5),
         ),
       );
       Navigator.pushReplacementNamed(context, ruta);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Email o contraseña incorrecta'),
+        SnackBar(
+          content: Row(
+            children: [
+              Icon(
+                Icons.error,
+                color: Colors.red,
+                size: 40.0,
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+              Text('Email o contraseña incorrecta'),
+            ],
+          ),
+          duration: Duration(seconds: 5),
         ),
       );
     }
+  }
+
+  String correo() {
+    String user = _auth.currentUser.email;
+    return user;
   }
 }

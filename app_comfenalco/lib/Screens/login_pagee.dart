@@ -24,57 +24,65 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<Users>(context);
+    // final user = Provider.of<Users>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Form(
-          key: _fromKey,
-          child: Column(
-            children: <Widget>[
-              ClipPath(
-                clipper: MyClipper(),
-                child: Container(
-                  height: 300,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        colorVerdeOscuro,
-                        colorVerdeLimon,
-                      ],
-                    ),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/LogoComfenalco.png"),
+      body: GestureDetector(
+        onTap: () {
+          final FocusScopeNode focus = FocusScope.of(context);
+          if (!focus.hasPrimaryFocus && focus.hasFocus) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: SingleChildScrollView(
+          child: Form(
+            key: _fromKey,
+            child: Column(
+              children: <Widget>[
+                ClipPath(
+                  clipper: MyClipper(),
+                  child: Container(
+                    height: 300,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          colorVerdeOscuro,
+                          colorVerdeLimon,
+                        ],
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/LogoComfenalco.png"),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 500,
-                width: 450,
-                child: ListView(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 1.0),
-                  children: <Widget>[
-                    SizedBox(height: 1),
-                    _colocarEmail(context),
-                    SizedBox(height: 5.0),
-                    _colocarContrasena(context),
-                    _botonEntrar(context),
-                    SizedBox(height: 20.0),
-                    _recuperarC(context),
-                    SizedBox(height: 20.0),
-                    redes(),
-                    SizedBox(height: 20.0),
-                    _noRegistrado(context),
-                  ],
+                SizedBox(
+                  height: 500,
+                  width: 450,
+                  child: ListView(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 1.0),
+                    children: <Widget>[
+                      SizedBox(height: 1),
+                      _colocarEmail(context),
+                      SizedBox(height: 5.0),
+                      _colocarContrasena(context),
+                      _botonEntrar(context),
+                      SizedBox(height: 20.0),
+                      _recuperarC(context),
+                      SizedBox(height: 20.0),
+                      redes(),
+                      SizedBox(height: 20.0),
+                      _noRegistrado(context),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -105,7 +113,8 @@ class _LoginPageState extends State<LoginPage> {
             if (_fromKey.currentState.validate()) {
               _auth.signIn(_emailController.text, _passwordController.text,
                   context, 'menup');
-              // Navigator.pushReplacementNamed(context, 'cuentaCreada');
+              // print('el correo es : ' + correo());
+              print('el correo es: ' + _auth.correo());
             }
           },
           child: Text(

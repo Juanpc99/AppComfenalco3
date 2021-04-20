@@ -10,7 +10,7 @@ class RegistroPage extends StatefulWidget {
 
 class _RegistroPageState extends State<RegistroPage> {
   Color _colorEmail = Colors.black;
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
   final _fromKey = GlobalKey<FormState>();
   String email = '', password = '';
   String error = '';

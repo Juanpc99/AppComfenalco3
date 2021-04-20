@@ -74,10 +74,10 @@ class _BodyState extends State<Body> {
 
 class RegistroForm extends StatefulWidget {
   @override
-  _RegistroFormState createState() => _RegistroFormState();
+  RegistroFormState createState() => RegistroFormState();
 }
 
-class _RegistroFormState extends State<RegistroForm> {
+class RegistroFormState extends State<RegistroForm> {
   // final AuthService _auth = AuthService();
   FirebaseAuth _auth = FirebaseAuth.instance;
   final _fromKey = GlobalKey<FormState>();
@@ -125,35 +125,37 @@ class _RegistroFormState extends State<RegistroForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _fromKey,
-      child: Column(
-        children: [
-          buildNameFormField(),
-          SizedBox(height: 20),
-          buildApellidoFormField(),
-          SizedBox(height: 20),
-          buildTipoIDFormField(),
-          SizedBox(height: 20),
-          buildDocumentoFormField(),
-          SizedBox(height: 20),
-          buildFechaFormField(),
-          SizedBox(height: 20),
-          buildPaisFormField(),
-          SizedBox(height: 20),
-          buildCiudadFormField(),
-          SizedBox(height: 20),
-          buildGeneroFormField(),
-          SizedBox(height: 20),
-          buildCorreoFormField(),
-          SizedBox(height: 20),
-          buildPasswordFormField(),
-          SizedBox(height: 20),
-          _botonRegistrar(context),
-          SizedBox(
-            height: 20.0,
-          )
-        ],
+    return SingleChildScrollView(
+      child: Form(
+        key: _fromKey,
+        child: Column(
+          children: [
+            buildNameFormField(),
+            SizedBox(height: 20),
+            buildApellidoFormField(),
+            SizedBox(height: 20),
+            buildTipoIDFormField(),
+            SizedBox(height: 20),
+            buildDocumentoFormField(),
+            SizedBox(height: 20),
+            buildFechaFormField(),
+            SizedBox(height: 20),
+            buildPaisFormField(),
+            SizedBox(height: 20),
+            buildCiudadFormField(),
+            SizedBox(height: 20),
+            buildGeneroFormField(),
+            SizedBox(height: 20),
+            buildCorreoFormField(),
+            SizedBox(height: 20),
+            buildPasswordFormField(),
+            SizedBox(height: 20),
+            _botonRegistrar(context),
+            SizedBox(
+              height: 20.0,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -484,8 +486,21 @@ class _RegistroFormState extends State<RegistroForm> {
       Navigator.pushReplacementNamed(context, 'cuentaCreada');
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('El usuario con este email ya existe'),
+        SnackBar(
+          content: Row(
+            children: [
+              Icon(
+                Icons.error,
+                color: Colors.red,
+                size: 40.0,
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+              Text('Todos los campos son obligatorios'),
+            ],
+          ),
+          duration: Duration(seconds: 5),
         ),
       );
       _guardando = false;

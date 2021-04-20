@@ -1,12 +1,15 @@
 import 'package:app_comfenalco/constantes.dart';
+import 'package:app_comfenalco/services/auth.dart';
+
 import 'package:flutter/material.dart';
 
 class MenuWidget extends StatelessWidget {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-      
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -29,7 +32,7 @@ class MenuWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Juan Pablo',
+                    '${_auth.correo()}',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 25.0,
