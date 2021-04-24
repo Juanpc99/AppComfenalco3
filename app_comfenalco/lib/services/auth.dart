@@ -13,7 +13,6 @@ class AuthService {
       ))
           .user;
 
-      ;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Row(

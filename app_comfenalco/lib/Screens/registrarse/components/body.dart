@@ -6,6 +6,10 @@ import 'package:app_comfenalco/validators/validators.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
 import '../../../constantes.dart';
 
 class Body extends StatefulWidget {
@@ -91,38 +95,87 @@ class RegistroFormState extends State<RegistroForm> {
   TextEditingController _inputFieldFechaController =
       new TextEditingController();
   // para el campo de tipo documento
-  String _opcSelectId = 'Tipo Documento';
-  List<String> _idTipo = [
-    'Tipo Documento',
-    'Cedula de Ciudadania',
-    'Cedula de Extranjeria',
-    'Pasaporte',
-    'Tarjeta de Identidad'
-  ];
+  String _opcSelectId;
+  List _idTipo = List();
+  Future cargarDocumentos() async {
+    final Uri url = Uri.parse('http://10.0.2.2:8000/getTiposDocumento');
+
+    final resp = await http.get(url);
+
+    var jsonbody = resp.body;
+    var documentos = json.decode(jsonbody);
+
+    setState(() {
+      _idTipo = documentos;
+    });
+    print(documentos);
+    return "succes";
+  }
+
   // para el campo de pais
-  String _opcSelectPais = 'País de Origen';
-  List<String> _paises = [
-    'País de Origen',
-    'Colombia',
-    'Mexico',
-    'Venezuela',
-    'Peru'
-  ];
+  String _opcSelectPais;
+  List _paises = List();
+  Future cargarPaises() async {
+    final Uri url = Uri.parse('http://10.0.2.2:8000/getPaises');
+
+    final resp = await http.get(url);
+
+    var jsonbody = resp.body;
+    var paises = json.decode(jsonbody);
+
+    setState(() {
+      _paises = paises;
+    });
+    print(paises);
+    return "succes";
+  }
+
   // para la ciudad del valle donde se encuentra
-  String _opcSelectCity = 'Ciudad donde habita';
-  List<String> _city = [
-    'Ciudad donde habita',
-    'Cali',
-    'Cartago',
-    'Palmira',
-    'Jamundi'
-  ];
+  String _opcSelectCity;
+  List _city = List();
+
+  Future cargarCiudades() async {
+    final Uri url = Uri.parse('http://10.0.2.2:8000/getCiudades');
+
+    final resp = await http.get(url);
+
+    var jsonbody = resp.body;
+    var ciudades = json.decode(jsonbody);
+
+    setState(() {
+      _city = ciudades;
+    });
+    print(ciudades);
+    return "succes";
+  }
+
   // para el campo de genero
-  String _opcSelectGenero = 'Genero';
-  List<String> _genero = ['Genero', 'Femenino', 'Masculino', 'No especificar'];
+  String _opcSelectGenero;
+  List dataGen = List();
+  Future cargarGeneros() async {
+    final Uri url = Uri.parse('http://10.0.2.2:8000/getGeneros');
+
+    final resp = await http.get(url);
+
+    var jsonbody = resp.body;
+    var generos = json.decode(jsonbody);
+    setState(() {
+      dataGen = generos;
+    });
+    print(generos);
+    return "succes";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    cargarGeneros();
+    cargarCiudades();
+    cargarPaises();
+    cargarDocumentos();
+  }
 
   bool _guardando = false;
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -153,7 +206,7 @@ class RegistroFormState extends State<RegistroForm> {
             _botonRegistrar(context),
             SizedBox(
               height: 20.0,
-            )
+            ),
           ],
         ),
       ),
@@ -163,7 +216,9 @@ class RegistroFormState extends State<RegistroForm> {
   TextFormField buildNameFormField() {
     return TextFormField(
       textCapitalization: TextCapitalization.sentences,
-      onSaved: (val) => usuario.nombre = val,
+      onChanged: (value) => setState(() {
+        usuario.nombre = value;
+      }),
       decoration: InputDecoration(
         labelText: "Nombre",
         hintText: 'Ingrese su nombre completo',
@@ -191,7 +246,9 @@ class RegistroFormState extends State<RegistroForm> {
   TextFormField buildApellidoFormField() {
     return TextFormField(
       textCapitalization: TextCapitalization.sentences,
-      onSaved: (val) => usuario.apellido = val,
+      onChanged: (value) => setState(() {
+        usuario.apellido = value;
+      }),
       decoration: InputDecoration(
         labelText: "Apellidos",
         hintText: 'Ingrese sus apellidos',
@@ -208,16 +265,16 @@ class RegistroFormState extends State<RegistroForm> {
       value: _opcSelectId,
       items: _idTipo.map((value) {
         return DropdownMenuItem(
-          value: value,
-          child: Text(value),
+          value: value['ID_TIPO_DOC'].toString(),
+          child: Text(value['DOCUMENTO']),
         );
       }).toList(), //
       onChanged: (opt) {
         setState(() {
           _opcSelectId = opt;
+          usuario.idTipoDoc = int.parse(opt);
         });
       },
-      onSaved: (val) => usuario.idTipoDoc = int.parse(val),
       decoration: InputDecoration(
         labelText: "Tipo Documento",
         hintStyle: TextStyle(color: Colors.grey[800], fontSize: 12),
@@ -232,7 +289,9 @@ class RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildDocumentoFormField() {
     return TextFormField(
-      onSaved: (val) => usuario.numeroDocumento = int.parse(val),
+      onChanged: (value) => setState(() {
+        usuario.numeroDocumento = int.parse(value);
+      }),
       decoration: InputDecoration(
         labelText: "No. Documento",
         hintText: 'Ingrese su documento',
@@ -248,7 +307,6 @@ class RegistroFormState extends State<RegistroForm> {
     return TextFormField(
       enableInteractiveSelection: false,
       controller: _inputFieldFechaController,
-      onSaved: (val) => usuario.apellido = val,
       decoration: InputDecoration(
         labelText: "Fecha de Nacimiento",
         hintText: 'Fecha de Nacimiento',
@@ -262,7 +320,7 @@ class RegistroFormState extends State<RegistroForm> {
     );
   }
 
-  _selectDate(BuildContext context) async {
+  void _selectDate(BuildContext context) async {
     //String fechaS = "";
     DateTime fechaSeleccionada = await showDatePicker(
       context: context,
@@ -287,7 +345,7 @@ class RegistroFormState extends State<RegistroForm> {
     );
     if (fechaSeleccionada != null) {
       setState(() {
-        //_fecha = fechaSeleccionada.toString();
+        // _fecha = fechaSeleccionada.toString();
         var _fechaF = DateFormat.yMMMMd().format(fechaSeleccionada);
         _fecha = _fechaF.toString();
         _inputFieldFechaController.text = _fecha;
@@ -298,18 +356,19 @@ class RegistroFormState extends State<RegistroForm> {
   DropdownButtonFormField buildPaisFormField() {
     return DropdownButtonFormField(
       value: _opcSelectPais,
+      isExpanded: true,
       items: _paises.map((value) {
         return DropdownMenuItem(
-          value: value,
-          child: Text(value),
+          value: value['ID_PAIS'].toString(),
+          child: Text(value['PAIS']),
         );
       }).toList(), //
       onChanged: (opt) {
         setState(() {
           _opcSelectPais = opt;
+          usuario.idPais = int.parse(opt);
         });
       },
-      onSaved: (val) => usuario.idPais = int.parse(val),
       decoration: InputDecoration(
         labelText: "País",
         hintText: 'Ingrese su pais de origen',
@@ -323,19 +382,22 @@ class RegistroFormState extends State<RegistroForm> {
 
   DropdownButtonFormField buildCiudadFormField() {
     return DropdownButtonFormField(
+      isExpanded: true,
       value: _opcSelectCity,
       items: _city.map((value) {
+        // value['ID_CIUDAD'] = 5;
+
         return DropdownMenuItem(
-          value: value,
-          child: Text(value),
+          value: value['ID_CIUDAD'].toString(),
+          child: Text(value['CIUDAD']),
         );
       }).toList(), //
       onChanged: (opt) {
         setState(() {
           _opcSelectCity = opt;
+          usuario.idCiudad = int.parse(opt);
         });
       },
-      onSaved: (val) => usuario.idCiudad = int.parse(val),
       decoration: InputDecoration(
         labelText: "Ciudad",
         hintText: 'Ingrese la ciudad donde nacio',
@@ -350,18 +412,19 @@ class RegistroFormState extends State<RegistroForm> {
   DropdownButtonFormField buildGeneroFormField() {
     return DropdownButtonFormField(
       value: _opcSelectGenero,
-      items: _genero.map((value) {
+      items: dataGen.map((list) {
         return DropdownMenuItem(
-          value: value,
-          child: Text(value),
+          value: list['ID_GENERO'].toString(),
+          child: Text(list['GENERO']),
         );
       }).toList(), //
       onChanged: (opt) {
         setState(() {
           _opcSelectGenero = opt;
+          usuario.idGnr = int.parse(opt);
         });
       },
-      onSaved: (val) => usuario.idGnr = int.parse(val),
+
       decoration: InputDecoration(
         labelText: "Genero",
         hintText: 'Seleccione su genero',
@@ -376,7 +439,9 @@ class RegistroFormState extends State<RegistroForm> {
   TextFormField buildCorreoFormField() {
     return TextFormField(
       controller: email,
-      onSaved: (val) => usuario.email = val,
+      onChanged: (value) => setState(() {
+        usuario.email = value;
+      }),
       validator: (val) {
         if (validator.isEmail(val) == true) {
           return null;
@@ -398,7 +463,11 @@ class RegistroFormState extends State<RegistroForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       controller: password,
-      onSaved: (val) => usuario.password = val,
+      onChanged: (val) => setState(
+        () {
+          usuario.password = val;
+        },
+      ),
       validator: (val) => val.length < 5 ? 'Minimo 6 caracteres' : null,
       decoration: InputDecoration(
         labelText: "Contraseña",
@@ -450,6 +519,18 @@ class RegistroFormState extends State<RegistroForm> {
           height: 45.0,
           onPressed: () async {
             await _register();
+            print('nombre: ' + usuario.nombre);
+            print('apellido: ' + usuario.apellido);
+            print('fecha: ' + usuario.fechaNacimiento);
+            print('ciudad: ' + usuario.idCiudad.toString());
+            print('genero: ' + usuario.idGnr.toString());
+            print('pais: ' + usuario.idPais.toString());
+            print('documento id: ' + usuario.idTipoDoc.toString());
+            print('usuario: ' + usuario.idTipoUsr.toString());
+            print('numero doc: ' + usuario.numeroDocumento.toString());
+            print('email: ' + usuario.email);
+            print('password: ' + usuario.password);
+            print(_inputFieldFechaController.text);
           },
           child: Text(
             'Registrar',
@@ -464,47 +545,49 @@ class RegistroFormState extends State<RegistroForm> {
     );
   }
 
+  Future<void> _register() async {
+    if (_fromKey.currentState.validate()) {
+      // _fromKey.currentState.save();
+
+      try {
+        User user = (await _auth.createUserWithEmailAndPassword(
+          email: email.text.trim(),
+          password: password.text.trim(),
+        ))
+            .user;
+        usuario.fechaNacimiento = _inputFieldFechaController.text;
+        userProvider.crearUsuario(usuario);
+
+        Navigator.pushReplacementNamed(context, 'cuentaCreada');
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                Icon(
+                  Icons.error,
+                  color: Colors.red,
+                  size: 40.0,
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                Text('Todos los campos son obligatorios'),
+              ],
+            ),
+            duration: Duration(seconds: 5),
+          ),
+        );
+        _guardando = false;
+        print('No se creo');
+      }
+    }
+  }
+
   @override
   void dispose() {
     email.dispose();
     password.dispose();
     super.dispose();
-  }
-
-  Future<void> _register() async {
-    if (_fromKey.currentState.validate()) return;
-    _fromKey.currentState.save();
-
-    try {
-      final User user = (await _auth.createUserWithEmailAndPassword(
-        email: email.text.trim(),
-        password: password.text.trim(),
-      ))
-          .user;
-      userProvider.crearUsuario(usuario);
-      print('Se creo');
-      Navigator.pushReplacementNamed(context, 'cuentaCreada');
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              Icon(
-                Icons.error,
-                color: Colors.red,
-                size: 40.0,
-              ),
-              SizedBox(
-                width: 20.0,
-              ),
-              Text('Todos los campos son obligatorios'),
-            ],
-          ),
-          duration: Duration(seconds: 5),
-        ),
-      );
-      _guardando = false;
-      print('No se creo');
-    }
   }
 }

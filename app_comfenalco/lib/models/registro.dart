@@ -9,7 +9,6 @@ Usuarios usuariosFromJson(String str) => Usuarios.fromJson(json.decode(str));
 String usuariosToJson(Usuarios data) => json.encode(data.toJson());
 
 class Usuarios {
-
   int idUsuario;
   String nombre;
   String apellido;
@@ -27,7 +26,7 @@ class Usuarios {
     this.idUsuario,
     this.nombre = '',
     this.apellido = '',
-    this.fechaNacimiento ='',
+    this.fechaNacimiento = '',
     this.idGnr = 0,
     this.numeroDocumento = 0,
     this.email = '',
@@ -37,7 +36,6 @@ class Usuarios {
     this.password = '',
     this.idTipoUsr = 0,
   });
-
 
   factory Usuarios.fromJson(Map<String, dynamic> json) => Usuarios(
         idUsuario: json["idUsuario"],
