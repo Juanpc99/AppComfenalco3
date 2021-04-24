@@ -5,54 +5,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-Widget figDS(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  return Positioned(
-    top: 0,
-    left: 240,
-    child: Image.asset(
-      "assets/images/figDS.png",
-      width: size.width * 0.5,
-    ),
-  );
-}
-
-Widget figDI(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  return Positioned(
-    bottom: 0,
-    left: 250,
-    child: Image.asset(
-      "assets/images/figDI.png",
-      width: size.width * 0.5,
-    ),
-  );
-}
-
-Widget figII(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  return Positioned(
-    bottom: 0,
-    right: 250,
-    child: Image.asset(
-      "assets/images/figII.png",
-      width: size.width * 0.5,
-    ),
-  );
-}
-
-Widget figIS(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  return Positioned(
-    top: 0,
-    right: 230,
-    child: Image.asset(
-      "assets/images/figIS.png",
-      width: size.width * 0.5,
-    ),
-  );
-}
-
 class MyHeader extends StatefulWidget {
   final String image;
   final String textTop;

@@ -229,32 +229,3 @@ class Requisitos extends StatelessWidget {
     );
   }
 }
-/*
-CustomScrollView(
-          slivers: <Widget>[
-            _appbarNormal(),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  SizedBox(height: 10.0),
-                  _titulo(),
-                  SizedBox(height: 20.0),
-                  Divider(color: Colors.black87),
-                  _requisito1(context),
-                  Divider(color: Colors.black87),
-                  _requisito2(context),
-                  Divider(color: Colors.black87),
-                  _requisito3(context),
-                  Divider(color: Colors.black87),
-                  _requisito4(context),
-                  Divider(color: Colors.black87),
-                  _requisito5(context),
-                  Divider(color: Colors.black87),
-                  _requisito6(context),
-                  SizedBox(height: 100.0),
-                ],
-              ),
-            ),
-          ],
-        ),
-**/

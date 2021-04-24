@@ -98,7 +98,7 @@ class RegistroFormState extends State<RegistroForm> {
   String _opcSelectId;
   List _idTipo = List();
   Future cargarDocumentos() async {
-    final Uri url = Uri.parse('http://10.0.2.2:8000/getTiposDocumento');
+    final Uri url = Uri.parse('http://192.168.56.1/getTiposDocumento');
 
     final resp = await http.get(url);
 
@@ -108,7 +108,7 @@ class RegistroFormState extends State<RegistroForm> {
     setState(() {
       _idTipo = documentos;
     });
-    print(documentos);
+    //print(documentos);
     return "succes";
   }
 
@@ -116,7 +116,7 @@ class RegistroFormState extends State<RegistroForm> {
   String _opcSelectPais;
   List _paises = List();
   Future cargarPaises() async {
-    final Uri url = Uri.parse('http://10.0.2.2:8000/getPaises');
+    final Uri url = Uri.parse('http://192.168.56.1:8000/getPaises');
 
     final resp = await http.get(url);
 
@@ -126,7 +126,7 @@ class RegistroFormState extends State<RegistroForm> {
     setState(() {
       _paises = paises;
     });
-    print(paises);
+    //print(paises);
     return "succes";
   }
 
@@ -135,7 +135,7 @@ class RegistroFormState extends State<RegistroForm> {
   List _city = List();
 
   Future cargarCiudades() async {
-    final Uri url = Uri.parse('http://10.0.2.2:8000/getCiudades');
+    final Uri url = Uri.parse('http://192.168.56.1:8000/getCiudades');
 
     final resp = await http.get(url);
 
@@ -145,7 +145,7 @@ class RegistroFormState extends State<RegistroForm> {
     setState(() {
       _city = ciudades;
     });
-    print(ciudades);
+    //print(ciudades);
     return "succes";
   }
 
@@ -153,7 +153,7 @@ class RegistroFormState extends State<RegistroForm> {
   String _opcSelectGenero;
   List dataGen = List();
   Future cargarGeneros() async {
-    final Uri url = Uri.parse('http://10.0.2.2:8000/getGeneros');
+    final Uri url = Uri.parse('http://192.168.56.1/getGeneros');
 
     final resp = await http.get(url);
 
@@ -162,7 +162,7 @@ class RegistroFormState extends State<RegistroForm> {
     setState(() {
       dataGen = generos;
     });
-    print(generos);
+    //print(generos);
     return "succes";
   }
 

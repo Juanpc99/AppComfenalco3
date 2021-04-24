@@ -5,7 +5,6 @@ import 'package:app_comfenalco/Screens/Subsidios/requisitos_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidiosAfiliados_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidios_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/vigenciaSubsidio_page.dart';
-import 'package:app_comfenalco/Screens/Welcome/login_pagee.dart';
 import 'package:app_comfenalco/Screens/Welcome/welcome_screen.dart';
 import 'package:app_comfenalco/Screens/codigo_EnviadoExito.dart';
 import 'package:app_comfenalco/Screens/codigo_page.dart';

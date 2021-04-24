@@ -53,11 +53,6 @@ class TiposSubsidiosWidget extends StatelessWidget {
               Column(
                 children: [
                   _botones(context),
-                  /*
-                  Container(
-                      padding: EdgeInsets.symmetric(vertical: 30.0),
-                      child: redes()),
-                      **/
                 ],
               ),
             ],

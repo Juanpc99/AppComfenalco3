@@ -43,27 +43,6 @@ class _RegistroPageState extends State<RegistroPage> {
             SizedBox(height: 10),
             _subtitulo(),
             SizedBox(height: 30),
-            
-            /*SizedBox(height: 20),
-            //_textoCabeza('Nombre'),
-            _crearNombre(),
-            _textoCabeza('Apellido'),
-            _crearNombre(),
-            _textoCabeza('Tipo Documento'),
-            _crearNombre(),
-            _textoCabeza('Documento'),
-            _crearNombre(),
-            _textoCabeza('Pais'),
-            _crearNombre(),
-            _textoCabeza('Ciudad'),
-            _crearNombre(),
-            _textoCabeza('Genero'),
-            _crearNombre(),
-            _textoCabeza('Correo'),
-            _crearNombre(),
-            _textoCabeza('Contraseña'),
-            _crearNombre(),
-            **/
             SizedBox(height: 30),
             _botonRegistrar(context),
           ],
@@ -184,20 +163,7 @@ class _RegistroPageState extends State<RegistroPage> {
     );
   }
 
-/*
-  TextFormField buildNameFormField() {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: "Nombre",
-        hintText: 'Ingrese su nombre completo',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: "assets/icons/facebook.svg",
-        ),
-      ),
-    );
-  }
-  **/
+
 }
 
 class RegistroForm extends StatefulWidget {

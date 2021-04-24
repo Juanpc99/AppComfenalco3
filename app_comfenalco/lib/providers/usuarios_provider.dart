@@ -5,7 +5,7 @@ import 'package:app_comfenalco/models/registro.dart';
 import 'package:http/http.dart' as http;
 
 class UsuariosProvider {
-  final String _url = 'http://10.0.2.2:8000';
+  final String _url = 'http://192.168.56.1:8000';
 
   Future<bool> crearUsuario(Usuarios usuario) async {
     final Uri url = Uri.parse('$_url/UserRegistration');
@@ -14,7 +14,7 @@ class UsuariosProvider {
 
     final decodeData = json.decode(resp.body);
 
-    print(decodeData);
+    //print(decodeData);
 
     return true;
   }

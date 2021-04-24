@@ -62,39 +62,7 @@ class RecuperarPage extends StatelessWidget {
     );
   }
 
-  // Widget _crearCapoTexto(BuildContext context) {
-  //   final bloc = Provider.of(context);
-  //   return StreamBuilder(
-  //       stream: bloc.email2Stream,
-  //       builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //         return Container(
-  //           margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40.0),
-  //           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-  //           decoration: BoxDecoration(
-  //               color: colorVerdeLimon.withOpacity(.66),
-  //               borderRadius: BorderRadius.circular(29)),
-  //           child: TextField(
-  //             style: TextStyle(color: Colors.black),
-  //             obscureText: false,
-  //             keyboardType: TextInputType.emailAddress,
-  //             decoration: InputDecoration(
-  //                 hintText: 'Correo',
-  //                 hintStyle: TextStyle(color: colorPrimario),
-  //                 errorText: snapshot.error,
-  //                 suffixIcon: Icon(
-  //                   Icons.alternate_email,
-  //                   color: colorPrimario,
-  //                 ),
-  //                 icon: Icon(
-  //                   Icons.email,
-  //                   color: colorPrimario,
-  //                 )),
-  //             onChanged: bloc.changeEmail2,
-  //           ),
-  //         );
-  //       });
-  // }
-
+  
   Widget _textoCabeza(String texto) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 60.0),
@@ -113,35 +81,7 @@ class RecuperarPage extends StatelessWidget {
     );
   }
 
-  // Widget _botonEnviarCodigo(BuildContext context) {
-  //   final bloc = Provider.of(context);
-  //   return StreamBuilder(
-  //     stream: bloc.email2Stream,
-  //     builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //       return Container(
-  //         height: 55.0,
-  //         padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 0.0),
-  //         margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
-  //         child: ClipRRect(
-  //           borderRadius: BorderRadius.circular(100.0),
-  //           child: FlatButton(
-  //             height: 45.0,
-  //             onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
-  //             child: Text(
-  //               'Enviar',
-  //               style: TextStyle(
-  //                   fontWeight: FontWeight.normal,
-  //                   fontSize: 20,
-  //                   color: colorPrimarioClaro),
-  //             ),
-  //             color: colorPrimario,
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
-
+  
   Widget _noRegistrado(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -163,7 +103,5 @@ class RecuperarPage extends StatelessWidget {
     );
   }
 
-  // _login(LoginBloc bloc, BuildContext context) {
-  //   Navigator.pushReplacementNamed(context, 'codigoEnviado');
-  // }
+  
 }
