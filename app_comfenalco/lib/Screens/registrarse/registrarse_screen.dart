@@ -33,7 +33,14 @@ class _RegistrarseScreenState extends State<RegistrarseScreen> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
         ),
-        body: Body(),
+        body: GestureDetector(
+            onTap: () {
+              final FocusScopeNode focus = FocusScope.of(context);
+              if (!focus.hasPrimaryFocus && focus.hasFocus) {
+                FocusManager.instance.primaryFocus.unfocus();
+              }
+            },
+            child: Body()),
       ),
     );
   }
