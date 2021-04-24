@@ -98,7 +98,7 @@ class RegistroFormState extends State<RegistroForm> {
   String _opcSelectId;
   List _idTipo = List();
   Future cargarDocumentos() async {
-    final Uri url = Uri.parse('http://192.168.56.1/getTiposDocumento');
+    final Uri url = Uri.parse('$url_api/getTiposDocumento');
 
     final resp = await http.get(url);
 
@@ -116,7 +116,7 @@ class RegistroFormState extends State<RegistroForm> {
   String _opcSelectPais;
   List _paises = List();
   Future cargarPaises() async {
-    final Uri url = Uri.parse('http://192.168.56.1:8000/getPaises');
+    final Uri url = Uri.parse('$url_api/getPaises');
 
     final resp = await http.get(url);
 
@@ -135,7 +135,7 @@ class RegistroFormState extends State<RegistroForm> {
   List _city = List();
 
   Future cargarCiudades() async {
-    final Uri url = Uri.parse('http://192.168.56.1:8000/getCiudades');
+    final Uri url = Uri.parse('$url_api/getCiudades');
 
     final resp = await http.get(url);
 
@@ -153,7 +153,7 @@ class RegistroFormState extends State<RegistroForm> {
   String _opcSelectGenero;
   List dataGen = List();
   Future cargarGeneros() async {
-    final Uri url = Uri.parse('http://192.168.56.1/getGeneros');
+    final Uri url = Uri.parse('$url_api/getGeneros');
 
     final resp = await http.get(url);
 

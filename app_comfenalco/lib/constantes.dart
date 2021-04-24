@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Ruta de la API
-String url = '192.168.56.1';
+String url_api = 'http://192.168.56.1:8000';
 // colors
 const colorPrimario = Color(0xFF00C853);
 const colorSecundario = Color(0xFFB9F6CA);
