@@ -1,10 +1,7 @@
-import 'package:app_comfenalco/models/users.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/header_widget.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../constantes.dart';
 
