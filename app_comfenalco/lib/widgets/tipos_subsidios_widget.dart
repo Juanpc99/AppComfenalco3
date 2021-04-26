@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:app_comfenalco/widgets/menu_widget.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
 import 'package:flutter/material.dart';
 
