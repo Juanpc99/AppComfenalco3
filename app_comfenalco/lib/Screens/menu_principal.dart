@@ -78,20 +78,20 @@ class MenuPage extends StatelessWidget {
         _crearBotonRedondeado(context, Colors.deepOrange[400],
             Icons.home_rounded, 'Subsidio Vivienda', 'subsidios'),
         _crearBotonRedondeado(context, Colors.deepOrange[400],
-            Icons.family_restroom_rounded, 'Subsidio Familiar', 'Subsidio')
+            Icons.family_restroom_rounded, 'Subsidio Familiar', 'pronto')
       ]),
       TableRow(children: [
         _crearBotonRedondeado(context, Colors.deepOrange[400],
-            Icons.monetization_on_outlined, 'Subsidio Especial', 'Subsidio'),
+            Icons.monetization_on_outlined, 'Subsidio Especial', 'pronto'),
         _crearBotonRedondeado(context, Colors.deepOrange[400],
-            Icons.cloud_queue_outlined, 'Subsidio Adicional', 'Subsidio')
+            Icons.cloud_queue_outlined, 'Subsidio Adicional', 'pronto')
       ]),
       TableRow(
         children: [
           _crearBotonRedondeado(context, Colors.deepOrange[400],
-              Icons.room_service_rounded, 'Subsidio en servicios', 'Subsidio'),
+              Icons.room_service_rounded, 'Subsidio en servicios', 'pronto'),
           _crearBotonRedondeado(context, Colors.deepOrange[400],
-              Icons.more_horiz_rounded, 'Otros Subsidios', 'Subsidio')
+              Icons.more_horiz_rounded, 'Otros Subsidios', 'pronto')
         ],
       )
     ]);

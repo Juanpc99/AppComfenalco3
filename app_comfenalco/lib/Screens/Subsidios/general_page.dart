@@ -164,6 +164,7 @@ class InfoGeneral extends StatelessWidget {
               ),
             ),
           ),
+          /*
           FlatButton(
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             onPressed: () {
@@ -179,6 +180,7 @@ class InfoGeneral extends StatelessWidget {
               ),
             ),
           ),
+          **/
         ],
       ),
     );
@@ -217,6 +219,7 @@ class InfoGeneral extends StatelessWidget {
               ),
             ),
           ),
+          /*
           FlatButton(
             onPressed: () {
               Navigator.pushNamed(context, 'subsidioNoAfiliados');
@@ -230,6 +233,7 @@ class InfoGeneral extends StatelessWidget {
               ),
             ),
           ),
+          **/
         ],
       ),
     );
