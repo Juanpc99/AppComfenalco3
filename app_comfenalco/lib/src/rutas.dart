@@ -8,6 +8,7 @@ import 'package:app_comfenalco/Screens/Subsidios/vigenciaSubsidio_page.dart';
 import 'package:app_comfenalco/Screens/Welcome/welcome_screen.dart';
 import 'package:app_comfenalco/Screens/codigo_EnviadoExito.dart';
 import 'package:app_comfenalco/Screens/codigo_page.dart';
+import 'package:app_comfenalco/Screens/construccion.dart';
 import 'package:app_comfenalco/Screens/cuentaRegistrada_page.dart';
 import 'package:app_comfenalco/Screens/login_pagee.dart';
 import 'package:app_comfenalco/Screens/menu_principal.dart';
@@ -43,6 +44,7 @@ Map<String, WidgetBuilder> getAplicationRutes() {
           'codigoEnviado': (BuildContext context) => EnvioExitoso(),
           'cuentaCreada': (BuildContext context) => CuentaRegistrada(),
           'todosSubsidios': (BuildContext context) => TodosSubsidios(),
+          'pronto': (BuildContext context) => FondoConst(),
           //'requisitosGenerales' : (BuildContext context) => RequisitosGenerales(),
   };
 }
