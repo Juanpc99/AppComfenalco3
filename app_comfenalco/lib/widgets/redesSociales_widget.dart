@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class SocialMedia extends StatelessWidget {
   const SocialMedia({
     Key key,
@@ -35,19 +35,27 @@ Widget redes() {
       children: <Widget>[
         SocialMedia(
           icon: 'assets/icons/facebook.svg',
-          press: () {},
+          press: () => {
+            launch('https://www.facebook.com/ComfenalcoValle')
+          },
         ),
         SocialMedia(
           icon: 'assets/icons/instagram.svg',
-          press: () {},
+          press: () => {
+            launch('https://www.instagram.com/ComfenalcoValle/')
+          },
         ),
         SocialMedia(
           icon: 'assets/icons/twit.svg',
-          press: () {},
+          press: () => {
+            launch('https://twitter.com/ComfenalcoValle')
+          },
         ),
         SocialMedia(
           icon: 'assets/icons/youtube.svg',
-          press: () {},
+          press: () => {
+            launch('https://www.youtube.com/channel/UCD7A6Bjx1QbFFacN3o5nIbA')
+          },
         ),
       ],
     );
