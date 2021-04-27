@@ -9,7 +9,7 @@ class RequisitosPostulacion extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-          image: AssetImage("assets/images/fondo2.png"),
+          image: AssetImage("assets/images/fondo3.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -125,7 +125,7 @@ class RequisitosPostulacion extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20,
-          color: Colors.green[800].withOpacity(.76),
+          color: Colors.orange[800].withOpacity(.76),
         ),
       ),
     );
@@ -144,7 +144,7 @@ class RequisitosPostulacion extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        leading: Icon(Icons.check, color: colorPrimario),
+        leading: Icon(Icons.check, color: colorNaranja),
       ),
     );
   }
@@ -162,7 +162,7 @@ class RequisitosPostulacion extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        leading: Icon(Icons.check, color: colorPrimario),
+        leading: Icon(Icons.check, color: colorNaranja),
       ),
     );
   }
@@ -180,7 +180,7 @@ class RequisitosPostulacion extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        leading: Icon(Icons.check, color: colorPrimario),
+        leading: Icon(Icons.check, color: colorNaranja),
       ),
     );
   }
@@ -198,7 +198,7 @@ class RequisitosPostulacion extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        leading: Icon(Icons.check, color: colorPrimario),
+        leading: Icon(Icons.check, color: colorNaranja),
       ),
     );
   }
@@ -216,7 +216,7 @@ class RequisitosPostulacion extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        leading: Icon(Icons.check, color: colorPrimario),
+        leading: Icon(Icons.check, color: colorNaranja),
       ),
     );
   }
@@ -236,7 +236,7 @@ class RequisitosPostulacion extends StatelessWidget {
         ),
         leading: Icon(
           Icons.check,
-          color: colorPrimario,
+          color: colorNaranja,
         ),
       ),
     );
@@ -257,7 +257,7 @@ class RequisitosPostulacion extends StatelessWidget {
         ),
         leading: Icon(
           Icons.check,
-          color: colorPrimario,
+          color: colorNaranja,
         ),
       ),
     );
@@ -278,7 +278,7 @@ class RequisitosPostulacion extends StatelessWidget {
         ),
         leading: Icon(
           Icons.check,
-          color: colorPrimario,
+          color: colorNaranja,
         ),
       ),
     );
@@ -299,7 +299,7 @@ class RequisitosPostulacion extends StatelessWidget {
         ),
         leading: Icon(
           Icons.check,
-          color: colorPrimario,
+          color: colorNaranja,
         ),
       ),
     );
@@ -320,7 +320,7 @@ class RequisitosPostulacion extends StatelessWidget {
         ),
         leading: Icon(
           Icons.check,
-          color: colorPrimario,
+          color: colorNaranja,
         ),
       ),
     );
@@ -341,7 +341,7 @@ class RequisitosPostulacion extends StatelessWidget {
         ),
         leading: Icon(
           Icons.check,
-          color: colorPrimario,
+          color: colorNaranja,
         ),
       ),
     );
@@ -362,7 +362,7 @@ class RequisitosPostulacion extends StatelessWidget {
         ),
         leading: Icon(
           Icons.check,
-          color: colorPrimario,
+          color: colorNaranja,
         ),
       ),
     );

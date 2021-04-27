@@ -226,7 +226,8 @@ class _LoginPageState extends State<LoginPage> {
               TextStyle(color: colorVerdeOscuro2, fontWeight: FontWeight.bold),
         ),
         onTap: () {
-          Navigator.pushNamed(context, 'recuperar');
+          //recuperar
+          Navigator.pushNamed(context, 'pronto');
         },
       ),
     ]);
