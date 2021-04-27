@@ -37,7 +37,7 @@ class InfoSubAfil extends StatelessWidget {
             SizedBox(height: 10.0),
             _constrSitioPropio(context),
             SizedBox(height: 5.0),
-            _botonConcepCla(context),
+            //_botonConcepCla(context),
             SizedBox(height: 80.0),
           ],
         ),

@@ -8,6 +8,7 @@ import 'package:app_comfenalco/Screens/Subsidios/Requisitos/requisitos_page.dart
 import 'package:app_comfenalco/Screens/Subsidios/general_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/pagoSubsidios_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidiosAfiliados_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/subsidiosNoAfiliados_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidios_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/vigenciaSubsidio_page.dart';
 import 'package:app_comfenalco/Screens/Welcome/welcome_screen.dart';
@@ -56,6 +57,7 @@ Map<String, WidgetBuilder> getAplicationRutes() {
           'reqPostulacion': (BuildContext context) => RequisitosPostulacion(),
           'reqSitioPyMejoramiento': (BuildContext context) =>
             RequisitosSitioPropioMejoramiento(),
+          'subsidioNoAfiliados': (BuildContext context) => InfoSubNoAfil(),
           //'requisitosGenerales' : (BuildContext context) => RequisitosGenerales(),
   };
 }

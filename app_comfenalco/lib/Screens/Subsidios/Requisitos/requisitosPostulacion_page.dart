@@ -108,7 +108,7 @@ class RequisitosPostulacion extends StatelessWidget {
               indent: 60.0,
               endIndent: 40.0,
             ),
-            //_requisito12(context),
+            _requisito12(context),
             SizedBox(height: 100.0),
           ],
         ),
