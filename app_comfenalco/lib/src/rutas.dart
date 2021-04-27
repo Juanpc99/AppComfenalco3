@@ -1,5 +1,6 @@
 import 'package:app_comfenalco/Screens/Subsidios/Requisitos/conceptosClave_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/Requisitos/reqGeneral_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/Requisitos/reqSitioPropio_Mejoramiento.dart';
 import 'package:app_comfenalco/Screens/Subsidios/Requisitos/reqZonaRural_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/Requisitos/requisitosMejoramientoV_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/Requisitos/requisitosPostulacion_page.dart';
@@ -53,6 +54,8 @@ Map<String, WidgetBuilder> getAplicationRutes() {
           'reqZonaRural': (BuildContext context) =>RequisitosZonaR(),
           'reqMejoramiento': (BuildContext context) => RequisitosMejoramiento(),
           'reqPostulacion': (BuildContext context) => RequisitosPostulacion(),
+          'reqSitioPyMejoramiento': (BuildContext context) =>
+            RequisitosSitioPropioMejoramiento(),
           //'requisitosGenerales' : (BuildContext context) => RequisitosGenerales(),
   };
 }

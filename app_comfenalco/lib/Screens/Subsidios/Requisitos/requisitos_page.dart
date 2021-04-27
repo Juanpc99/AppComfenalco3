@@ -32,17 +32,11 @@ class Requisitos extends StatelessWidget {
               return IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'conceptosClave');
+                    Navigator.pushNamed(context, 'listaR');
                   });
             },
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'subsidios');
-                }),
-          ],
+          
         ),
         body: ListView(
           children: [

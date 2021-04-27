@@ -215,7 +215,7 @@ class SubsidioPage extends StatelessWidget {
               children: <Widget>[
                 FlatButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'requisitos');
+                    Navigator.pushNamed(context, 'listaR');
                   }, // aqui va redireccionado a la otra vista
                   child: Text('Ver más...', style: TextStyle(fontSize: 15)),
                   color: colorVerdeClaro,
