@@ -9,7 +9,7 @@ class ListaRequisitos extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-          image: AssetImage("assets/images/r2.png"),
+          image: AssetImage("assets/images/r.png"),
           fit: BoxFit.cover,
         ),
       ),
