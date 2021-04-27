@@ -31,22 +31,16 @@ class InfoSubNoAfil extends StatelessWidget {
               return IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'subsidioInfo');
+                    Navigator.pushNamed(context, 'subsidios');
                   });
             },
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'subsidios');
-                }),
-          ],
+          
         ),
         body: ListView(
           children: [
             _afiliados(context),
-            _botonConcepCla(context),
+            //_botonConcepCla(context),
             SizedBox(height: 80.0),
           ],
         ),

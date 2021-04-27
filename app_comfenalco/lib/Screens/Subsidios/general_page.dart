@@ -219,7 +219,7 @@ class InfoGeneral extends StatelessWidget {
               ),
             ),
           ),
-          
+          /*
           FlatButton(
             onPressed: () {
               Navigator.pushNamed(context, 'subsidioNoAfiliados');
@@ -233,7 +233,7 @@ class InfoGeneral extends StatelessWidget {
               ),
             ),
           ),
-          
+          **/
         ],
       ),
     );
