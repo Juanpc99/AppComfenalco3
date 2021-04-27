@@ -1,11 +1,11 @@
+import 'package:app_comfenalco/Screens/Subsidios/Requisitos/conceptosClave_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/Requisitos/reqGeneral_page.dart';
-import 'package:app_comfenalco/Screens/Subsidios/conceptosClave_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/Requisitos/reqZonaRural_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/Requisitos/requisitosMejoramientoV_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/Requisitos/requisitosPostulacion_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/Requisitos/requisitos_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/general_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/pagoSubsidios_page.dart';
-import 'package:app_comfenalco/Screens/Subsidios/reqZonaRural_page.dart';
-import 'package:app_comfenalco/Screens/Subsidios/requisitosMejoramientoV_page.dart';
-import 'package:app_comfenalco/Screens/Subsidios/requisitosPostulacion_page.dart';
-import 'package:app_comfenalco/Screens/Subsidios/requisitos_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidiosAfiliados_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidios_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/vigenciaSubsidio_page.dart';
