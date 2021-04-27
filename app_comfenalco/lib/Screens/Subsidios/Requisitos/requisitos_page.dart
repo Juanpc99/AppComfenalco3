@@ -79,7 +79,7 @@ class Requisitos extends StatelessWidget {
               endIndent: 40.0,
             ),
             _requisito6(context),
-            _botonConcepCla(context),
+            //_botonConcepCla(context),
             SizedBox(height: 100.0),
           ],
         ),

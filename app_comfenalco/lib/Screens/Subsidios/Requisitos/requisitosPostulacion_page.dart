@@ -32,17 +32,11 @@ class RequisitosPostulacion extends StatelessWidget {
               return IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'subsidioNoAfiliados');
+                    Navigator.pushNamed(context, 'listaR');
                   });
             },
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'subsidios');
-                }),
-          ],
+          
         ),
         body: ListView(
           children: [
@@ -114,7 +108,7 @@ class RequisitosPostulacion extends StatelessWidget {
               indent: 60.0,
               endIndent: 40.0,
             ),
-            _requisito12(context),
+            //_requisito12(context),
             SizedBox(height: 100.0),
           ],
         ),

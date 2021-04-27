@@ -31,17 +31,11 @@ class ConcepCla extends StatelessWidget {
               return IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'requisitos');
+                    Navigator.pushNamed(context, 'listaR');
                   });
             },
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'subsidios');
-                }),
-          ],
+          
         ),
         body: ListView(children: [
           _titulo(),
@@ -49,7 +43,7 @@ class ConcepCla extends StatelessWidget {
           _concepto2(context),
           _concepto3(context),
           _concepto4(context),
-          _botonRequisitos(context),
+          //_botonRequisitos(context),
           SizedBox(height: 80),
         ]),
       ),

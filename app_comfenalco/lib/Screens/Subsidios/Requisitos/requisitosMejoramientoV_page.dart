@@ -32,17 +32,11 @@ class RequisitosMejoramiento extends StatelessWidget {
               return IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'reqSitioPyMejoramiento');
+                    Navigator.pushNamed(context, 'listaR');
                   });
             },
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'subsidios');
-                }),
-          ],
+          
         ),
         body: ListView(
           children: [
@@ -78,7 +72,7 @@ class RequisitosMejoramiento extends StatelessWidget {
               indent: 60.0,
               endIndent: 40.0,
             ),
-            _botonConcepCla(context),
+            //_botonConcepCla(context),
             SizedBox(height: 60.0),
           ],
         ),
