@@ -1,6 +1,10 @@
+import 'package:app_comfenalco/Screens/Subsidios/Requisitos/reqGeneral_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/conceptosClave_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/general_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/pagoSubsidios_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/reqZonaRural_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/requisitosMejoramientoV_page.dart';
+import 'package:app_comfenalco/Screens/Subsidios/requisitosPostulacion_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/requisitos_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidiosAfiliados_page.dart';
 import 'package:app_comfenalco/Screens/Subsidios/subsidios_page.dart';
@@ -45,6 +49,10 @@ Map<String, WidgetBuilder> getAplicationRutes() {
           'cuentaCreada': (BuildContext context) => CuentaRegistrada(),
           'todosSubsidios': (BuildContext context) => TodosSubsidios(),
           'pronto': (BuildContext context) => FondoConst(),
+          'listaR': (BuildContext context) => ListaRequisitos(),
+          'reqZonaRural': (BuildContext context) =>RequisitosZonaR(),
+          'reqMejoramiento': (BuildContext context) => RequisitosMejoramiento(),
+          'reqPostulacion': (BuildContext context) => RequisitosPostulacion(),
           //'requisitosGenerales' : (BuildContext context) => RequisitosGenerales(),
   };
 }
