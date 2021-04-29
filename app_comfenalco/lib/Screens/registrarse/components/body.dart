@@ -205,7 +205,7 @@ class RegistroFormState extends State<RegistroForm> {
             SizedBox(height: 20),
             _botonRegistrar(context),
             SizedBox(
-              height: 20.0,
+              height: 200.0,
             ),
           ],
         ),
@@ -289,6 +289,7 @@ class RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildDocumentoFormField() {
     return TextFormField(
+      keyboardType: TextInputType.number,
       onChanged: (value) => setState(() {
         usuario.numeroDocumento = int.parse(value);
       }),
@@ -438,6 +439,7 @@ class RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildCorreoFormField() {
     return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       controller: email,
       onChanged: (value) => setState(() {
         usuario.email = value;
@@ -462,6 +464,7 @@ class RegistroFormState extends State<RegistroForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      obscureText: true,
       controller: password,
       onChanged: (val) => setState(
         () {
@@ -519,18 +522,18 @@ class RegistroFormState extends State<RegistroForm> {
           height: 45.0,
           onPressed: () async {
             await _register();
-            print('nombre: ' + usuario.nombre);
-            print('apellido: ' + usuario.apellido);
-            print('fecha: ' + usuario.fechaNacimiento);
-            print('ciudad: ' + usuario.idCiudad.toString());
-            print('genero: ' + usuario.idGnr.toString());
-            print('pais: ' + usuario.idPais.toString());
-            print('documento id: ' + usuario.idTipoDoc.toString());
-            print('usuario: ' + usuario.idTipoUsr.toString());
-            print('numero doc: ' + usuario.numeroDocumento.toString());
-            print('email: ' + usuario.email);
-            print('password: ' + usuario.password);
-            print(_inputFieldFechaController.text);
+            // print('nombre: ' + usuario.nombre);
+            // print('apellido: ' + usuario.apellido);
+            // print('fecha: ' + usuario.fechaNacimiento);
+            // print('ciudad: ' + usuario.idCiudad.toString());
+            // print('genero: ' + usuario.idGnr.toString());
+            // print('pais: ' + usuario.idPais.toString());
+            // print('documento id: ' + usuario.idTipoDoc.toString());
+            // print('usuario: ' + usuario.idTipoUsr.toString());
+            // print('numero doc: ' + usuario.numeroDocumento.toString());
+            // print('email: ' + usuario.email);
+            // print('password: ' + usuario.password);
+            // print(_inputFieldFechaController.text);
           },
           child: Text(
             'Registrar',
@@ -572,7 +575,7 @@ class RegistroFormState extends State<RegistroForm> {
                 SizedBox(
                   width: 20.0,
                 ),
-                Text('Todos los campos son obligatorios'),
+                Text('Este usuario ya se encuentra registrado'),
               ],
             ),
             duration: Duration(seconds: 5),
