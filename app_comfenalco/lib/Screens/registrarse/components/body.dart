@@ -135,7 +135,8 @@ class RegistroFormState extends State<RegistroForm> {
   List _city = List();
 
   Future cargarCiudades() async {
-    final Uri url = Uri.parse('$url_api/getCiudades');
+    final Uri url = Uri.parse(
+        '$url_api/getCiudadesByDepartamento?departamento=VALLE DEL CAUCA');
 
     final resp = await http.get(url);
 
@@ -385,12 +386,13 @@ class RegistroFormState extends State<RegistroForm> {
     return DropdownButtonFormField(
       isExpanded: true,
       value: _opcSelectCity,
+
       items: _city.map((value) {
         // value['ID_CIUDAD'] = 5;
 
         return DropdownMenuItem(
-          value: value['ID_CIUDAD'].toString(),
-          child: Text(value['CIUDAD']),
+          value: value['idCiudad'].toString(),
+          child: Text(value['ciudad']),
         );
       }).toList(), //
       onChanged: (opt) {
@@ -522,18 +524,6 @@ class RegistroFormState extends State<RegistroForm> {
           height: 45.0,
           onPressed: () async {
             await _register();
-            // print('nombre: ' + usuario.nombre);
-            // print('apellido: ' + usuario.apellido);
-            // print('fecha: ' + usuario.fechaNacimiento);
-            // print('ciudad: ' + usuario.idCiudad.toString());
-            // print('genero: ' + usuario.idGnr.toString());
-            // print('pais: ' + usuario.idPais.toString());
-            // print('documento id: ' + usuario.idTipoDoc.toString());
-            // print('usuario: ' + usuario.idTipoUsr.toString());
-            // print('numero doc: ' + usuario.numeroDocumento.toString());
-            // print('email: ' + usuario.email);
-            // print('password: ' + usuario.password);
-            // print(_inputFieldFechaController.text);
           },
           child: Text(
             'Registrar',

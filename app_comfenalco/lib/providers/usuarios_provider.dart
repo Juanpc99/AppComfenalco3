@@ -12,11 +12,13 @@ class UsuariosProvider {
     final Uri url = Uri.parse('$_url/UserRegistration');
 
     final resp = await http.post(url, body: usuariosToJson(usuario));
-    
+
     final decodeData = json.decode(resp.body);
 
     //print(decodeData);
 
     return true;
   }
+
+
 }
