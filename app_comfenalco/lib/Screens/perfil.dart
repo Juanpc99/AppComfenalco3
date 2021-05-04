@@ -54,9 +54,8 @@ class _PerfilPageState extends State<PerfilPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      width: 250.0,
-                      height: 250.0,
-                      
+                      width: 280.0,
+                      height: 280.0,
                       child: Image(
                         width: 50,
                         height: 50,

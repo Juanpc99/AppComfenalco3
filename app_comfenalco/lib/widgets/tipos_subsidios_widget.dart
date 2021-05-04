@@ -76,6 +76,12 @@ class TiposSubsidiosWidget extends StatelessWidget {
     );
   }
 
+  Widget fotoPerfil(BuildContext context) {
+    return TableRow(
+      children: []
+    );
+  }
+
   Widget _botones(BuildContext context) {
     return Table(children: [
       TableRow(children: [
