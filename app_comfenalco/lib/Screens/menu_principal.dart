@@ -98,7 +98,7 @@ class MenuPage extends StatelessWidget {
   }
 
   Widget _crearBotonRedondeado(BuildContext context, Color color,
-      IconData icono, String texto, String ruta) {
+    IconData icono, String texto, String ruta) {
     return Padding(
       padding: EdgeInsets.all(20.0),
       child: ClipRRect(
