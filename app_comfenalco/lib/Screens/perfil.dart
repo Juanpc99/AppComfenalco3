@@ -38,7 +38,7 @@ class _PerfilPageState extends State<PerfilPage> {
                     width: 250.0,
                     height: 250.0,
                     child: Image(
-                      image: AssetImage('assets/images/usuario.png'),
+                      image: AssetImage('assets/images/user.png'),
                     ),
                   ),
                   Text(
@@ -138,11 +138,8 @@ class _PerfilPageState extends State<PerfilPage> {
               ),
             ),
           ),
-        
         ],
-        
       ),
     );
   }
-
 }

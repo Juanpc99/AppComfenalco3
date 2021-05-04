@@ -43,7 +43,6 @@ class MenuWidget extends StatelessWidget {
               ),
               **/
             ),
-
             ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage("assets/images/user.png"),
@@ -120,33 +119,35 @@ class MenuWidget extends StatelessWidget {
             ),
             //SizedBox(height: 1),
             ListTile(
-                title: Text(
-                  'Condiciones y devoluciones',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 13),
-                ),
-                onTap: () {
-                  SocialMedia(
-                    press: () => {
-                      launch(
-                          'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/08/Condiciones-devoluciones-ventas-App-Comfenalco-Valle-delagente-V3-06-agosto-2020.pdf'),
-                    },
-                  );
-                }),
+              title: Text(
+                'Condiciones y devoluciones',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 13),
+              ),
+              onTap: () {
+                SocialMedia(
+                  press: () => {
+                    launch(
+                        'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/08/Condiciones-devoluciones-ventas-App-Comfenalco-Valle-delagente-V3-06-agosto-2020.pdf'),
+                  },
+                );
+              },
+            ),
             ListTile(
-                title: Text(
-                  'Términos de uso',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 13),
-                ),
-                onTap: () {
-                  SocialMedia(
-                    press: () => {
-                      launch(
-                          'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/08/T%C3%A9rminos-y-condiciones-uso-de-plataforma-Comfenalco-Valle-delagente-V2-06-agosto-2020.pdf'),
-                    },
-                  );
-                }),
+              title: Text(
+                'Términos de uso',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 13),
+              ),
+              onTap: () {
+                SocialMedia(
+                  press: () => {
+                    launch(
+                        'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/08/T%C3%A9rminos-y-condiciones-uso-de-plataforma-Comfenalco-Valle-delagente-V2-06-agosto-2020.pdf'),
+                  },
+                );
+              },
+            ),
           ],
         ),
       ),
