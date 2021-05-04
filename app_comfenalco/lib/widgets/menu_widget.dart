@@ -47,6 +47,7 @@ class MenuWidget extends StatelessWidget {
             ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage("assets/images/user.png"),
+                backgroundColor: colorNaranja,
               ),
               //+ ' ${Usuarios().apellido}'
               title: Text(
