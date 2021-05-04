@@ -21,7 +21,7 @@ class ConfirmarContrasena extends StatelessWidget {
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.grey),
           title: Text(
-            'Nueva Contraseña',
+            'Confirmar Contraseña',
             style: TextStyle(color: Colors.grey[350]),
           ),
           backgroundColor: Colors.transparent,
@@ -35,10 +35,9 @@ class ConfirmarContrasena extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30.0),
+            _texto(),
             _crearCapoTexto(),
             SizedBox(height: 15.0),
-            _crearCampoText2(),
-            SizedBox(height: 10.0),
             _botonEnviarCodigo(context),
           ],
         ),
@@ -62,8 +61,8 @@ class ConfirmarContrasena extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Text(
         'Por favor ingresa tú contraseña para validar la cuenta',
-        textAlign: TextAlign.justify,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
       ),
     );
   }
@@ -80,7 +79,7 @@ class ConfirmarContrasena extends StatelessWidget {
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-            hintText: 'Nueva Contraseña',
+            hintText: 'Ingresar Contraseña',
             hintStyle: TextStyle(color: colorPrimario),
             suffixIcon: Icon(
               Icons.lock_open,
@@ -93,24 +92,6 @@ class ConfirmarContrasena extends StatelessWidget {
         onChanged: (valor) {
           //_email = valor;
         },
-      ),
-    );
-  }
-
-  Widget _textoCabeza(String texto) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 60.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            texto,
-            style: TextStyle(
-                color: Colors.green,
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold),
-          ),
-        ],
       ),
     );
   }
@@ -126,10 +107,10 @@ class ConfirmarContrasena extends StatelessWidget {
         child: FlatButton(
           height: 45.0,
           onPressed: () {
-            Navigator.pushReplacementNamed(context, 'menup');
+            Navigator.pushReplacementNamed(context, 'actualizar');
           },
           child: Text(
-            'Comfirmar',
+            'Confirmar',
             style: TextStyle(
                 fontWeight: FontWeight.normal,
                 fontSize: 20,
@@ -137,35 +118,6 @@ class ConfirmarContrasena extends StatelessWidget {
           ),
           color: colorPrimario,
         ),
-      ),
-    );
-  }
-
-  Widget _crearCampoText2() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 40.0),
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-      decoration: BoxDecoration(
-          color: colorVerdeLimon.withOpacity(.66),
-          borderRadius: BorderRadius.circular(29)),
-      child: TextField(
-        style: TextStyle(color: Colors.black),
-        obscureText: false,
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-            hintText: 'Confirmar Contraseña',
-            hintStyle: TextStyle(color: colorPrimario),
-            suffixIcon: Icon(
-              Icons.lock_open,
-              color: colorPrimario,
-            ),
-            icon: Icon(
-              Icons.lock,
-              color: colorPrimario,
-            )),
-        onChanged: (valor) {
-          //_email = valor;
-        },
       ),
     );
   }

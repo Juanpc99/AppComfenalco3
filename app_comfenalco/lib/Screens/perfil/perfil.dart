@@ -86,7 +86,7 @@ class _PerfilPageState extends State<PerfilPage> {
             SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'actualizar');
+                Navigator.pushNamed(context, 'confirmar');
               },
               child: FlatButton(
                 padding: EdgeInsets.all(20),
@@ -95,7 +95,7 @@ class _PerfilPageState extends State<PerfilPage> {
                 ),
                 color: Colors.grey[400].withOpacity(.25),
                 onPressed: () {
-                  Navigator.pushNamed(context, 'actualizar');
+                  Navigator.pushNamed(context, 'confirmar');
                 },
                 child: Row(
                   children: [
