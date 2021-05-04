@@ -44,6 +44,7 @@ class _PerfilPageState extends State<PerfilPage> {
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
+              color: Colors.grey[50].withOpacity(0.76),
               margin: EdgeInsets.all(15),
               elevation: 10,
               child: ClipRRect(
@@ -54,20 +55,21 @@ class _PerfilPageState extends State<PerfilPage> {
                       width: 250.0,
                       height: 250.0,
                       child: Image(
-                        image: AssetImage('assets/images/user.png'),
+                        image: AssetImage('assets/images/user2.png'),
+                        fit: BoxFit.cover,
                       ),
                     ),
                     Text(
                       'Juan Pablo Caro',
                       style: TextStyle(
-                          color: Colors.blue,
+                          color: colorVerdeOscuro,
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       'juancaro2010@hotmail.com',
                       style: TextStyle(
-                          color: Colors.blue,
+                          color: colorVerdeLimon,
                           fontSize: 20.0,
                           fontWeight: FontWeight.normal),
                     ),
