@@ -17,7 +17,7 @@ class ActualizacionDatos extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(
-            'Actualización Exitosa!',
+            'Actualización Datos',
             style: TextStyle(color: Colors.grey[350]),
             textAlign: TextAlign.center,
           ),
@@ -37,16 +37,6 @@ class ActualizacionDatos extends StatelessWidget {
             SizedBox(height: 50),
             _botonCodigo(context),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.keyboard_arrow_left,
-            size: 40,
-          ),
-          backgroundColor: colorPrimario,
-          onPressed: () {
-            Navigator.pushNamed(context, 'menup');
-          },
         ),
       ),
     );
@@ -91,7 +81,7 @@ class ActualizacionDatos extends StatelessWidget {
     return Container(
       width: 30,
       child: Text(
-        "Cuenta Registrada!",
+        "Actualización Exitosa!",
         style: TextStyle(
           fontSize: 30,
           fontWeight: FontWeight.bold,
