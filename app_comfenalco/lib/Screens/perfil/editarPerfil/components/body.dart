@@ -319,12 +319,12 @@ class EditarFormState extends State<EditarForm> {
         borderRadius: BorderRadius.circular(100.0),
         child: FlatButton(
           height: 45.0,
-          onPressed: () async {
-            await _actualizar();
+          onPressed: (){ //async {
+            //await _actualizar();
             
           },
           child: Text(
-            'Registrar',
+            'Actualizar',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -336,6 +336,7 @@ class EditarFormState extends State<EditarForm> {
     );
   }
   // modificar metodo 
+  /*
   Future<void> _actualizar() async {
     if (_fromKey.currentState.validate()) {
       // _fromKey.currentState.save();
@@ -374,7 +375,7 @@ class EditarFormState extends State<EditarForm> {
       }
     }
   }
-
+**/
   @override
   void dispose() {
     email.dispose();
