@@ -18,18 +18,18 @@ class MenuWidget extends StatelessWidget {
             DrawerHeader(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage("assets/images/personas.png")),
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/personas.png")),
                 gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
-                  
                   colors: [
-                    colorVerdeOscuro,
-                    colorVerdeLimon,
+                    colorAmarillo,
+                    colorNaranja,
                   ],
                 ),
               ),
+              /*
               child: Column(
                 children: <Widget>[
                   Text(
@@ -39,14 +39,14 @@ class MenuWidget extends StatelessWidget {
                       fontSize: 25.0,
                     ),
                   ),
-                  
                 ],
               ),
+              **/
             ),
-            
+
             ListTile(
               leading: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/usuario.png"),
+                backgroundImage: AssetImage("assets/images/user.png"),
               ),
               //+ ' ${Usuarios().apellido}'
               title: Text(
@@ -146,11 +146,8 @@ class MenuWidget extends StatelessWidget {
                     },
                   );
                 }),
-                
           ],
-          
         ),
-        
       ),
     );
   }
