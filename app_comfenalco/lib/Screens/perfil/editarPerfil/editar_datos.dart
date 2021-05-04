@@ -1,4 +1,4 @@
-import 'package:app_comfenalco/Screens/registrarse/components/body.dart';
+import 'package:app_comfenalco/Screens/perfil/editarPerfil/components/body.dart';
 import 'package:flutter/material.dart';
 
 class ActualizarScreen extends StatefulWidget {

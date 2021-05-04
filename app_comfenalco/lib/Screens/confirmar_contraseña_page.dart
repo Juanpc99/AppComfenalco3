@@ -1,5 +1,4 @@
 import 'package:app_comfenalco/constantes.dart';
-import 'package:app_comfenalco/widgets/logo_comfenalco.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmarContrasena extends StatelessWidget {

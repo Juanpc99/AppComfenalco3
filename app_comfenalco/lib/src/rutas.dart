@@ -61,7 +61,7 @@ Map<String, WidgetBuilder> getAplicationRutes() {
             RequisitosSitioPropioMejoramiento(),
           'subsidioNoAfiliados': (BuildContext context) => InfoSubNoAfil(),
           'contacto': (BuildContext context) => Contacto(),
-          'actualizar': (BuildContext context) =>ActualizarScreen(),
+          'actualizar': (BuildContext context) => ActualizarScreen(),
           //'requisitosGenerales' : (BuildContext context) => RequisitosGenerales(),
   };
 }
