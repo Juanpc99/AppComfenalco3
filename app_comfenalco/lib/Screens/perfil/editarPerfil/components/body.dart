@@ -109,7 +109,6 @@ class EditarFormState extends State<EditarForm> {
     return "succes";
   }
 
-  
   // para la ciudad del valle donde se encuentra
   String _opcSelectCity;
   List _city = List();
@@ -146,17 +145,14 @@ class EditarFormState extends State<EditarForm> {
     return "succes";
   }
 
-  
-
   @override
   void initState() {
     super.initState();
     cargarGeneros();
     cargarCiudades();
     cargarDocumentos();
-    
   }
-  
+
   bool _guardando = false;
   @override
   Widget build(BuildContext context) {
@@ -172,6 +168,8 @@ class EditarFormState extends State<EditarForm> {
             buildCiudadFormField(),
             SizedBox(height: 20),
             buildGeneroFormField(),
+            SizedBox(height: 20),
+            _botonActualizar(context),
             SizedBox(height: 200.0),
           ],
         ),
@@ -319,9 +317,10 @@ class EditarFormState extends State<EditarForm> {
         borderRadius: BorderRadius.circular(100.0),
         child: FlatButton(
           height: 45.0,
-          onPressed: (){ //async {
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, 'datosModificados');
+            //async {
             //await _actualizar();
-            
           },
           child: Text(
             'Actualizar',
@@ -335,7 +334,8 @@ class EditarFormState extends State<EditarForm> {
       ),
     );
   }
-  // modificar metodo 
+
+  // modificar metodo
   /*
   Future<void> _actualizar() async {
     if (_fromKey.currentState.validate()) {

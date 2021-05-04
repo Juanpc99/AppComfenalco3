@@ -20,6 +20,7 @@ import 'package:app_comfenalco/Screens/construccion.dart';
 import 'package:app_comfenalco/Screens/cuentaRegistrada_page.dart';
 import 'package:app_comfenalco/Screens/login_pagee.dart';
 import 'package:app_comfenalco/Screens/mis_solicitudes_page.dart';
+import 'package:app_comfenalco/Screens/perfil/actualizacionE.dart';
 import 'package:app_comfenalco/Screens/perfil/editarPerfil/editar_datos.dart';
 import 'package:app_comfenalco/Screens/perfil/menu_principal.dart';
 import 'package:app_comfenalco/Screens/perfil/perfil.dart';
@@ -62,6 +63,7 @@ Map<String, WidgetBuilder> getAplicationRutes() {
           'subsidioNoAfiliados': (BuildContext context) => InfoSubNoAfil(),
           'contacto': (BuildContext context) => Contacto(),
           'actualizar': (BuildContext context) => ActualizarScreen(),
+          'datosModificados': (BuildContext context) =>ActualizacionDatos(),
           //'requisitosGenerales' : (BuildContext context) => RequisitosGenerales(),
   };
 }
