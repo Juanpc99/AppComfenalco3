@@ -166,21 +166,6 @@ class RegistroFormState extends State<RegistroForm> {
     return "succes";
   }
 
-  // mostrar nombre
-  String nombreU;
-  List _info = List();
-  Future mostrarNombre() async {
-    final Uri url = Uri.parse('url_api/getAllDataUserByCorreo');
-    final resp = await http.get(url);
-
-    var jsonbody = resp.body;
-    var nombres = json.decode(jsonbody);
-    setState(() {
-      _info = nombres;
-    });
-    return "succes";
-  }
-
   @override
   void initState() {
     super.initState();
@@ -188,9 +173,8 @@ class RegistroFormState extends State<RegistroForm> {
     cargarCiudades();
     cargarPaises();
     cargarDocumentos();
-    mostrarNombre();
   }
-  
+
   bool _guardando = false;
   @override
   Widget build(BuildContext context) {
