@@ -117,39 +117,6 @@ class _PerfilPageState extends State<PerfilPage> {
                 ),
               ),
 
-              /*Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0)),
-                margin: EdgeInsets.all(15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      child: Icon(
-                        Icons.person,
-                        color: colorVerdeClaro,
-                        size: 30.0,
-                      ),
-                    ),
-                    Text(
-                      'Editar datos',
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        color: colorVerdeClaro,
-                        size: 30.0,
-                      ),
-                    )
-                  ],
-                ),
-              ),**/
             ),
             SizedBox(height: 20),
             GestureDetector(
@@ -184,40 +151,6 @@ class _PerfilPageState extends State<PerfilPage> {
                   ],
                 ),
               ),
-              /*
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0)),
-                margin: EdgeInsets.all(15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      child: Icon(
-                        Icons.settings_applications_sharp,
-                        color: colorVerdeClaro,
-                        size: 30.0,
-                      ),
-                    ),
-                    Text(
-                      'Cambiar contraseña',
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        color: colorVerdeClaro,
-                        size: 30.0,
-                      ),
-                    )
-                  ],
-                ),
-              ),**/
             ),
           ],
         ),

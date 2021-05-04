@@ -38,7 +38,7 @@ class ConfirmarContrasena extends StatelessWidget {
             _texto(),
             _crearCapoTexto(),
             SizedBox(height: 15.0),
-            _botonEnviarCodigo(context),
+            _botonConfirmar(context),
           ],
         ),
       ),
@@ -96,7 +96,7 @@ class ConfirmarContrasena extends StatelessWidget {
     );
   }
 
-  Widget _botonEnviarCodigo(BuildContext context) {
+  Widget _botonConfirmar(BuildContext context) {
     return Container(
       height: 55.0,
       width: 400.0,
