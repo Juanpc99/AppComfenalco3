@@ -42,6 +42,7 @@ class _PerfilPageState extends State<PerfilPage> {
         ),
         drawer: MenuWidget(),
         body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           children: [
             Card(
               shape: RoundedRectangleBorder(
@@ -54,8 +55,8 @@ class _PerfilPageState extends State<PerfilPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      width: 280.0,
-                      height: 280.0,
+                      width: 210.0,
+                      height: 210.0,
                       child: Image(
                         image: AssetImage('assets/images/user7.png'),
 
@@ -78,16 +79,44 @@ class _PerfilPageState extends State<PerfilPage> {
                     ),
                     SizedBox(
                       height: 10.0,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
+            SizedBox(height: 20),
             GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, 'login');
               },
-              child: Card(
+              child: FlatButton(
+                padding: EdgeInsets.all(20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(35),
+                ),
+                color: Colors.grey[400].withOpacity(.25),
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      color: colorVerdeClaro,
+                      size: 40,
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                        child: Text('Editar datos',
+                            style: TextStyle(fontSize: 20))),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: colorVerdeClaro,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
+
+              /*Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0)),
                 margin: EdgeInsets.all(15),
@@ -98,34 +127,64 @@ class _PerfilPageState extends State<PerfilPage> {
                       padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10.0),
                       child: Icon(
-                        Icons.menu_book_rounded,
-                        color: Colors.blue,
+                        Icons.person,
+                        color: colorVerdeClaro,
                         size: 30.0,
                       ),
                     ),
                     Text(
-                      'Configurar mi cuenta',
+                      'Editar datos',
                       style: TextStyle(
-                          fontSize: 15.0, fontWeight: FontWeight.bold),
+                          fontSize: 20.0, fontWeight: FontWeight.w500),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10.0),
                       child: Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.blue,
+                        color: colorVerdeClaro,
                         size: 30.0,
                       ),
                     )
                   ],
                 ),
-              ),
+              ),**/
             ),
+            SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'login');
+                Navigator.pushNamed(context, 'pronto');
               },
-              child: Card(
+              child: FlatButton(
+                padding: EdgeInsets.all(20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(35),
+                ),
+                color: Colors.grey[400].withOpacity(.25),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'pronto');
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      color: colorVerdeClaro,
+                      size: 40,
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                        child: Text('Cambiar contraseña',
+                            style: TextStyle(fontSize: 20))),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: colorVerdeClaro,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
+              /*
+              Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0)),
                 margin: EdgeInsets.all(15),
@@ -136,28 +195,28 @@ class _PerfilPageState extends State<PerfilPage> {
                       padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10.0),
                       child: Icon(
-                        Icons.menu_book_rounded,
-                        color: Colors.blue,
+                        Icons.settings_applications_sharp,
+                        color: colorVerdeClaro,
                         size: 30.0,
                       ),
                     ),
                     Text(
-                      'Configurar mi cuenta',
+                      'Cambiar contraseña',
                       style: TextStyle(
-                          fontSize: 15.0, fontWeight: FontWeight.bold),
+                          fontSize: 20.0, fontWeight: FontWeight.w500),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10.0),
                       child: Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.blue,
+                        color: colorVerdeClaro,
                         size: 30.0,
                       ),
                     )
                   ],
                 ),
-              ),
+              ),**/
             ),
           ],
         ),
