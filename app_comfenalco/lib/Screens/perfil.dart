@@ -57,7 +57,7 @@ class _PerfilPageState extends State<PerfilPage> {
                       width: 280.0,
                       height: 280.0,
                       child: Image(
-                        image: AssetImage('assets/images/user6.png'),
+                        image: AssetImage('assets/images/user7.png'),
 
                         //fit: BoxFit.fill,
                       ),
