@@ -2,8 +2,8 @@ import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/widgets/logo_comfenalco.dart';
 import 'package:flutter/material.dart';
 
-class NuevaContrasena extends StatelessWidget {
-  const NuevaContrasena({Key key}) : super(key: key);
+class ConfirmarContrasena extends StatelessWidget {
+  const ConfirmarContrasena({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class NuevaContrasena extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Text(
-        'Por favor ingresa tu correo para enviarte un codigo de recuperación de contraseña',
+        'Por favor ingresa tú contraseña para validar la cuenta',
         textAlign: TextAlign.justify,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
       ),
@@ -129,7 +129,7 @@ class NuevaContrasena extends StatelessWidget {
             Navigator.pushReplacementNamed(context, 'menup');
           },
           child: Text(
-            'Cambiar contraseña',
+            'Comfirmar',
             style: TextStyle(
                 fontWeight: FontWeight.normal,
                 fontSize: 20,

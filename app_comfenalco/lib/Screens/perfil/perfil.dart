@@ -1,9 +1,8 @@
+import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/models/registro.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../constantes.dart';
 
 class PerfilPage extends StatefulWidget {
   const PerfilPage({Key key}) : super(key: key);
@@ -87,7 +86,7 @@ class _PerfilPageState extends State<PerfilPage> {
             SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'login');
+                Navigator.pushNamed(context, 'actualizar');
               },
               child: FlatButton(
                 padding: EdgeInsets.all(20),
@@ -95,7 +94,9 @@ class _PerfilPageState extends State<PerfilPage> {
                   borderRadius: BorderRadius.circular(35),
                 ),
                 color: Colors.grey[400].withOpacity(.25),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, 'actualizar');
+                },
                 child: Row(
                   children: [
                     Icon(
