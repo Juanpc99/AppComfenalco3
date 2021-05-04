@@ -1,7 +1,7 @@
 import 'package:app_comfenalco/constantes.dart';
+import 'package:app_comfenalco/models/registro.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,23 +35,26 @@ class MenuWidget extends StatelessWidget {
                       fontSize: 25.0,
                     ),
                   ),
+                  
                 ],
               ),
             ),
+            
             ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage("assets/images/usuario.png"),
               ),
+              //+ ' ${Usuarios().apellido}'
               title: Text(
-                '${_auth.correo()}',
+                '${Usuarios().nombre}',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 25.0,
                 ),
               ),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, 'menup');
-              },
+              //onTap: () {
+              // Navigator.pushReplacementNamed(context, 'menup');
+              //},
             ),
             Divider(),
             ListTile(
@@ -94,7 +97,7 @@ class MenuWidget extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, '/');
               },
             ),
-            SizedBox(height: 210.0),
+            SizedBox(height: 130.0),
             ListTile(
               title: Text(
                 'Política de tratamiento de información',
@@ -139,8 +142,11 @@ class MenuWidget extends StatelessWidget {
                     },
                   );
                 }),
+                
           ],
+          
         ),
+        
       ),
     );
   }
