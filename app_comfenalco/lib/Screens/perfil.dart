@@ -1,3 +1,4 @@
+import 'package:app_comfenalco/models/registro.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -136,9 +137,12 @@ class _PerfilPageState extends State<PerfilPage> {
                 ],
               ),
             ),
-          )
+          ),
+        
         ],
+        
       ),
     );
   }
+
 }

@@ -17,9 +17,13 @@ class MenuWidget extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage('assets/images/comfenalcoPersonas.png')),
                 gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
+                  
                   colors: [
                     colorVerdeOscuro,
                     colorVerdeLimon,
