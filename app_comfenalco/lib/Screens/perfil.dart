@@ -1,4 +1,5 @@
 import 'package:app_comfenalco/models/registro.dart';
+import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class PerfilPage extends StatefulWidget {
 }
 
 class _PerfilPageState extends State<PerfilPage> {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +46,7 @@ class _PerfilPageState extends State<PerfilPage> {
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
-              color: Colors.grey[50].withOpacity(0.76),
+              color: Colors.white54.withOpacity(0.76),
               margin: EdgeInsets.all(15),
               elevation: 10,
               child: ClipRRect(
@@ -54,9 +56,13 @@ class _PerfilPageState extends State<PerfilPage> {
                     Container(
                       width: 250.0,
                       height: 250.0,
+                      
                       child: Image(
-                        image: AssetImage('assets/images/user3.png'),
-                        fit: BoxFit.fill,
+                        width: 50,
+                        height: 50,
+                        image: AssetImage('assets/images/user4.png'),
+
+                        //fit: BoxFit.fill,
                       ),
                     ),
                     Text(
@@ -67,7 +73,7 @@ class _PerfilPageState extends State<PerfilPage> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'juancaro2010@hotmail.com',
+                      '${_auth.correo()}',
                       style: TextStyle(
                           color: colorVerdeLimon,
                           fontSize: 20.0,
