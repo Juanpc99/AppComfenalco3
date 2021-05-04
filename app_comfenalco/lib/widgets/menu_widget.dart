@@ -19,7 +19,7 @@ class MenuWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage('assets/images/comfenalcoPersonas.png')),
+                  image: AssetImage("assets/images/personas.png")),
                 gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
