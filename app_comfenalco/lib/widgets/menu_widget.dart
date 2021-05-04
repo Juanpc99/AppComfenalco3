@@ -28,11 +28,6 @@ class MenuWidget extends StatelessWidget {
               ),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/usuario.png"),
-                    ),
-                  ),
                   Text(
                     '${_auth.correo()}',
                     style: TextStyle(
@@ -44,9 +39,25 @@ class MenuWidget extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage("assets/images/usuario.png"),
+              ),
+              title: Text(
+                '${_auth.correo()}',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.0,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushReplacementNamed(context, 'menup');
+              },
+            ),
+            Divider(),
+            ListTile(
               leading: Icon(
                 Icons.menu_open,
-                color: colorPrimario,
+                color: Colors.grey[600].withOpacity(.66),
               ),
               title: Text('Menú Principal'),
               onTap: () {
@@ -56,9 +67,9 @@ class MenuWidget extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.person_sharp,
-                color: colorPrimario,
+                color: Colors.grey[600].withOpacity(.66),
               ),
-              title: Text('Perfil'),
+              title: Text('Ver Perfil'),
               onTap: () {
                 Navigator.pushReplacementNamed(context, 'perfil');
               },
@@ -66,7 +77,7 @@ class MenuWidget extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.notification_important,
-                color: colorPrimario,
+                color: Colors.grey[600].withOpacity(.66),
               ),
               title: Text('Mis Solicitudes'),
               onTap: () {
@@ -76,7 +87,7 @@ class MenuWidget extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.exit_to_app,
-                color: Colors.grey[300],
+                color: Colors.grey[600].withOpacity(.66),
               ),
               title: Text('Cerrar Sesión'),
               onTap: () {
@@ -85,19 +96,21 @@ class MenuWidget extends StatelessWidget {
             ),
             SizedBox(height: 210.0),
             ListTile(
-                title: Text(
-                  'Política de tratamiento de información',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 13),
-                ),
-                onTap: () {
-                  SocialMedia(
-                    press: () => {
-                      launch(
-                          'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/03/Politica-Tratamiento-Informacion-ComfenalcoValle-25-Feb-2020.pdf'),
-                    },
-                  );
-                }),
+              title: Text(
+                'Política de tratamiento de información',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 13),
+              ),
+              onTap: () {
+                SocialMedia(
+                  press: () => {
+                    launch(
+                        'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/03/Politica-Tratamiento-Informacion-ComfenalcoValle-25-Feb-2020.pdf'),
+                  },
+                );
+              },
+            ),
+            //SizedBox(height: 1),
             ListTile(
                 title: Text(
                   'Condiciones y devoluciones',
