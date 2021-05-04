@@ -78,15 +78,7 @@ class TiposSubsidiosWidget extends StatelessWidget {
     );
   }
 
-  Widget fotoPerfil(BuildContext context) {
-    return Table(
-      children: [
-        TableRow(
-          children:_crearBotonRedondeado(context,colorVerdeClaro, Icons.cont)
-        ),
-      ]
-    );
-  }
+  
 
   Widget _botones(BuildContext context) {
     return Table(children: [
