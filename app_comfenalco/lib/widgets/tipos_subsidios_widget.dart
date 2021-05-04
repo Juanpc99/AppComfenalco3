@@ -1,5 +1,7 @@
 import 'dart:ui';
+import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TiposSubsidiosWidget extends StatelessWidget {
@@ -77,8 +79,12 @@ class TiposSubsidiosWidget extends StatelessWidget {
   }
 
   Widget fotoPerfil(BuildContext context) {
-    return TableRow(
-      children: []
+    return Table(
+      children: [
+        TableRow(
+          children:_crearBotonRedondeado(context,colorVerdeClaro, Icons.cont)
+        ),
+      ]
     );
   }
 
