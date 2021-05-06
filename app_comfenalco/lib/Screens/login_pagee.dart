@@ -11,11 +11,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
   final AuthService _auth = AuthService();
   final _fromKey = GlobalKey<FormState>();
-  TextEditingController email;
-  TextEditingController password;
+
   String error = '';
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -110,7 +108,6 @@ class _LoginPageState extends State<LoginPage> {
             if (_fromKey.currentState.validate()) {
               _auth.signIn(_emailController.text, _passwordController.text,
                   context, 'menup');
-              // print('el correo es : ' + correo());
               print('el correo es: ' + _auth.correo());
             }
           },
@@ -150,11 +147,6 @@ class _LoginPageState extends State<LoginPage> {
             return 'Email invalido';
           }
         },
-        onChanged: (val) {
-          setState(() {
-            email.text = val;
-          });
-        },
         style: TextStyle(color: colorPrimario),
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
@@ -190,11 +182,6 @@ class _LoginPageState extends State<LoginPage> {
       child: TextFormField(
         controller: _passwordController,
         validator: (val) => val.length < 5 ? 'Minimo 6 caracteres' : null,
-        onChanged: (val) {
-          setState(() {
-            password.text = val;
-          });
-        },
         obscureText: true,
         // keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
@@ -256,10 +243,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // _login(LoginBloc bloc, BuildContext context) {
-  //   Navigator.pushReplacementNamed(context, 'menup');
-  // }
-  //
   bool isEmail(String em) {
     String p =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';

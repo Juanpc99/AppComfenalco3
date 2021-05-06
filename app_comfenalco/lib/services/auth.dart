@@ -54,9 +54,17 @@ class AuthService {
     }
   }
 
-  String correo() {
-    String user = _auth.currentUser.email;
-    return user;
+  Future<void> cerrarSesion() async {
+    await _auth.signOut();
   }
 
+  String correo() {
+    try {
+      String user = _auth.currentUser.email;
+      return user;
+    } catch (e) {
+      String user = '';
+      return user;
+    }
+  }
 }

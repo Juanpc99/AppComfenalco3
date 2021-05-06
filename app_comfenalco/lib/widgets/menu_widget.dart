@@ -29,6 +29,7 @@ class MenuWidget extends StatelessWidget {
                   ],
                 ),
               ),
+              child: null,
               /*
               child: Column(
                 children: <Widget>[
@@ -43,23 +44,27 @@ class MenuWidget extends StatelessWidget {
               ),
               **/
             ),
-            ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/user.png"),
-                backgroundColor: colorNaranja,
-              ),
-              //+ ' ${Usuarios().apellido}'
-              title: Text(
-                '${Usuarios().nombre}',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 25.0,
+
+            Container(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage("assets/images/user.png"),
+                  backgroundColor: colorNaranja,
                 ),
+                //+ ' ${Usuarios().apellido}'
+                title: Text(
+                  '${_auth.correo()}',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 25.0,
+                  ),
+                ),
+                //onTap: () {
+                // Navigator.pushReplacementNamed(context, 'menup');
+                //},
               ),
-              //onTap: () {
-              // Navigator.pushReplacementNamed(context, 'menup');
-              //},
             ),
+
             Divider(),
             ListTile(
               leading: Icon(
@@ -98,6 +103,8 @@ class MenuWidget extends StatelessWidget {
               ),
               title: Text('Cerrar Sesión'),
               onTap: () {
+                // _auth.correo() = '';
+                _auth.cerrarSesion();
                 Navigator.pushReplacementNamed(context, '/');
               },
             ),

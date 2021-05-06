@@ -19,6 +19,4 @@ class UsuariosProvider {
 
     return true;
   }
-
-
 }

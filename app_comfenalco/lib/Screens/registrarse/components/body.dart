@@ -220,6 +220,13 @@ class RegistroFormState extends State<RegistroForm> {
       onChanged: (value) => setState(() {
         usuario.nombre = value;
       }),
+      validator: (value) {
+        if (validator.isName(value) == true && value != '') {
+          return null;
+        } else {
+          return 'El nombre solo debe contener letras';
+        }
+      },
       decoration: InputDecoration(
         labelText: "Nombre",
         hintText: 'Ingrese su nombre completo',
@@ -250,6 +257,13 @@ class RegistroFormState extends State<RegistroForm> {
       onChanged: (value) => setState(() {
         usuario.apellido = value;
       }),
+      validator: (value) {
+        if (validator.isName(value) == true && value != '') {
+          return null;
+        } else {
+          return 'El apellido solo debe contener letras';
+        }
+      },
       decoration: InputDecoration(
         labelText: "Apellidos",
         hintText: 'Ingrese sus apellidos',
@@ -276,6 +290,13 @@ class RegistroFormState extends State<RegistroForm> {
           usuario.idTipoDoc = int.parse(opt);
         });
       },
+      validator: (value) {
+        if (value != null) {
+          return null;
+        } else {
+          return 'Debe elegir un tipo de documento';
+        }
+      },
       decoration: InputDecoration(
         labelText: "Tipo Documento",
         hintStyle: TextStyle(color: Colors.grey[800], fontSize: 12),
@@ -291,6 +312,14 @@ class RegistroFormState extends State<RegistroForm> {
   TextFormField buildDocumentoFormField() {
     return TextFormField(
       keyboardType: TextInputType.number,
+      validator: (value) {
+        final intNumber = int.tryParse(value);
+        if (intNumber != null && intNumber <= 9) {
+          return null;
+        } else {
+          return 'Ingrese una cedula valida';
+        }
+      },
       onChanged: (value) => setState(() {
         usuario.numeroDocumento = int.parse(value);
       }),
@@ -309,6 +338,13 @@ class RegistroFormState extends State<RegistroForm> {
     return TextFormField(
       enableInteractiveSelection: false,
       controller: _inputFieldFechaController,
+      validator: (value) {
+        if (value != null) {
+          return null;
+        } else {
+          return 'Debe elegir una fecha';
+        }
+      },
       decoration: InputDecoration(
         labelText: "Fecha de Nacimiento",
         hintText: 'Fecha de Nacimiento',
@@ -358,6 +394,13 @@ class RegistroFormState extends State<RegistroForm> {
   DropdownButtonFormField buildPaisFormField() {
     return DropdownButtonFormField(
       value: _opcSelectPais,
+      validator: (value) {
+        if (value != null) {
+          return null;
+        } else {
+          return 'Debe elegir un pais';
+        }
+      },
       isExpanded: true,
       items: _paises.map((value) {
         return DropdownMenuItem(
@@ -386,10 +429,14 @@ class RegistroFormState extends State<RegistroForm> {
     return DropdownButtonFormField(
       isExpanded: true,
       value: _opcSelectCity,
-
+      validator: (value) {
+        if (value != null) {
+          return null;
+        } else {
+          return 'Debe elegir una ciudad';
+        }
+      },
       items: _city.map((value) {
-        // value['ID_CIUDAD'] = 5;
-
         return DropdownMenuItem(
           value: value['idCiudad'].toString(),
           child: Text(value['ciudad']),
@@ -427,7 +474,13 @@ class RegistroFormState extends State<RegistroForm> {
           usuario.idGnr = int.parse(opt);
         });
       },
-
+      validator: (value) {
+        if (value != null) {
+          return null;
+        } else {
+          return 'Debe elegir un genero';
+        }
+      },
       decoration: InputDecoration(
         labelText: "Genero",
         hintText: 'Seleccione su genero',
