@@ -90,6 +90,7 @@ class RegistroFormState extends State<RegistroForm> {
   Usuarios usuario = new Usuarios();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  bool _nacionalidad = false;
 
   String _fecha = "";
   TextEditingController _inputFieldFechaController =
@@ -126,7 +127,7 @@ class RegistroFormState extends State<RegistroForm> {
     setState(() {
       _paises = paises;
     });
-    //print(paises);
+
     return "succes";
   }
 
@@ -172,8 +173,8 @@ class RegistroFormState extends State<RegistroForm> {
     super.initState();
     cargarGeneros();
     cargarCiudades();
-    cargarPaises();
     cargarDocumentos();
+    cargarPaises();
   }
 
   bool _guardando = false;
@@ -193,6 +194,8 @@ class RegistroFormState extends State<RegistroForm> {
             buildDocumentoFormField(),
             SizedBox(height: 20),
             buildFechaFormField(),
+            SizedBox(height: 20),
+            esExtranjero(),
             SizedBox(height: 20),
             buildPaisFormField(),
             SizedBox(height: 20),
@@ -314,7 +317,7 @@ class RegistroFormState extends State<RegistroForm> {
       keyboardType: TextInputType.number,
       validator: (value) {
         final intNumber = int.tryParse(value);
-        if (intNumber != null && intNumber <= 9) {
+        if (intNumber != null && intNumber >= 9) {
           return null;
         } else {
           return 'Ingrese una cedula valida';
@@ -391,38 +394,64 @@ class RegistroFormState extends State<RegistroForm> {
     }
   }
 
-  DropdownButtonFormField buildPaisFormField() {
-    return DropdownButtonFormField(
-      value: _opcSelectPais,
-      validator: (value) {
-        if (value != null) {
-          return null;
-        } else {
-          return 'Debe elegir un pais';
-        }
-      },
-      isExpanded: true,
-      items: _paises.map((value) {
-        return DropdownMenuItem(
-          value: value['ID_PAIS'].toString(),
-          child: Text(value['PAIS']),
-        );
-      }).toList(), //
-      onChanged: (opt) {
-        setState(() {
-          _opcSelectPais = opt;
-          usuario.idPais = int.parse(opt);
+  Widget esExtranjero() {
+    return SwitchListTile(
+        title: Text('¿Es extranjero?'),
+        value: _nacionalidad,
+        onChanged: (value) {
+          setState(() {
+            _nacionalidad = value;
+          });
         });
-      },
-      decoration: InputDecoration(
-        labelText: "País",
-        hintText: 'Ingrese su pais de origen',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: "assets/icons/planeta.svg",
+  }
+
+  Widget buildPaisFormField() {
+    if (_nacionalidad == false) {
+      return DropdownButtonFormField(
+        items: null,
+        decoration: InputDecoration(
+          labelText: "País",
+          hintText: 'Ingrese su pais de origen',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/planeta.svg",
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return DropdownButtonFormField(
+        value: _opcSelectPais,
+        validator: (value) {
+          if (value != null) {
+            return null;
+          } else {
+            return 'Debe elegir un pais';
+          }
+        },
+        isExpanded: true,
+        items: _paises.map((value) {
+          return DropdownMenuItem(
+            value: value['ID_PAIS'].toString(),
+            child: Text(value['PAIS']),
+          );
+        }).toList(), //
+
+        onChanged: (opt) {
+          setState(() {
+            _opcSelectPais = opt;
+            usuario.idPais = int.parse(opt);
+          });
+        },
+        decoration: InputDecoration(
+          labelText: "País",
+          hintText: 'Ingrese su pais de origen',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/planeta.svg",
+          ),
+        ),
+      );
+    }
   }
 
   DropdownButtonFormField buildCiudadFormField() {
