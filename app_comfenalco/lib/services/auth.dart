@@ -58,4 +58,5 @@ class AuthService {
     String user = _auth.currentUser.email;
     return user;
   }
+
 }

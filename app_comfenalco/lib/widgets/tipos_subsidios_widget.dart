@@ -1,5 +1,7 @@
 import 'dart:ui';
+import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TiposSubsidiosWidget extends StatelessWidget {
@@ -75,6 +77,8 @@ class TiposSubsidiosWidget extends StatelessWidget {
       ),
     );
   }
+
+  
 
   Widget _botones(BuildContext context) {
     return Table(children: [

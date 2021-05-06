@@ -15,13 +15,15 @@ import 'package:app_comfenalco/Screens/Subsidios/vigenciaSubsidio_page.dart';
 import 'package:app_comfenalco/Screens/Welcome/welcome_screen.dart';
 import 'package:app_comfenalco/Screens/codigo_EnviadoExito.dart';
 import 'package:app_comfenalco/Screens/codigo_page.dart';
+import 'package:app_comfenalco/Screens/confirmar_contrase%C3%B1a_page.dart';
 import 'package:app_comfenalco/Screens/construccion.dart';
 import 'package:app_comfenalco/Screens/cuentaRegistrada_page.dart';
 import 'package:app_comfenalco/Screens/login_pagee.dart';
-import 'package:app_comfenalco/Screens/menu_principal.dart';
 import 'package:app_comfenalco/Screens/mis_solicitudes_page.dart';
-import 'package:app_comfenalco/Screens/nueva_contrase%C3%B1a_page.dart';
-import 'package:app_comfenalco/Screens/perfil.dart';
+import 'package:app_comfenalco/Screens/perfil/actualizacionE.dart';
+import 'package:app_comfenalco/Screens/perfil/editarPerfil/editar_datos.dart';
+import 'package:app_comfenalco/Screens/perfil/menu_principal.dart';
+import 'package:app_comfenalco/Screens/perfil/perfil.dart';
 import 'package:app_comfenalco/Screens/recuperar_contrase%C3%B1a_page.dart';
 import 'package:app_comfenalco/Screens/registrarse/registrarse_screen.dart';
 import 'package:app_comfenalco/Screens/todos_subsidios_page.dart';
@@ -40,7 +42,7 @@ Map<String, WidgetBuilder> getAplicationRutes() {
           'subsidioAfiliados': (BuildContext context) => InfoSubAfil(),
           'recuperar': (BuildContext context) => RecuperarPage(),
           'codigo': (BuildContext context) => CodigoPage(),
-          'nuevac': (BuildContext context) => NuevaContrasena(),
+          'confirmar': (BuildContext context) => ConfirmarContrasena(),
           'conceptosClave': (BuildContext context) => ConcepCla(),
           'requisitos': (BuildContext context) => Requisitos(),
           'pagoSub': (BuildContext context) => PagoSub(),
@@ -60,6 +62,8 @@ Map<String, WidgetBuilder> getAplicationRutes() {
             RequisitosSitioPropioMejoramiento(),
           'subsidioNoAfiliados': (BuildContext context) => InfoSubNoAfil(),
           'contacto': (BuildContext context) => Contacto(),
+          'actualizar': (BuildContext context) => ActualizarScreen(),
+          'datosModificados': (BuildContext context) =>ActualizacionDatos(),
           //'requisitosGenerales' : (BuildContext context) => RequisitosGenerales(),
   };
 }
