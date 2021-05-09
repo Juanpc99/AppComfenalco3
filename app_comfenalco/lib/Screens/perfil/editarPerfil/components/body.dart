@@ -7,7 +7,6 @@ import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/validators/validators.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class Body extends StatefulWidget {
   @override

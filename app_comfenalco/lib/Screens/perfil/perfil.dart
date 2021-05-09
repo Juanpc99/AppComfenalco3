@@ -1,5 +1,6 @@
 import 'package:app_comfenalco/constantes.dart';
-import 'package:app_comfenalco/models/registro.dart';
+import 'package:app_comfenalco/providers/usuarios_provider.dart';
+
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class PerfilPage extends StatefulWidget {
 
 class _PerfilPageState extends State<PerfilPage> {
   final AuthService _auth = AuthService();
+  UsuariosProvider usuProv = UsuariosProvider();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,13 +64,26 @@ class _PerfilPageState extends State<PerfilPage> {
                         //fit: BoxFit.fill,
                       ),
                     ),
-                    Text(
-                      'Juan Pablo Caro',
-                      style: TextStyle(
-                          color: colorVerdeOscuro,
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    FutureBuilder(
+                        future: usuProv.fetchPost(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.data.nombre +
+                                  ' ' +
+                                  snapshot.data.apellido,
+                              style: TextStyle(
+                                  color: colorVerdeOscuro,
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.bold),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Text('${snapshot.error}');
+                          }
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }),
                     Text(
                       '${_auth.correo()}',
                       style: TextStyle(
@@ -116,7 +131,6 @@ class _PerfilPageState extends State<PerfilPage> {
                   ],
                 ),
               ),
-
             ),
             SizedBox(height: 20),
             GestureDetector(
