@@ -108,7 +108,6 @@ class _LoginPageState extends State<LoginPage> {
             if (_fromKey.currentState.validate()) {
               _auth.signIn(_emailController.text, _passwordController.text,
                   context, 'menup');
-              print('el correo es: ' + _auth.correo());
             }
           },
           child: Text(
