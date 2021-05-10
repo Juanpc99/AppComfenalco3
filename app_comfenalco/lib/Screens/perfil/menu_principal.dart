@@ -1,10 +1,9 @@
 import 'dart:ui';
 
+import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 
 import 'package:flutter/material.dart';
-
-
 
 class MenuPage extends StatelessWidget {
   @override
@@ -60,13 +59,12 @@ class MenuPage extends StatelessWidget {
                 TextHeightBehavior(applyHeightToFirstAscent: true),
             textAlign: TextAlign.end,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.66),
+              color: Colors.white,
               fontSize: 30,
               fontWeight: FontWeight.normal,
             ),
           ),
           centerTitle: true,
-          
         ),
       ],
     );
@@ -75,22 +73,22 @@ class MenuPage extends StatelessWidget {
   Widget _botones(BuildContext context) {
     return Table(children: [
       TableRow(children: [
-        _crearBotonRedondeado(context, Colors.deepOrange[400],
-            Icons.home_rounded, 'Subsidio Vivienda', 'subsidios'),
-        _crearBotonRedondeado(context, Colors.deepOrange[400],
+        _crearBotonRedondeado(context, Colors.orangeAccent, Icons.home_rounded,
+            'Subsidio Vivienda', 'subsidios'),
+        _crearBotonRedondeado(context, Colors.orangeAccent,
             Icons.family_restroom_rounded, 'Subsidio Familiar', 'pronto')
       ]),
       TableRow(children: [
-        _crearBotonRedondeado(context, Colors.deepOrange[400],
+        _crearBotonRedondeado(context, Colors.orangeAccent,
             Icons.monetization_on_outlined, 'Subsidio Especial', 'pronto'),
-        _crearBotonRedondeado(context, Colors.deepOrange[400],
+        _crearBotonRedondeado(context, Colors.orangeAccent,
             Icons.cloud_queue_outlined, 'Subsidio Adicional', 'pronto')
       ]),
       TableRow(
         children: [
-          _crearBotonRedondeado(context, Colors.deepOrange[400],
+          _crearBotonRedondeado(context, Colors.orangeAccent,
               Icons.room_service_rounded, 'Subsidio en servicios', 'pronto'),
-          _crearBotonRedondeado(context, Colors.deepOrange[400],
+          _crearBotonRedondeado(context, Colors.orangeAccent,
               Icons.more_horiz_rounded, 'Otros Subsidios', 'pronto')
         ],
       )
@@ -98,7 +96,7 @@ class MenuPage extends StatelessWidget {
   }
 
   Widget _crearBotonRedondeado(BuildContext context, Color color,
-    IconData icono, String texto, String ruta) {
+      IconData icono, String texto, String ruta) {
     return Padding(
       padding: EdgeInsets.all(20.0),
       child: ClipRRect(

@@ -39,6 +39,7 @@ class EnvioExitoso extends StatelessWidget {
             _botonCodigo(context),
           ],
         ),
+        /*
         floatingActionButton: FloatingActionButton(
           child: Icon(
             Icons.keyboard_arrow_left,
@@ -48,7 +49,7 @@ class EnvioExitoso extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, 'recuperar');
           },
-        ),
+        ),**/
       ),
     );
   }

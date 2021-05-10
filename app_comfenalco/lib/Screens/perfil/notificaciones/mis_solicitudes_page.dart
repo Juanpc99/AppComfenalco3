@@ -10,25 +10,20 @@ class MisSolicitudesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: colorVerdeLimon,
       appBar: AppBar(
         title: Text(
           'Mis Solicitudes',
-          style: TextStyle(color: colorPrimarioClaro),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
           textAlign: TextAlign.center,
         ),
+        centerTitle: true,
         iconTheme: IconThemeData(color: colorPrimarioClaro),
         backgroundColor: colorVerdeLimon,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            iconSize: 30.0,
-            color: colorPrimarioClaro,
-            onPressed: () {},
-          ),
-        ],
       ),
       drawer: MenuWidget(),
       body: Column(

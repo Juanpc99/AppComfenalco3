@@ -26,7 +26,7 @@ class _BarraProgresoState extends State<BarraProgreso>
 
   @override
   Widget build(BuildContext context) {
-    final porcentaje = animacionControl.value * 100;
+    final porcentaje = animacionControl.value * 40;
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,5 +56,11 @@ class _BarraProgresoState extends State<BarraProgreso>
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    animacionControl.dispose();
+    super.dispose();
   }
 }

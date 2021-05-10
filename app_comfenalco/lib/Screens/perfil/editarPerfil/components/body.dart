@@ -87,27 +87,6 @@ class EditarFormState extends State<EditarForm> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  String _fecha = "";
-  TextEditingController _inputFieldFechaController =
-      new TextEditingController();
-  // para el campo de tipo documento
-  String _opcSelectId;
-  List _idTipo = List();
-  Future cargarDocumentos() async {
-    final Uri url = Uri.parse('$url_api/getTiposDocumento');
-
-    final resp = await http.get(url);
-
-    var jsonbody = resp.body;
-    var documentos = json.decode(jsonbody);
-
-    setState(() {
-      _idTipo = documentos;
-    });
-    //print(documentos);
-    return "succes";
-  }
-
   // para la ciudad del valle donde se encuentra
   String _opcSelectCity;
   List _city = List();
@@ -149,7 +128,6 @@ class EditarFormState extends State<EditarForm> {
     super.initState();
     cargarGeneros();
     cargarCiudades();
-    cargarDocumentos();
   }
 
   bool _guardando = false;
@@ -334,47 +312,6 @@ class EditarFormState extends State<EditarForm> {
     );
   }
 
-  // modificar metodo
-  /*
-  Future<void> _actualizar() async {
-    if (_fromKey.currentState.validate()) {
-      // _fromKey.currentState.save();
-
-      try {
-        User user = (await _auth.createUserWithEmailAndPassword(
-          email: email.text.trim(),
-          password: password.text.trim(),
-        ))
-            .user;
-        usuario.fechaNacimiento = _inputFieldFechaController.text;
-        userProvider.crearUsuario(usuario);
-
-        Navigator.pushReplacementNamed(context, 'cuentaCreada');
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Row(
-              children: [
-                Icon(
-                  Icons.error,
-                  color: Colors.red,
-                  size: 40.0,
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Text('No se ha podido actualizar los datos!'),
-              ],
-            ),
-            duration: Duration(seconds: 5),
-          ),
-        );
-        _guardando = false;
-        print('No se actualizo');
-      }
-    }
-  }
-**/
   @override
   void dispose() {
     email.dispose();

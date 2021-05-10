@@ -78,31 +78,29 @@ class TiposSubsidiosWidget extends StatelessWidget {
     );
   }
 
-  
-
   Widget _botones(BuildContext context) {
     return Table(children: [
       TableRow(children: [
-        _crearBotonRedondeado(context, Colors.tealAccent[400],
-            Icons.home_rounded, 'Subsidio Vivienda', 'subsidios'),
-        _crearBotonRedondeado(context, Color(0xFFAEEA00).withOpacity(.77),
+        _crearBotonRedondeado(context, Colors.orangeAccent, Icons.home_rounded,
+            'Subsidio Vivienda', 'subsidios'),
+        _crearBotonRedondeado(context, Colors.orangeAccent,
             Icons.family_restroom_rounded, 'Subsidio Familiar', 'pronto')
       ]),
       TableRow(children: [
         _crearBotonRedondeado(
             context,
-            Colors.green,
+            Colors.orangeAccent,
             Icons.airline_seat_individual_suite_rounded,
             'Subsidio Especial',
             'pronto'),
-        _crearBotonRedondeado(context, Colors.cyan, Icons.agriculture_rounded,
-            'Subsidio Adicional', 'pronto')
+        _crearBotonRedondeado(context, Colors.orangeAccent,
+            Icons.agriculture_rounded, 'Subsidio Adicional', 'pronto')
       ]),
       TableRow(
         children: [
-          _crearBotonRedondeado(context, Color(0xFF76FF03).withOpacity(.67),
+          _crearBotonRedondeado(context, Colors.orangeAccent,
               Icons.room_service_rounded, 'Subsidio en servicios', 'pronto'),
-          _crearBotonRedondeado(context, Color(0xFFFF5722),
+          _crearBotonRedondeado(context, Colors.orangeAccent,
               Icons.more_horiz_rounded, 'Otros Subsidios', 'pronto')
         ],
       )

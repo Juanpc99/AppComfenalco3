@@ -5,11 +5,8 @@ import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/validators/validators.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
-
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
 import '../../../constantes.dart';
 
 class Body extends StatefulWidget {
@@ -388,7 +385,7 @@ class RegistroFormState extends State<RegistroForm> {
       setState(() {
         // _fecha = fechaSeleccionada.toString();
         var _fechaF = DateFormat.yMMMMd().format(fechaSeleccionada);
-        _fecha = _fechaF.toString();
+        _fecha = _fechaF;
         _inputFieldFechaController.text = _fecha;
       });
     }
