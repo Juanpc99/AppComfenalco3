@@ -52,6 +52,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.7.4
+  
 
 dependency_overrides:
   intl: ^0.17.0-nullsafety.2
@@ -67,10 +68,7 @@ flutter:
   uses-material-design: true
   generate: true
 
-flutter_icons:
-  image_path: 'assets/images/icon.png'
-  android: true
-  ios: true
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icons/
