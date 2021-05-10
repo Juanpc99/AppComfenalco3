@@ -52,7 +52,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.7.4
-  
+
+flutter_icons:
+  image_path: 'assets/icons/icon.png'
+  android: true
+  ios: true
+  adaptive_icon_background: 'assets/icons/icon.png'
+
 
 dependency_overrides:
   intl: ^0.17.0-nullsafety.2
