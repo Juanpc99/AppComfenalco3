@@ -1,13 +1,19 @@
 import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/models/registro.dart';
+import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MenuWidget extends StatelessWidget {
-  final AuthService _auth = AuthService();
+class MenuWidget extends StatefulWidget {
+  @override
+  _MenuWidgetState createState() => _MenuWidgetState();
+}
 
+class _MenuWidgetState extends State<MenuWidget> {
+  final AuthService _auth = AuthService();
+  UsuariosProvider usuprov = UsuariosProvider();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -52,16 +58,29 @@ class MenuWidget extends StatelessWidget {
                   backgroundColor: colorNaranja,
                 ),
                 //+ ' ${Usuarios().apellido}'
-                title: Text(
-                  '${_auth.correo()}',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                  ),
+                title: FutureBuilder<Usuarios>(
+                  future: usuprov.fetchPost(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(
+                          snapshot.data.nombre + ' ' + snapshot.data.apellido);
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return Center(child: CircularProgressIndicator());
+                  },
                 ),
-                //onTap: () {
-                // Navigator.pushReplacementNamed(context, 'menup');
-                //},
+                //
+                // Text(
+                //   'hola',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 25.0,
+                //   ),
+                // ),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'menup');
+                },
               ),
             ),
 

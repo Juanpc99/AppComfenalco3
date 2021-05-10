@@ -630,7 +630,11 @@ class RegistroFormState extends State<RegistroForm> {
           password: password.text.trim(),
         ))
             .user;
+        if (_nacionalidad == false) {
+          usuario.idPais = 49;
+        }
         usuario.fechaNacimiento = _inputFieldFechaController.text;
+        usuario.idTipoUsr = 1;
         userProvider.crearUsuario(usuario);
 
         Navigator.pushReplacementNamed(context, 'cuentaCreada');
