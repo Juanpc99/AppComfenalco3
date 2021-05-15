@@ -33,10 +33,10 @@ class ConfirmarContrasena extends StatelessWidget {
                 _foto(context),
               ],
             ),
-            SizedBox(height: 30.0),
+            SizedBox(height: 10.0),
             _texto(),
             _crearCapoTexto(),
-            SizedBox(height: 15.0),
+            SizedBox(height: 10.0),
             _botonConfirmar(context),
           ],
         ),
@@ -59,7 +59,7 @@ class ConfirmarContrasena extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Text(
-        'Por favor ingresa tú contraseña para validar la cuenta',
+        'Por favor ingresa tú contraseña para validar la cuenta.',
         textAlign: TextAlign.center,
         style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
       ),
