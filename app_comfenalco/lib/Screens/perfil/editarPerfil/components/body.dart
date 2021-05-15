@@ -86,7 +86,7 @@ class EditarFormState extends State<EditarForm> {
   Usuarios usuario = new Usuarios();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-
+  bool _nombre = false, apellido = false, ciudad = false, genero = false;
   // para la ciudad del valle donde se encuentra
   String _opcSelectCity;
   List _city = List();
@@ -138,7 +138,11 @@ class EditarFormState extends State<EditarForm> {
         key: _fromKey,
         child: Column(
           children: [
+            editNombre(),
+            SizedBox(height: 20),
             buildNameFormField(),
+            SizedBox(height: 20),
+            editApellido(),
             SizedBox(height: 20),
             buildApellidoFormField(),
             SizedBox(height: 20),
@@ -154,12 +158,31 @@ class EditarFormState extends State<EditarForm> {
     );
   }
 
+  Widget editNombre() {
+    return SwitchListTile(
+        title: Text('¿Es extranjero?'),
+        value: _nombre,
+        onChanged: (value) {
+          setState(() {
+            _nombre = value;
+          });
+        });
+  }
+
   TextFormField buildNameFormField() {
     return TextFormField(
+      enabled: _nombre,
       textCapitalization: TextCapitalization.sentences,
       onChanged: (value) => setState(() {
         usuario.nombre = value;
       }),
+      validator: (value) {
+        if (validator.isName(value) == true && value != '') {
+          return null;
+        } else {
+          return 'El nombre solo debe contener letras';
+        }
+      },
       decoration: InputDecoration(
         labelText: "Nombre",
         hintText: 'Ingrese su nombre completo',
@@ -171,8 +194,20 @@ class EditarFormState extends State<EditarForm> {
     );
   }
 
+  Widget editApellido() {
+    return SwitchListTile(
+        title: Text('¿Es extranjero?'),
+        value: apellido,
+        onChanged: (value) {
+          setState(() {
+            apellido = value;
+          });
+        });
+  }
+
   TextFormField buildFormField(String label, String texto) {
     return TextFormField(
+      enabled: apellido,
       decoration: InputDecoration(
         labelText: label,
         hintText: texto,
