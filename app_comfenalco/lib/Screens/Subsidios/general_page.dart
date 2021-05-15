@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:app_comfenalco/constantes.dart';
 import 'package:flutter/rendering.dart';
@@ -101,11 +99,6 @@ class InfoGeneral extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         child: Column(
           children: <Widget>[
-            GestureDetector(
-              onTap: () {},
-              child: Image.asset('assets/images/Postulate.png'),
-            ),
-            /*
             FadeInImage(
               image: AssetImage("assets/images/Postulate.png"),
               placeholder: AssetImage("assets/icons/icons8-spinner.gif"),
@@ -114,18 +107,23 @@ class InfoGeneral extends StatelessWidget {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'subsidioAfiliados');
-              }, // aqui va redireccionado a la otra vista
+                launch('https://www.youtube.com/watch?v=uyP4wRXjElE');
+              },
+              color: colorNaranja,
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: colorNaranja.withOpacity(.55), width: 1),
+                  borderRadius: BorderRadius.circular(
+                      15.0)), // aqui va redireccionado a la otra vista
               child: Text(
                 'Conoce como postularte!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: colorNaranja,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            **/
           ],
         ),
       ),
