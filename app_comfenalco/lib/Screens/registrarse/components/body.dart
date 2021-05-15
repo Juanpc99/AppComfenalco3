@@ -283,7 +283,7 @@ class RegistroFormState extends State<RegistroForm> {
           value: value['ID_TIPO_DOC'].toString(),
           child: Text(value['DOCUMENTO']),
         );
-      }).toList(), //
+      }).toList(), 
       onChanged: (opt) {
         setState(() {
           _opcSelectId = opt;
