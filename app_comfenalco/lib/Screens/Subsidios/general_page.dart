@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:app_comfenalco/constantes.dart';
 import 'package:flutter/rendering.dart';
 import 'package:background_app_bar/background_app_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InfoGeneral extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -57,9 +59,9 @@ class InfoGeneral extends StatelessWidget {
               TextHeightBehavior(applyHeightToFirstAscent: true),
           textAlign: TextAlign.end,
           style: TextStyle(
-            color: Colors.grey[350],
+            color: Colors.black,
             fontSize: 12,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w500,
           ),
         ),
         centerTitle: true,
@@ -71,7 +73,7 @@ class InfoGeneral extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Postulate.png"),
+                image: AssetImage("assets/images/general.png"),
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -99,34 +101,31 @@ class InfoGeneral extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         child: Column(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: const ListTile(
-                title: Text(
-                  '¡Conoce como puedes postularte!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: colorNaranja,
-                  ),
+            GestureDetector(
+              onTap: () {},
+              child: Image.asset('assets/images/Postulate.png'),
+            ),
+            /*
+            FadeInImage(
+              image: AssetImage("assets/images/Postulate.png"),
+              placeholder: AssetImage("assets/icons/icons8-spinner.gif"),
+              fadeInDuration: Duration(milliseconds: 2000),
+              fit: BoxFit.cover,
+            ),
+            FlatButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'subsidioAfiliados');
+              }, // aqui va redireccionado a la otra vista
+              child: Text(
+                'Conoce como postularte!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: colorNaranja,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                FlatButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'subsidioAfiliados');
-                  }, // aqui va redireccionado a la otra vista
-                  child: Text(
-                    'Más Información...',
-                    style: TextStyle(color: colorNaranja),
-                  ),
-                ),
-              ],
-            ),
+            **/
           ],
         ),
       ),

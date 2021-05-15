@@ -62,7 +62,7 @@ class SubsidioPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             FadeInImage(
-              image: AssetImage("assets/images/Postulate.png"),
+              image: AssetImage("assets/images/general.png"),
               placeholder: AssetImage("assets/icons/icons8-spinner.gif"),
               fadeInDuration: Duration(milliseconds: 2000),
               fit: BoxFit.cover,
