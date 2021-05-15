@@ -146,7 +146,11 @@ class EditarFormState extends State<EditarForm> {
             SizedBox(height: 20),
             buildApellidoFormField(),
             SizedBox(height: 20),
+            editCiudad(),
+            SizedBox(height: 20),
             buildCiudadFormField(),
+            SizedBox(height: 20),
+            editGenero(),
             SizedBox(height: 20),
             buildGeneroFormField(),
             SizedBox(height: 20),
@@ -160,7 +164,7 @@ class EditarFormState extends State<EditarForm> {
 
   Widget editNombre() {
     return SwitchListTile(
-        title: Text('¿Es extranjero?'),
+        title: Text(''),
         value: _nombre,
         onChanged: (value) {
           setState(() {
@@ -170,33 +174,50 @@ class EditarFormState extends State<EditarForm> {
   }
 
   TextFormField buildNameFormField() {
-    return TextFormField(
-      enabled: _nombre,
-      textCapitalization: TextCapitalization.sentences,
-      onChanged: (value) => setState(() {
-        usuario.nombre = value;
-      }),
-      validator: (value) {
-        if (validator.isName(value) == true && value != '') {
-          return null;
-        } else {
-          return 'El nombre solo debe contener letras';
-        }
-      },
-      decoration: InputDecoration(
-        labelText: "Nombre",
-        hintText: 'Ingrese su nombre completo',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: "assets/icons/usuario.svg",
+    if (_nombre == false) {
+      return TextFormField(
+        enabled: false,
+        textCapitalization: TextCapitalization.sentences,
+        onChanged: (value) => setState(() {
+          usuario.nombre = value;
+        }),
+        decoration: InputDecoration(
+          labelText: "Nombre",
+          hintText: 'Ingrese su nombre completo',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/usuario.svg",
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return TextFormField(
+        textCapitalization: TextCapitalization.sentences,
+        onChanged: (value) => setState(() {
+          usuario.nombre = value;
+        }),
+        validator: (value) {
+          if (validator.isName(value) == true && value != '') {
+            return null;
+          } else {
+            return 'El nombre solo debe contener letras';
+          }
+        },
+        decoration: InputDecoration(
+          labelText: "Nombre",
+          hintText: 'Ingrese su nombre completo',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/usuario.svg",
+          ),
+        ),
+      );
+    }
   }
 
   Widget editApellido() {
     return SwitchListTile(
-        title: Text('¿Es extranjero?'),
+        title: Text(''),
         value: apellido,
         onChanged: (value) {
           setState(() {
@@ -205,118 +226,181 @@ class EditarFormState extends State<EditarForm> {
         });
   }
 
-  TextFormField buildFormField(String label, String texto) {
-    return TextFormField(
-      enabled: apellido,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: texto,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: "assets/icons/usuario.svg",
+  TextFormField buildApellidoFormField() {
+    if (apellido == false) {
+      return TextFormField(
+        enabled: apellido,
+        textCapitalization: TextCapitalization.sentences,
+        onChanged: (value) => setState(() {
+          usuario.apellido = value;
+        }),
+        decoration: InputDecoration(
+          labelText: "Apellidos",
+          hintText: 'Ingrese sus apellidos',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/usuario.svg",
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return TextFormField(
+        enabled: apellido,
+        textCapitalization: TextCapitalization.sentences,
+        onChanged: (value) => setState(() {
+          usuario.apellido = value;
+        }),
+        validator: (value) {
+          if (validator.isName(value) == true && value != '') {
+            return null;
+          } else {
+            return 'El apellido solo debe contener letras';
+          }
+        },
+        decoration: InputDecoration(
+          labelText: "Apellidos",
+          hintText: 'Ingrese sus apellidos',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/usuario.svg",
+          ),
+        ),
+      );
+    }
   }
 
-  TextFormField buildApellidoFormField() {
-    return TextFormField(
-      textCapitalization: TextCapitalization.sentences,
-      onChanged: (value) => setState(() {
-        usuario.apellido = value;
-      }),
-      decoration: InputDecoration(
-        labelText: "Apellidos",
-        hintText: 'Ingrese sus apellidos',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: "assets/icons/usuario.svg",
-        ),
-      ),
-    );
+  Widget editCiudad() {
+    return SwitchListTile(
+        title: Text(''),
+        value: ciudad,
+        onChanged: (value) {
+          setState(() {
+            ciudad = value;
+          });
+        });
   }
 
   DropdownButtonFormField buildCiudadFormField() {
-    return DropdownButtonFormField(
-      isExpanded: true,
-      value: _opcSelectCity,
-      items: _city.map((value) {
-        // value['ID_CIUDAD'] = 5;
-
-        return DropdownMenuItem(
-          value: value['ID_CIUDAD'].toString(),
-          child: Text(value['CIUDAD']),
-        );
-      }).toList(), //
-      onChanged: (opt) {
-        setState(() {
-          _opcSelectCity = opt;
-          usuario.idCiudad = int.parse(opt);
-        });
-      },
-      decoration: InputDecoration(
-        labelText: "Ciudad",
-        hintText: 'Ingrese la ciudad donde nacio',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: "assets/icons/ubicacion.svg",
+    if (ciudad == false) {
+      return DropdownButtonFormField(
+        items: null,
+        validator: (value) {
+          if (value == null) {
+            return null;
+          } else {
+            return 'Debe elegir una ciudad';
+          }
+        },
+        decoration: InputDecoration(
+          labelText: "Ciudad",
+          hintText: 'Ingrese la ciudad donde nacio',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/ubicacion.svg",
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return DropdownButtonFormField(
+        isExpanded: true,
+        value: _opcSelectCity,
+        items: _city.map((value) {
+          // value['ID_CIUDAD'] = 5;
+
+          return DropdownMenuItem(
+            value: value['ID_CIUDAD'].toString(),
+            child: Text(value['CIUDAD']),
+          );
+        }).toList(), //
+        onChanged: (opt) {
+          setState(() {
+            _opcSelectCity = opt;
+            usuario.idCiudad = int.parse(opt);
+          });
+        },
+        validator: (value) {
+          if (value != null) {
+            return null;
+          } else {
+            return 'Debe elegir una ciudad';
+          }
+        },
+        decoration: InputDecoration(
+          labelText: "Ciudad",
+          hintText: 'Ingrese la ciudad donde nacio',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/ubicacion.svg",
+          ),
+        ),
+      );
+    }
+  }
+
+  Widget editGenero() {
+    return SwitchListTile(
+        title: Text(''),
+        value: genero,
+        onChanged: (value) {
+          setState(() {
+            genero = value;
+          });
+        });
   }
 
   DropdownButtonFormField buildGeneroFormField() {
-    return DropdownButtonFormField(
-      value: _opcSelectGenero,
-      items: dataGen.map((list) {
-        return DropdownMenuItem(
-          value: list['ID_GENERO'].toString(),
-          child: Text(list['GENERO']),
-        );
-      }).toList(), //
-      onChanged: (opt) {
-        setState(() {
-          _opcSelectGenero = opt;
-          usuario.idGnr = int.parse(opt);
-        });
-      },
-
-      decoration: InputDecoration(
-        labelText: "Genero",
-        hintText: 'Seleccione su genero',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(
-          svgIcon: "assets/icons/genero.svg",
-        ),
-      ),
-    );
-  }
-
-  Widget colorCampoTexto(String label, String texto) {
-    return Column(
-      children: <Widget>[
-        SizedBox(
-          height: 60,
-          child: ListView(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 22),
-                decoration: BoxDecoration(
-                  color: colorPrimario.withOpacity(.66),
-                  borderRadius: BorderRadius.circular(28),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 0.99),
-                    buildFormField(label, texto),
-                  ],
-                ),
-              ),
-            ],
+    if (genero == false) {
+      return DropdownButtonFormField(
+        items: null,
+        validator: (value) {
+          if (value == null) {
+            return null;
+          } else {
+            return 'Debe elegir un genero';
+          }
+        },
+        decoration: InputDecoration(
+          labelText: "Genero",
+          hintText: 'Seleccione su genero',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/genero.svg",
           ),
         ),
-      ],
-    );
+      );
+    } else {
+      return DropdownButtonFormField(
+        value: _opcSelectGenero,
+        items: dataGen.map((list) {
+          return DropdownMenuItem(
+            value: list['ID_GENERO'].toString(),
+            child: Text(list['GENERO']),
+          );
+        }).toList(), //
+        validator: (value) {
+          if (value != null) {
+            return null;
+          } else {
+            return 'Debe elegir un genero';
+          }
+        },
+        onChanged: (opt) {
+          setState(() {
+            _opcSelectGenero = opt;
+            usuario.idGnr = int.parse(opt);
+          });
+        },
+
+        decoration: InputDecoration(
+          labelText: "Genero",
+          hintText: 'Seleccione su genero',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: CustomSurffixIcon(
+            svgIcon: "assets/icons/genero.svg",
+          ),
+        ),
+      );
+    }
   }
 
   Widget _botonActualizar(BuildContext context) {
@@ -330,7 +414,9 @@ class EditarFormState extends State<EditarForm> {
         child: FlatButton(
           height: 45.0,
           onPressed: () {
-            Navigator.pushReplacementNamed(context, 'datosModificados');
+            if (_fromKey.currentState.validate()) {
+              Navigator.pushReplacementNamed(context, 'datosModificados');
+            }
             //async {
             //await _actualizar();
           },
