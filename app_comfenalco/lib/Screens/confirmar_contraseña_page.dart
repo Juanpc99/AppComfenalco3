@@ -33,7 +33,7 @@ class ConfirmarContrasena extends StatelessWidget {
                 _foto(context),
               ],
             ),
-            SizedBox(height: 10.0),
+            //SizedBox(height: 10.0),
             _texto(),
             _crearCapoTexto(),
             SizedBox(height: 10.0),
