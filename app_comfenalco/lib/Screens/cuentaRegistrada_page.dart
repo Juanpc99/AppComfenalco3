@@ -38,16 +38,7 @@ class CuentaRegistrada extends StatelessWidget {
             _botonCodigo(context),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.keyboard_arrow_left,
-            size: 40,
-          ),
-          backgroundColor: colorPrimario,
-          onPressed: () {
-            Navigator.pushNamed(context, 'menup');
-          },
-        ),
+        
       ),
     );
   }
