@@ -88,5 +88,4 @@ class ListaRequisitos extends StatelessWidget {
     return opciones;
     
   }
-  
 }
