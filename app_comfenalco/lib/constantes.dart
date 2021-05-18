@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Ruta de la API
+// ignore: non_constant_identifier_names
 String url_api = 'https://comfenalcosubsidios.seedcharlie.co';
 // colors
 const colorPrimario = Color(0xFF00C853);

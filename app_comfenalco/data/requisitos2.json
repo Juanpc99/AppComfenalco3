@@ -1,0 +1,29 @@
+{
+    "nombreApp" : "app_comfenalco",
+    "rutas" : [
+        {
+            "ruta" : "conceptosClaveLogin",
+            "texto": "Conceptos Clave en el Subsidio"
+        },
+        {
+            "ruta" : "requisitosLogin",
+            "texto": "Requisitos para Solicitar Subsidio"
+        },
+        {
+            "ruta" : "reqPostulacionLogin",
+            "texto": "Requisitos para la postulación"
+        },
+        {
+            "ruta" : "reqSitioPyMejoramientoLogin",
+            "texto": "Requisitos construcción en sitio propio o mejoramiento de vivienda"
+        },
+        {
+            "ruta" : "reqMejoramientoLogin",
+            "texto": "Carencias básicas para Mejoramiento de vivienda"
+        },
+        {
+            "ruta" : "reqZonaRuralLogin",
+            "texto": "Requisitos para postularse al subsidio familiar de vivienda en zona rural"
+        }
+    ]
+}
