@@ -36,19 +36,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
               ),
               child: null,
-              /*
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    '${_auth.correo()}',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                    ),
-                  ),
-                ],
-              ),
-              **/
             ),
 
             Container(
@@ -70,14 +57,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                     return Center(child: CircularProgressIndicator());
                   },
                 ),
-                //
-                // Text(
-                //   'hola',
-                //   style: TextStyle(
-                //     color: Colors.black,
-                //     fontSize: 25.0,
-                //   ),
-                // ),
                 onTap: () {
                   Navigator.pushReplacementNamed(context, 'menup');
                 },
@@ -143,7 +122,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                 );
               },
             ),
-            //SizedBox(height: 1),
             ListTile(
               title: Text(
                 'Condiciones y devoluciones',

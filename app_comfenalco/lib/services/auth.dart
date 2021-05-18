@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 // Ingresar con contraseña y correo
+  
   Future<void> signIn(
       String email, String password, BuildContext context, String ruta) async {
     try {

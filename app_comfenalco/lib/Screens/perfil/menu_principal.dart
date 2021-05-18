@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 
 import 'package:flutter/material.dart';
@@ -74,7 +73,7 @@ class MenuPage extends StatelessWidget {
     return Table(children: [
       TableRow(children: [
         _crearBotonRedondeado(context, Colors.orangeAccent, Icons.home_rounded,
-            'Subsidio Vivienda', 'subsidios'),
+            'Subsidio Vivienda', 'subsidiosLogin'),
         _crearBotonRedondeado(context, Colors.orangeAccent,
             Icons.family_restroom_rounded, 'Subsidio Familiar', 'pronto')
       ]),
