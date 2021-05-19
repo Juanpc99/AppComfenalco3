@@ -1,5 +1,7 @@
 import 'package:app_comfenalco/constantes.dart';
+import 'package:app_comfenalco/providers/ui_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoriaSolicitud extends StatefulWidget {
   @override
@@ -7,8 +9,6 @@ class CategoriaSolicitud extends StatefulWidget {
 }
 
 class CategoriaSolicitudState extends State<CategoriaSolicitud> {
-  
-  int seleccionIndex = 0;
   final List<String> estados = [
     'Todas las solicitudes',
     'Asignado',
@@ -19,6 +19,8 @@ class CategoriaSolicitudState extends State<CategoriaSolicitud> {
   ];
   @override
   Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
+    final currenIndex = uiProvider.selectIndexOpt;
     return Container(
       height: 90.0,
       color: colorVerdeLimon,
@@ -29,18 +31,16 @@ class CategoriaSolicitudState extends State<CategoriaSolicitud> {
           return GestureDetector(
             onTap: () {
               setState(() {
-                seleccionIndex = index;
+                uiProvider.selectedIdex = index;
               });
             },
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
               child: Text(estados[index],
                   style: TextStyle(
-                    color:
-                        index == seleccionIndex ? Colors.white : Colors.white60,
+                    color: index == currenIndex ? Colors.white : Colors.white60,
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
-                    
                   )),
             ),
           );
@@ -48,6 +48,4 @@ class CategoriaSolicitudState extends State<CategoriaSolicitud> {
       ),
     );
   }
-
-  
 }

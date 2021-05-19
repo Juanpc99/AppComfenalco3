@@ -1,3 +1,4 @@
+import 'package:app_comfenalco/providers/ui_provider.dart';
 import 'package:app_comfenalco/routes/rutas.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -5,6 +6,7 @@ import 'package:app_comfenalco/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'providers/provider.dart';
 
 void main() async {
@@ -21,8 +23,11 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.transparent,
     ));
-    return Provider(
-      child: MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => new UiProvider()),
+      ],
+          child: MaterialApp(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,

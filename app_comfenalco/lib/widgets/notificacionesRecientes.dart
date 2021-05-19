@@ -2,9 +2,11 @@ import 'package:app_comfenalco/Screens/perfil/notificaciones/infoNotificacion.da
 import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/models/solicitudes.dart';
 import 'package:app_comfenalco/providers/solicitudes_provider.dart';
+import 'package:app_comfenalco/providers/ui_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/categoriasEstadosSolicitud.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NotificacionesRecientes extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -27,16 +29,18 @@ class NotificacionesRecientes extends StatelessWidget {
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
           ),
-          child: _crearLista(),
+          child: _crearLista(context),
         ),
       ),
     );
   }
 
-  Widget _crearLista() {
-    print(indexCateg.seleccionIndex);
+  Widget _crearLista(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
+    final currenIndex = uiProvider.selectIndexOpt;
+    print(currenIndex);
     return FutureBuilder(
-      future: _ventana(indexCateg.seleccionIndex),
+      future: _ventana(currenIndex),
       builder:
           (BuildContext context, AsyncSnapshot<List<SolicitudesM>> snapshot) {
         if (snapshot.hasData) {
