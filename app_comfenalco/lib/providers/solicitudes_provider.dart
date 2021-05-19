@@ -1,5 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/models/solicitudes';
-class SolicitudesProvider{
-  Future<List<Solicitudes>>
+import 'dart:convert';
+
+import 'package:app_comfenalco/constantes.dart';
+import 'package:app_comfenalco/models/solicitudes.dart';
+
+import 'package:http/http.dart' as http;
+
+class SolicitudesProvider {
+  Future<List<SolicitudesM>> cargarSubsidios(String correo) async {
+    final Uri url = Uri.parse("$url_api/getUserSubsidios?correo=$correo");
+    final resp = await http.get(url);
+    final List<dynamic> decodeData = json.decode(resp.body);
+    final List<SolicitudesM> solicitudes = new List();
+    if (decodeData == null) return [];
+    decodeData.forEach((soli) {
+      final soliTemp = SolicitudesM.fromJson(soli);
+      //soliTemp.idSubsidios = id;
+      solicitudes.add(soliTemp);
+    });
+    print(solicitudes);
+    return solicitudes;
+  }
 }
