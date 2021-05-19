@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 
 class CategoriaSolicitud extends StatefulWidget {
   @override
-  _CategoriaSolicitudState createState() => _CategoriaSolicitudState();
+  CategoriaSolicitudState createState() => CategoriaSolicitudState();
 }
 
-class _CategoriaSolicitudState extends State<CategoriaSolicitud> {
+class CategoriaSolicitudState extends State<CategoriaSolicitud> {
+  
   int seleccionIndex = 0;
   final List<String> estados = [
     'Todas las solicitudes',
-    'Aprobadas',
-    'Rechazadas',
-    'Para modificación'
+    'Asignado',
+    'Cancelado',
+    'Por Verificar',
+    'Postulado',
+    'Calificado',
   ];
   @override
   Widget build(BuildContext context) {
@@ -45,4 +48,6 @@ class _CategoriaSolicitudState extends State<CategoriaSolicitud> {
       ),
     );
   }
+
+  
 }

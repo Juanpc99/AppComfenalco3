@@ -3,24 +3,15 @@ import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/models/solicitudes.dart';
 import 'package:app_comfenalco/providers/solicitudes_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
+import 'package:app_comfenalco/widgets/categoriasEstadosSolicitud.dart';
 import 'package:flutter/material.dart';
 
 class NotificacionesRecientes extends StatelessWidget {
   final AuthService _auth = AuthService();
   final sProvaider = new SolicitudesProvider();
+  final indexCateg = CategoriaSolicitudState();
   @override
   Widget build(BuildContext context) {
-    final List<String> solicitudes = [
-      ' Solicitud Aprobada',
-      ' Cambios necesarios',
-      ' Solicitud Rechazada'
-    ];
-    final List<String> infoSolicitudes = [
-      ' Su solicitud ha sido aprobada, felicitaciones!',
-      ' Hemos recibido sus documentos pero es necesario que vuelva a cargar algunos documentos para ser revisados de nuevo',
-      ' Lamentamos comunicarte que no se te a aprobado la soliictud al subsidio de vivienda'
-    ];
-    final List<String> fechaSol = ['3:10 pm', ' 11:00 am', ' 8:40 pm'];
     return Expanded(
       child: Container(
         //height: 485.0,
@@ -43,32 +34,24 @@ class NotificacionesRecientes extends StatelessWidget {
   }
 
   Widget _crearLista() {
-    try {
-      return FutureBuilder(
-        future: sProvaider.cargarSubsidios('${_auth.correo()}'),
-        builder:
-            (BuildContext context, AsyncSnapshot<List<SolicitudesM>> snapshot) {
-          if (snapshot.hasData) {
-            final solicitudes = snapshot.data;
-            return ListView.builder(
-              itemCount: solicitudes.length,
-              itemBuilder: (context, i) => _crearItems(context, solicitudes[i]),
-            );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      );
-    } catch (e) {
-      return Image.asset(
-        "assets/icons/contactate.gif",
-        height: 125.0,
-        width: 40.0,
-        alignment: Alignment.bottomLeft,
-      );
-    }
+    print(indexCateg.seleccionIndex);
+    return FutureBuilder(
+      future: _ventana(indexCateg.seleccionIndex),
+      builder:
+          (BuildContext context, AsyncSnapshot<List<SolicitudesM>> snapshot) {
+        if (snapshot.hasData) {
+          final solicitudes = snapshot.data;
+          return ListView.builder(
+            itemCount: solicitudes.length,
+            itemBuilder: (context, i) => _crearItems(context, solicitudes[i]),
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
   }
 
   Widget _crearItems(BuildContext context, SolicitudesM solicitud) {
@@ -135,35 +118,10 @@ class NotificacionesRecientes extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              children: <Widget>[
-                // cuando se conecte a la base se debe cambiar el
-                // container por chat o el nombre de la lista.unread ? Container
-                Container(
-                  width: 40.0,
-                  height: 20.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: colorVerdeLimon,
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    'New',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                // aca se debe agregar : Text(''),
-              ],
-            ),
           ],
         ),
       ),
     );
-    ;
   }
 
   _colorAvatar(String estado) {
@@ -181,6 +139,27 @@ class NotificacionesRecientes extends StatelessWidget {
     }
     if (estado == 'Cancelado') {
       return Colors.red;
+    }
+  }
+
+  _ventana(int index) {
+    if (index == 0) {
+      return sProvaider.cargarSubsidios('${_auth.correo()}');
+    }
+    if (index == 1) {
+      return sProvaider.cargarSubsidios2('${_auth.correo()}', 'Asignado');
+    }
+    if (index == 2) {
+      return sProvaider.cargarSubsidios2('${_auth.correo()}', 'Cancelado');
+    }
+    if (index == 3) {
+      return sProvaider.cargarSubsidios2('${_auth.correo()}', 'Por Verificar');
+    }
+    if (index == 4) {
+      return sProvaider.cargarSubsidios2('${_auth.correo()}', 'Postulado');
+    }
+    if (index == 5) {
+      return sProvaider.cargarSubsidios2('${_auth.correo()}', 'Calificado');
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:app_comfenalco/widgets/categoriasEstadosSolicitud.dart';
 import 'package:flutter/material.dart';
 
 // Ruta de la API
@@ -34,3 +35,4 @@ const kTitleTextstyle = TextStyle(
   color: titleTextColor,
   fontWeight: FontWeight.bold,
 );
+
