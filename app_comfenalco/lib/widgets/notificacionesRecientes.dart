@@ -16,21 +16,7 @@ class NotificacionesRecientes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        //height: 485.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          child: _crearLista(context),
-        ),
+        child: _crearLista(context),
       ),
     );
   }
@@ -63,11 +49,7 @@ class NotificacionesRecientes extends StatelessWidget {
       onTap: () => Navigator.push(
           context, MaterialPageRoute(builder: (_) => InfoSolicitud())),
       child: Container(
-        margin: EdgeInsets.only(
-          top: 5.0,
-          bottom: 5.0,
-          right: 20.0,
-        ),
+        margin: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0, left: 10.0),
         padding: EdgeInsets.symmetric(
           horizontal: 20.0,
           vertical: 10.0,
@@ -79,6 +61,8 @@ class NotificacionesRecientes extends StatelessWidget {
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
+            topLeft: Radius.circular(20.0),
           ),
         ),
         child: Row(

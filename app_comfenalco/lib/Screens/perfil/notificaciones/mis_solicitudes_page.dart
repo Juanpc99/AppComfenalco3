@@ -32,7 +32,7 @@ class MisSolicitudesPage extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.amber[50],
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
@@ -40,7 +40,8 @@ class MisSolicitudesPage extends StatelessWidget {
               ),
               child: Column(
                 children: <Widget>[
-                  BarraProgreso(),
+                  // BarraProgreso(),
+
                   SizedBox(height: 20),
                   NotificacionesRecientes(),
                 ],
