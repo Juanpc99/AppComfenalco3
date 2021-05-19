@@ -40,7 +40,7 @@ class MisSolicitudesPage extends StatelessWidget {
               ),
               child: Column(
                 children: <Widget>[
-                  BarraProgreso(),
+                  //BarraProgreso(),
                   SizedBox(height: 20),
                   NotificacionesRecientes(),
                 ],
