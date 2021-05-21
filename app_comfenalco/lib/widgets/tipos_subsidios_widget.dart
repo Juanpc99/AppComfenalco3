@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TiposSubsidiosWidget extends StatelessWidget {
-  const TiposSubsidiosWidget({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,21 +59,21 @@ class TiposSubsidiosWidget extends StatelessWidget {
     );
   }
 
-  Widget _titulo() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 2),
-      child: Text(
-        'Menú Subsidios',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 30,
-          fontFamily: "Poppins",
-          color: Colors.white.withOpacity(.68),
-        ),
-      ),
-    );
-  }
+  // Widget _titulo() {
+  //   return Container(
+  //     padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 2),
+  //     child: Text(
+  //       'Menú Subsidios',
+  //       textAlign: TextAlign.center,
+  //       style: TextStyle(
+  //         fontWeight: FontWeight.w600,
+  //         fontSize: 30,
+  //         fontFamily: "Poppins",
+  //         color: Colors.white.withOpacity(.68),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _botones(BuildContext context) {
     return Table(children: [
