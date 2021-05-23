@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialMedia extends StatelessWidget {
+  
   const SocialMedia({
     Key key,
     this.icon,

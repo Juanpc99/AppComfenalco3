@@ -2,9 +2,11 @@ import 'package:app_comfenalco/Screens/perfil/notificaciones/infoNotificacion.da
 import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/models/solicitudes.dart';
 import 'package:app_comfenalco/providers/solicitudes_provider.dart';
+import 'package:app_comfenalco/providers/ui_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/categoriasEstadosSolicitud.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NotificacionesRecientes extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -14,29 +16,17 @@ class NotificacionesRecientes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        //height: 485.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          child: _crearLista(),
-        ),
+        child: _crearLista(context),
       ),
     );
   }
 
-  Widget _crearLista() {
-    print(indexCateg.seleccionIndex);
+  Widget _crearLista(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
+    final currenIndex = uiProvider.selectIndexOpt;
+    print(currenIndex);
     return FutureBuilder(
-      future: _ventana(indexCateg.seleccionIndex),
+      future: _ventana(currenIndex),
       builder:
           (BuildContext context, AsyncSnapshot<List<SolicitudesM>> snapshot) {
         if (snapshot.hasData) {
@@ -59,11 +49,7 @@ class NotificacionesRecientes extends StatelessWidget {
       onTap: () => Navigator.push(
           context, MaterialPageRoute(builder: (_) => InfoSolicitud())),
       child: Container(
-        margin: EdgeInsets.only(
-          top: 5.0,
-          bottom: 5.0,
-          right: 20.0,
-        ),
+        margin: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0, left: 10.0),
         padding: EdgeInsets.symmetric(
           horizontal: 20.0,
           vertical: 10.0,
@@ -75,6 +61,8 @@ class NotificacionesRecientes extends StatelessWidget {
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
+            topLeft: Radius.circular(20.0),
           ),
         ),
         child: Row(
