@@ -2,6 +2,7 @@ import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/header_widget.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constantes.dart';
 
@@ -106,8 +107,14 @@ class _LoginPageState extends State<LoginPage> {
         child: FlatButton(
           onPressed: () async {
             if (_fromKey.currentState.validate()) {
-              _auth.signIn(_emailController.text, _passwordController.text,
-                  context, 'menup');
+              //Metodo dar valor al token
+              _auth.signIn(
+                  _emailController.text,
+                  _passwordController.text,
+                  context,
+                  'menup',
+                  'inicio sesion',
+                  'Email o contraseña incorrecta');
             }
           },
           child: Text(
@@ -211,10 +218,7 @@ class _LoginPageState extends State<LoginPage> {
           style:
               TextStyle(color: colorVerdeOscuro2, fontWeight: FontWeight.bold),
         ),
-        onTap: () {
-          //recuperar
-          Navigator.pushNamed(context, 'pronto');
-        },
+        onTap: () => {launch('https://comfenalco-app-bb31a.web.app/resetear')},
       ),
     ]);
   }

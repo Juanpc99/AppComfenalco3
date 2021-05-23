@@ -21,6 +21,7 @@ class Usuarios {
   int idTipoDoc;
   String password;
   int idTipoUsr;
+  String tokenCel;
 
   Usuarios({
     this.idUsuario,
@@ -35,6 +36,7 @@ class Usuarios {
     this.idTipoDoc = 0,
     this.password = '',
     this.idTipoUsr = 0,
+    this.tokenCel = '',
   });
 
   factory Usuarios.fromJson(Map<String, dynamic> json) => Usuarios(
@@ -50,6 +52,7 @@ class Usuarios {
         idTipoDoc: json["idTipoDoc"],
         password: json["password"],
         idTipoUsr: json["idTipoUsr"],
+        tokenCel: json["tokenCel"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -65,5 +68,6 @@ class Usuarios {
         "idTipoDoc": idTipoDoc,
         "password": password,
         "idTipoUsr": idTipoUsr,
+        "tokenCel": tokenCel,
       };
 }

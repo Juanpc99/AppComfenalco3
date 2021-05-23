@@ -36,7 +36,6 @@ class _MyAppState extends State<MyApp> {
 
     //Context
     PushNotificationsService.messagesStream.listen((message) {
-      // print('My app: $message');
       navigatorKey.currentState
           ?.pushNamed('missolicitudes', arguments: message);
       final snackBar = SnackBar(content: Text(message));

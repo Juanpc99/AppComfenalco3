@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 // Ingresar con contraseña y correo
-  
-  Future<void> signIn(
-      String email, String password, BuildContext context, String ruta) async {
+
+  Future<void> signIn(String email, String password, BuildContext context,
+      String ruta, String textoTry, String textCatch) async {
     try {
       final User user = (await _auth.signInWithEmailAndPassword(
         email: email.trim(),
@@ -26,7 +26,8 @@ class AuthService {
               SizedBox(
                 width: 20.0,
               ),
-              Text('${user.email} inicio sesión'),
+              Text('${user.email} $textoTry'),
+              // inicio sesion
             ],
           ),
           duration: Duration(seconds: 5),
@@ -46,7 +47,8 @@ class AuthService {
               SizedBox(
                 width: 20.0,
               ),
-              Text('Email o contraseña incorrecta'),
+              Text('$textCatch'),
+              //Email o contraseña incorrecta
             ],
           ),
           duration: Duration(seconds: 5),
@@ -56,6 +58,8 @@ class AuthService {
   }
 
   Future<void> cerrarSesion() async {
+    
+    //Metodo para cambiar token a null
     await _auth.signOut();
   }
 

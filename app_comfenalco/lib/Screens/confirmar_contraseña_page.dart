@@ -1,8 +1,15 @@
 import 'package:app_comfenalco/constantes.dart';
+import 'package:app_comfenalco/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class ConfirmarContrasena extends StatelessWidget {
-  const ConfirmarContrasena({Key key}) : super(key: key);
+class ConfirmarContrasena extends StatefulWidget {
+  @override
+  _ConfirmarContrasenaState createState() => _ConfirmarContrasenaState();
+}
+
+class _ConfirmarContrasenaState extends State<ConfirmarContrasena> {
+  final AuthService _auth = AuthService();
+  String _contrasena;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +82,7 @@ class ConfirmarContrasena extends StatelessWidget {
           borderRadius: BorderRadius.circular(29)),
       child: TextField(
         style: TextStyle(color: Colors.black),
-        obscureText: false,
+        obscureText: true,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
             hintText: 'Ingresar Contraseña',
@@ -89,7 +96,9 @@ class ConfirmarContrasena extends StatelessWidget {
               color: colorPrimario,
             )),
         onChanged: (valor) {
-          //_email = valor;
+          setState(() {
+            _contrasena = valor;
+          });
         },
       ),
     );
@@ -106,7 +115,9 @@ class ConfirmarContrasena extends StatelessWidget {
         child: FlatButton(
           height: 45.0,
           onPressed: () {
-            Navigator.pushReplacementNamed(context, 'actualizar');
+            print(_auth.correo() + _contrasena);
+            _auth.signIn('${_auth.correo()}', _contrasena, context,
+                'actualizar', 'ya puede editar', 'Contraseña incorrecta');
           },
           child: Text(
             'Confirmar',
