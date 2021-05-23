@@ -37,7 +37,6 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
               child: null,
             ),
-
             Container(
               child: ListTile(
                 leading: CircleAvatar(
@@ -62,7 +61,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                 },
               ),
             ),
-
             Divider(),
             ListTile(
               leading: Icon(

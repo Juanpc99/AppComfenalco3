@@ -4,6 +4,7 @@ import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PerfilPage extends StatefulWidget {
   const PerfilPage({Key key}) : super(key: key);
@@ -143,9 +144,8 @@ class _PerfilPageState extends State<PerfilPage> {
                   borderRadius: BorderRadius.circular(35),
                 ),
                 color: Colors.grey[400].withOpacity(.25),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'pronto');
-                },
+                onPressed: () =>
+                    {launch('https://comfenalco-app-bb31a.web.app/resetear')},
                 child: Row(
                   children: [
                     Icon(

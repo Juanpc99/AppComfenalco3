@@ -283,7 +283,7 @@ class RegistroFormState extends State<RegistroForm> {
           value: value['ID_TIPO_DOC'].toString(),
           child: Text(value['DOCUMENTO']),
         );
-      }).toList(), 
+      }).toList(),
       onChanged: (opt) {
         setState(() {
           _opcSelectId = opt;
@@ -339,10 +339,12 @@ class RegistroFormState extends State<RegistroForm> {
       enableInteractiveSelection: false,
       controller: _inputFieldFechaController,
       validator: (value) {
-        if (value != null) {
+        DateTime fecha = DateTime.parse(value);
+        DateTime fechaLimite = DateTime.parse('05-05-2000');
+        if (fecha.isBefore(fechaLimite)) {
           return null;
         } else {
-          return 'Debe elegir una fecha';
+          return 'Ingrese una fecha valida';
         }
       },
       decoration: InputDecoration(
