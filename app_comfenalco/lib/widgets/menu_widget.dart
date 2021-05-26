@@ -117,14 +117,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 13),
               ),
-              onTap: () {
-                SocialMedia(
-                  press: () => {
-                    launch(
-                        'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/03/Politica-Tratamiento-Informacion-ComfenalcoValle-25-Feb-2020.pdf'),
-                  },
-                );
-              },
+              onTap: ()=>
+                    {launch(
+                        'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/03/Politica-Tratamiento-Informacion-ComfenalcoValle-25-Feb-2020.pdf')},
             ),
             ListTile(
               title: Text(
@@ -132,14 +127,12 @@ class _MenuWidgetState extends State<MenuWidget> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 13),
               ),
-              onTap: () {
-                SocialMedia(
-                  press: () => {
+              onTap: () => {
                     launch(
                         'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/08/Condiciones-devoluciones-ventas-App-Comfenalco-Valle-delagente-V3-06-agosto-2020.pdf'),
                   },
-                );
-              },
+                
+            
             ),
             ListTile(
               title: Text(
@@ -147,13 +140,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 13),
               ),
-              onTap: () {
-                SocialMedia(
-                  press: () => {
+              onTap: ()  => {
                     launch(
                         'https://www.comfenalcovalle.com.co/wp-content/uploads/2020/08/T%C3%A9rminos-y-condiciones-uso-de-plataforma-Comfenalco-Valle-delagente-V2-06-agosto-2020.pdf'),
-                  },
-                );
               },
             ),
           ],
