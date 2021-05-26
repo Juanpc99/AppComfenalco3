@@ -1,6 +1,9 @@
+import 'package:app_comfenalco/models/token.dart';
+import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/header_widget.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,10 +17,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final AuthService _auth = AuthService();
   final _fromKey = GlobalKey<FormState>();
-
+  final _usuProvider = UsuariosProvider();
   String error = '';
+  String token;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final Token tokenCel = Token();
+
   @override
   Widget build(BuildContext context) {
     // final user = Provider.of<Users>(context);
@@ -106,6 +112,7 @@ class _LoginPageState extends State<LoginPage> {
         borderRadius: BorderRadius.circular(45),
         child: FlatButton(
           onPressed: () async {
+            token = await FirebaseMessaging.instance.getToken();
             if (_fromKey.currentState.validate()) {
               //Metodo dar valor al token
               _auth.signIn(
@@ -116,6 +123,9 @@ class _LoginPageState extends State<LoginPage> {
                   'inicio sesion',
                   'Email o contraseña incorrecta');
             }
+            tokenCel.idUsr = 60;
+            tokenCel.tokenCel = token;
+            _usuProvider.actualizarToken(tokenCel);
           },
           child: Text(
             'Continuar',

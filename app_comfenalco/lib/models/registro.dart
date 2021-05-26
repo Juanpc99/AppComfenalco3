@@ -52,7 +52,7 @@ class Usuarios {
         idTipoDoc: json["idTipoDoc"],
         password: json["password"],
         idTipoUsr: json["idTipoUsr"],
-        tokenCel: json["tokenCel"],
+        tokenCel: json["token_cel"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -68,6 +68,6 @@ class Usuarios {
         "idTipoDoc": idTipoDoc,
         "password": password,
         "idTipoUsr": idTipoUsr,
-        "tokenCel": tokenCel,
+        "token_cel": tokenCel,
       };
 }

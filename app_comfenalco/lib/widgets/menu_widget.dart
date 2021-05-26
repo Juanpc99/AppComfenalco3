@@ -1,5 +1,6 @@
 import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/models/registro.dart';
+import 'package:app_comfenalco/models/token.dart';
 import 'package:app_comfenalco/providers/usuarios_provider.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:app_comfenalco/widgets/redesSociales_widget.dart';
@@ -13,7 +14,8 @@ class MenuWidget extends StatefulWidget {
 
 class _MenuWidgetState extends State<MenuWidget> {
   final AuthService _auth = AuthService();
-  UsuariosProvider usuprov = UsuariosProvider();
+  UsuariosProvider _usuprov = UsuariosProvider();
+  Token tokenCel = Token();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -45,7 +47,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 //+ ' ${Usuarios().apellido}'
                 title: FutureBuilder<Usuarios>(
-                  future: usuprov.fetchPost(),
+                  future: _usuprov.fetchPost(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return Text(
@@ -99,7 +101,11 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
               title: Text('Cerrar Sesión'),
               onTap: () {
+                tokenCel.idUsr = 60; //_auth.correo();
+                tokenCel.tokenCel = '';
+                _usuprov.actualizarToken(tokenCel);
                 // _auth.correo() = '';
+
                 _auth.cerrarSesion();
                 Navigator.pushReplacementNamed(context, '/');
               },

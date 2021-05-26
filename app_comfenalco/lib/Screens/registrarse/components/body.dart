@@ -1,3 +1,5 @@
+import 'package:app_comfenalco/models/token.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:app_comfenalco/components/custom_surfix_icon.dart';
 import 'package:app_comfenalco/models/registro.dart';
@@ -88,7 +90,7 @@ class RegistroFormState extends State<RegistroForm> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   bool _nacionalidad = false;
-
+  Token tokenCel = Token();
   String _fecha = "";
   TextEditingController _inputFieldFechaController =
       new TextEditingController();
@@ -338,15 +340,15 @@ class RegistroFormState extends State<RegistroForm> {
     return TextFormField(
       enableInteractiveSelection: false,
       controller: _inputFieldFechaController,
-      validator: (value) {
-        DateTime fecha = DateTime.parse(value);
-        DateTime fechaLimite = DateTime.parse('05-05-2000');
-        if (fecha.isBefore(fechaLimite)) {
-          return null;
-        } else {
-          return 'Ingrese una fecha valida';
-        }
-      },
+      // validator: (value) {
+      // DateTime fecha = DateTime.parse(value);
+      // DateTime fechaLimite = DateTime.parse('05-05-2000');
+      // if (fecha.isBefore(fechaLimite)) {
+      //   return null;
+      // } else {
+      //   return 'Ingrese una fecha valida';
+      // }
+      // },
       decoration: InputDecoration(
         labelText: "Fecha de Nacimiento",
         hintText: 'Fecha de Nacimiento',
@@ -634,9 +636,12 @@ class RegistroFormState extends State<RegistroForm> {
         }
         usuario.fechaNacimiento = _inputFieldFechaController.text;
         usuario.idTipoUsr = 1;
+        usuario.tokenCel = await FirebaseMessaging.instance.getToken();
         userProvider.crearUsuario(usuario);
 
         Navigator.pushReplacementNamed(context, 'cuentaCreada');
+
+        userProvider.actualizarToken(tokenCel);
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

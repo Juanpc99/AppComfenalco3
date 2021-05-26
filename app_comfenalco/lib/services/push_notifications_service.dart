@@ -29,7 +29,7 @@ class PushNotificationsService {
     //Push Notifications
     await Firebase.initializeApp();
     token = await FirebaseMessaging.instance.getToken();
-    print('Token--------------------------------------: $token');
+    print('Token--------------------------------------:$token');
     // Handlers
     FirebaseMessaging.onBackgroundMessage(_backgroundHndler);
     FirebaseMessaging.onMessage.listen(_onMessageHndler);

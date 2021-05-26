@@ -1,4 +1,4 @@
-import 'package:app_comfenalco/widgets/categoriasEstadosSolicitud.dart';
+
 import 'package:flutter/material.dart';
 
 // Ruta de la API
@@ -30,9 +30,10 @@ const estiloTextoHeader = TextStyle(
 
 const estiloTextoSubt = TextStyle(fontSize: 16, color: textLightColor);
 
+
+
 const kTitleTextstyle = TextStyle(
   fontSize: 18,
   color: titleTextColor,
   fontWeight: FontWeight.bold,
 );
-
