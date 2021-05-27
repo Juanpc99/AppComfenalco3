@@ -21,7 +21,8 @@ class SolicitudesProvider {
     return solicitudes;
   }
 
-  Future<List<SolicitudesM>> cargarSubsidios2(String correo, String estado) async {
+  Future<List<SolicitudesM>> cargarSubsidios2(
+      String correo, String estado) async {
     final Uri url = Uri.parse("$url_api/getUserSubsidios?correo=$correo");
     final resp = await http.get(url);
     final List<dynamic> decodeData = json.decode(resp.body);
@@ -30,12 +31,13 @@ class SolicitudesProvider {
     decodeData.forEach((soli) {
       final soliTemp = SolicitudesM.fromJson(soli);
       //soliTemp.idSubsidios = id;
-      if(soliTemp.estado == estado){
-
+      if (soliTemp.estado == estado) {
         solicitudes.add(soliTemp);
       }
     });
     print(solicitudes);
     return solicitudes;
   }
+
+  
 }

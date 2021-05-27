@@ -1,4 +1,5 @@
 import 'package:app_comfenalco/constantes.dart';
+import 'package:app_comfenalco/models/registro.dart';
 import 'package:app_comfenalco/providers/usuarios_provider.dart';
 
 import 'package:app_comfenalco/services/auth.dart';
@@ -18,6 +19,8 @@ class _PerfilPageState extends State<PerfilPage> {
   UsuariosProvider usuProv = UsuariosProvider();
   @override
   Widget build(BuildContext context) {
+    final Usuarios usuarios = ModalRoute.of(context).settings.arguments;
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -111,7 +114,8 @@ class _PerfilPageState extends State<PerfilPage> {
                 ),
                 color: Colors.grey[400].withOpacity(.25),
                 onPressed: () {
-                  Navigator.pushNamed(context, 'confirmar');
+                  Navigator.pushNamed(context, 'confirmar',
+                      arguments: usuarios);
                 },
                 child: Row(
                   children: [
@@ -136,7 +140,10 @@ class _PerfilPageState extends State<PerfilPage> {
             SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'pronto');
+                Navigator.pushNamed(
+                  context,
+                  'pronto',
+                );
               },
               child: FlatButton(
                 padding: EdgeInsets.all(20),

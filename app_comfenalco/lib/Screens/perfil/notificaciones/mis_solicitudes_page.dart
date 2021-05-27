@@ -1,5 +1,4 @@
 import 'package:app_comfenalco/constantes.dart';
-import 'package:app_comfenalco/widgets/barraProgreso.dart';
 import 'package:app_comfenalco/widgets/categoriasEstadosSolicitud.dart';
 import 'package:app_comfenalco/widgets/menu_widget.dart';
 import 'package:app_comfenalco/widgets/notificacionesRecientes.dart';

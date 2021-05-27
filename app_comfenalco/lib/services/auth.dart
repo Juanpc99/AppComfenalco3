@@ -6,7 +6,7 @@ class AuthService {
 // Ingresar con contraseña y correo
 
   Future<void> signIn(String email, String password, BuildContext context,
-      String ruta, String textoTry, String textCatch) async {
+      String ruta, String textoTry, String textCatch, dynamic objeto) async {
     try {
       final User user = (await _auth.signInWithEmailAndPassword(
         email: email.trim(),
@@ -33,7 +33,7 @@ class AuthService {
           duration: Duration(seconds: 5),
         ),
       );
-      Navigator.pushReplacementNamed(context, ruta);
+      Navigator.pushReplacementNamed(context, ruta, arguments: objeto);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

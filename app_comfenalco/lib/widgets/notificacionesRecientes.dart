@@ -1,4 +1,3 @@
-import 'package:app_comfenalco/Screens/perfil/notificaciones/infoNotificacion.dart';
 import 'package:app_comfenalco/constantes.dart';
 import 'package:app_comfenalco/models/solicitudes.dart';
 import 'package:app_comfenalco/providers/solicitudes_provider.dart';
@@ -12,6 +11,7 @@ class NotificacionesRecientes extends StatelessWidget {
   final AuthService _auth = AuthService();
   final sProvaider = new SolicitudesProvider();
   final indexCateg = CategoriaSolicitudState();
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -46,8 +46,9 @@ class NotificacionesRecientes extends StatelessWidget {
 
   Widget _crearItems(BuildContext context, SolicitudesM solicitud) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (_) => InfoSolicitud())),
+      onTap: () {
+        Navigator.pushNamed(context, 'infoSolicitud', arguments: solicitud);
+      },
       child: Container(
         margin: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0, left: 10.0),
         padding: EdgeInsets.symmetric(

@@ -1,4 +1,5 @@
 import 'package:app_comfenalco/constantes.dart';
+import 'package:app_comfenalco/models/registro.dart';
 import 'package:app_comfenalco/services/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,8 @@ class _ConfirmarContrasenaState extends State<ConfirmarContrasena> {
 
   @override
   Widget build(BuildContext context) {
+    final Usuarios usuarios = ModalRoute.of(context).settings.arguments;
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -44,7 +47,7 @@ class _ConfirmarContrasenaState extends State<ConfirmarContrasena> {
             _texto(),
             _crearCapoTexto(),
             SizedBox(height: 10.0),
-            _botonConfirmar(context),
+            _botonConfirmar(context, usuarios),
           ],
         ),
       ),
@@ -104,7 +107,7 @@ class _ConfirmarContrasenaState extends State<ConfirmarContrasena> {
     );
   }
 
-  Widget _botonConfirmar(BuildContext context) {
+  Widget _botonConfirmar(BuildContext context, Usuarios usuarios) {
     return Container(
       height: 55.0,
       width: 400.0,
@@ -117,7 +120,7 @@ class _ConfirmarContrasenaState extends State<ConfirmarContrasena> {
           onPressed: () {
             print(_auth.correo() + _contrasena);
             _auth.signIn('${_auth.correo()}', _contrasena, context,
-                'actualizar', 'ya puede editar', 'Contraseña incorrecta');
+                'actualizar', 'ya puede editar', 'Contraseña incorrecta', usuarios);
           },
           child: Text(
             'Confirmar',
