@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                   'Email o contraseña incorrecta',
                   '');
             }
-            tokenCel.idUsr = 60;
+            tokenCel.email = _emailController.text;
             tokenCel.tokenCel = token;
             _usuProvider.actualizarToken(tokenCel);
           },

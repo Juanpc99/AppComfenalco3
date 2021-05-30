@@ -10,20 +10,20 @@ String tokenToJson(Token data) => json.encode(data.toJson());
 
 class Token {
   Token({
-    this.idUsr = 0,
+    this.email = '',
     this.tokenCel = '',
   });
 
-  int idUsr;
+  String email;
   String tokenCel;
 
   factory Token.fromJson(Map<String, dynamic> json) => Token(
-        idUsr: json["idUsr"],
+        email: json["email"],
         tokenCel: json["tokenCel"],
       );
 
   Map<String, dynamic> toJson() => {
-        "idUsr": idUsr,
+        "email": email,
         "tokenCel": tokenCel,
       };
 }

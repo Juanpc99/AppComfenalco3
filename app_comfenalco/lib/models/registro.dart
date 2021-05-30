@@ -44,19 +44,19 @@ class Usuarios {
         nombre: json["nombre"],
         apellido: json["apellido"],
         fechaNacimiento: json["fechaNacimiento"],
-        idGnr: json["idGnr"],
+        idGnr: json["idGenero"],
         numeroDocumento: json["numeroDocumento"],
-        email: json["email"],
+        email: json["eMail"],
         idCiudad: json["idCiudad"],
         idPais: json["idPais"],
         idTipoDoc: json["idTipoDoc"],
-        password: json["password"],
-        idTipoUsr: json["idTipoUsr"],
-        tokenCel: json["token_cel"],
+        password: json["contraseÑa"],
+        idTipoUsr: json["idTipoUsuario"],
+        tokenCel: json["tokenCel"],
       );
 
   Map<String, dynamic> toJson() => {
-        "idUsuario": idUsuario,
+        "idUsr": idUsuario,
         "nombre": nombre,
         "apellido": apellido,
         "fechaNacimiento": fechaNacimiento,
@@ -68,6 +68,6 @@ class Usuarios {
         "idTipoDoc": idTipoDoc,
         "password": password,
         "idTipoUsr": idTipoUsr,
-        "token_cel": tokenCel,
+        "tokenCel": tokenCel,
       };
 }

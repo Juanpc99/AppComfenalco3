@@ -13,7 +13,7 @@ class MenuWidget extends StatefulWidget {
 
 class _MenuWidgetState extends State<MenuWidget> {
   final AuthService _auth = AuthService();
-  UsuariosProvider _usuprov = UsuariosProvider();
+  final UsuariosProvider _usuprov = UsuariosProvider();
   Token tokenCel = Token();
   @override
   Widget build(BuildContext context) {
@@ -98,7 +98,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                       ),
                       title: Text('Cerrar Sesión'),
                       onTap: () {
-                        tokenCel.idUsr = 60; //_auth.correo();
+                        tokenCel.email = _auth.correo(); //_auth.correo();
                         tokenCel.tokenCel = '';
                         _usuprov.actualizarToken(tokenCel);
                         // _auth.correo() = '';

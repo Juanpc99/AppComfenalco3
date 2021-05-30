@@ -43,6 +43,7 @@ class UsuariosProvider {
   Future<void> actualizarUsuario(Usuarios usuario) async {
     final Uri url = Uri.parse('$url_api/actualizarUsuario');
     // ignore: unused_local_variable
+
     final response = await http.put(url, body: usuariosToJson(usuario));
   }
 }

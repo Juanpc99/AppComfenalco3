@@ -63,7 +63,7 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
     final currenIndex = uiProvider.selectIndexOpt;
     print(currenIndex);
     return FutureBuilder(
-      future: aProvider.cargarAnexos(58),
+      future: aProvider.cargarAnexos(solicitudes.idSubsidios),
       builder: (BuildContext context, AsyncSnapshot<List<AnexosM>> snapshot) {
         if (snapshot.hasData) {
           final anexos = snapshot.data;

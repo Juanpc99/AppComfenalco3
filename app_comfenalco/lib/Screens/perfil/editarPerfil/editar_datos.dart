@@ -21,7 +21,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
   final _fromKey = GlobalKey<FormState>();
   final Validators validator = new Validators();
   final userProvider = new UsuariosProvider();
-  Usuarios usuarioNuevo = new Usuarios();
+  // Usuarios usuarioNuevo = new Usuarios();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   bool _nombre = false, apellido = false, ciudad = false, genero = false;
@@ -30,7 +30,8 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
   List _city = List();
 
   Future cargarCiudades() async {
-    final Uri url = Uri.parse('$url_api/getCiudades');
+    final Uri url = Uri.parse(
+        '$url_api/getCiudadesByDepartamento?departamento=VALLE DEL CAUCA');
 
     final resp = await http.get(url);
 
@@ -74,7 +75,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
   @override
   Widget build(BuildContext context) {
     final Usuarios usuarios = ModalRoute.of(context).settings.arguments;
-    usuarioNuevo = usuarios;
+    // usuarioNuevo = usuarios;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -103,12 +104,12 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
                 FocusManager.instance.primaryFocus.unfocus();
               }
             },
-            child: _body()),
+            child: _body(usuarios)),
       ),
     );
   }
 
-  Widget _body() {
+  Widget _body(Usuarios usuarios) {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -130,7 +131,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
                 SizedBox(height: 20),
                 _descripcion(),
                 SizedBox(height: 20),
-                _editarForm(),
+                _editarForm(usuarios),
                 SizedBox(height: 20),
               ],
             ),
@@ -164,7 +165,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
     );
   }
 
-  Widget _editarForm() {
+  Widget _editarForm(Usuarios usuarios) {
     return SingleChildScrollView(
       child: Form(
         key: _fromKey,
@@ -172,21 +173,21 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
           children: [
             editNombre(),
             SizedBox(height: 20),
-            buildNameFormField(),
+            buildNameFormField(usuarios),
             SizedBox(height: 20),
             editApellido(),
             SizedBox(height: 20),
-            buildApellidoFormField(),
+            buildApellidoFormField(usuarios),
             SizedBox(height: 20),
             editCiudad(),
             SizedBox(height: 20),
-            buildCiudadFormField(),
+            buildCiudadFormField(usuarios),
             SizedBox(height: 20),
             editGenero(),
             SizedBox(height: 20),
-            buildGeneroFormField(),
+            buildGeneroFormField(usuarios),
             SizedBox(height: 20),
-            _botonActualizar(context),
+            _botonActualizar(context, usuarios),
             SizedBox(height: 200.0),
           ],
         ),
@@ -205,13 +206,13 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
         });
   }
 
-  TextFormField buildNameFormField() {
+  TextFormField buildNameFormField(Usuarios usuarios) {
     if (_nombre == false) {
       return TextFormField(
         enabled: false,
         textCapitalization: TextCapitalization.sentences,
         onChanged: (value) => setState(() {
-          usuarioNuevo.nombre = value;
+          usuarios.nombre = value;
         }),
         decoration: InputDecoration(
           labelText: "Nombre",
@@ -226,7 +227,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
       return TextFormField(
         textCapitalization: TextCapitalization.sentences,
         onChanged: (value) => setState(() {
-          usuarioNuevo.nombre = value;
+          usuarios.nombre = value;
         }),
         validator: (value) {
           if (validator.isName(value) == true && value != '') {
@@ -258,13 +259,13 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
         });
   }
 
-  TextFormField buildApellidoFormField() {
+  TextFormField buildApellidoFormField(Usuarios usuarios) {
     if (apellido == false) {
       return TextFormField(
         enabled: apellido,
         textCapitalization: TextCapitalization.sentences,
         onChanged: (value) => setState(() {
-          usuarioNuevo.apellido = value;
+          usuarios.apellido = value;
         }),
         decoration: InputDecoration(
           labelText: "Apellidos",
@@ -280,7 +281,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
         enabled: apellido,
         textCapitalization: TextCapitalization.sentences,
         onChanged: (value) => setState(() {
-          usuarioNuevo.apellido = value;
+          usuarios.apellido = value;
         }),
         validator: (value) {
           if (validator.isName(value) == true && value != '') {
@@ -312,7 +313,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
         });
   }
 
-  DropdownButtonFormField buildCiudadFormField() {
+  DropdownButtonFormField buildCiudadFormField(Usuarios usuarios) {
     if (ciudad == false) {
       return DropdownButtonFormField(
         items: null,
@@ -336,26 +337,24 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
       return DropdownButtonFormField(
         isExpanded: true,
         value: _opcSelectCity,
-        items: _city.map((value) {
-          // value['ID_CIUDAD'] = 5;
-
-          return DropdownMenuItem(
-            value: value['ID_CIUDAD'].toString(),
-            child: Text(value['CIUDAD']),
-          );
-        }).toList(), //
-        onChanged: (opt) {
-          setState(() {
-            _opcSelectCity = opt;
-            usuarioNuevo.idCiudad = int.parse(opt);
-          });
-        },
         validator: (value) {
           if (value != null) {
             return null;
           } else {
             return 'Debe elegir una ciudad';
           }
+        },
+        items: _city.map((value) {
+          return DropdownMenuItem(
+            value: value['idCiudad'].toString(),
+            child: Text(value['ciudad']),
+          );
+        }).toList(), //
+        onChanged: (opt) {
+          setState(() {
+            _opcSelectCity = opt;
+            usuarios.idCiudad = int.parse(opt);
+          });
         },
         decoration: InputDecoration(
           labelText: "Ciudad",
@@ -380,7 +379,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
         });
   }
 
-  DropdownButtonFormField buildGeneroFormField() {
+  DropdownButtonFormField buildGeneroFormField(Usuarios usuarios) {
     if (genero == false) {
       return DropdownButtonFormField(
         items: null,
@@ -419,7 +418,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
         onChanged: (opt) {
           setState(() {
             _opcSelectGenero = opt;
-            usuarioNuevo.idGnr = int.parse(opt);
+            usuarios.idGnr = int.parse(opt);
           });
         },
 
@@ -435,7 +434,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
     }
   }
 
-  Widget _botonActualizar(BuildContext context) {
+  Widget _botonActualizar(BuildContext context, Usuarios usuarios) {
     return Container(
       height: 50.0,
       width: 330.0,
@@ -445,10 +444,15 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
         borderRadius: BorderRadius.circular(100.0),
         child: FlatButton(
           height: 45.0,
-          onPressed: () {
+          onPressed: () async {
             if (_fromKey.currentState.validate()) {
-              print(usuarioNuevo.apellido);
-              userProvider.actualizarUsuario(usuarioNuevo);
+              print(usuarios.idUsuario);
+              print(usuarios.nombre);
+              print(usuarios.email);
+              print(usuarios.apellido);
+              print(usuarios.fechaNacimiento);
+              print(usuarios.idTipoUsr);
+              await userProvider.actualizarUsuario(usuarios);
               Navigator.pushReplacementNamed(context, 'datosModificados');
             }
             //async {
