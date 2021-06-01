@@ -58,7 +58,7 @@ class NotificacionesRecientes extends StatelessWidget {
         decoration: BoxDecoration(
           // para cambiar el color si la notificacion no ha sido abierta
           // color:chat.unread ? Color(0xFFFFEFEE): Colors.white
-          color: Color(0xFFFFEFEE),
+          color: Colors.grey[300].withOpacity(.66),
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0),
@@ -121,10 +121,10 @@ class NotificacionesRecientes extends StatelessWidget {
       return Colors.amber;
     }
     if (estado == 'Calificado') {
-      return Colors.green[300];
+      return colorVerdeLimon;
     }
     if (estado == 'Asignado') {
-      return colorVerdeLimon;
+      return Colors.teal[400];
     }
     if (estado == 'Cancelado') {
       return Colors.red;

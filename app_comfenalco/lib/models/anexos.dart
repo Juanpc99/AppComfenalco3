@@ -10,32 +10,44 @@ String anexosMToJson(AnexosM data) => json.encode(data.toJson());
 
 class AnexosM {
     AnexosM({
+        this.idAnexo,
+        this.idSubsidios,
+        this.idPrograma,
         this.estado,
         this.observaciones,
-        this.idSubsidio,
-        this.idProgRequerimiento,
-        this.nombreArchivo,
+        this.documento,
+        this.programa,
+        this.requerimiento,
     });
 
-    String estado;
-    String observaciones;
-    int idSubsidio;
-    int idProgRequerimiento;
-    String nombreArchivo;
+    int idAnexo;
+    int idSubsidios = 0;
+    int idPrograma = 0;
+    String estado ="";
+    String observaciones ="";
+    String documento ="";
+    String programa ="";
+    String requerimiento="";
 
     factory AnexosM.fromJson(Map<String, dynamic> json) => AnexosM(
+        idAnexo: json["idAnexo"],
+        idSubsidios: json["idSubsidios"],
+        idPrograma: json["idPrograma"],
         estado: json["estado"],
         observaciones: json["observaciones"],
-        idSubsidio: json["idSubsidio"],
-        idProgRequerimiento: json["idProgRequerimiento"],
-        nombreArchivo: json["nombreArchivo"],
+        documento: json["documento"],
+        programa: json["programa"],
+        requerimiento: json["requerimiento"],
     );
 
     Map<String, dynamic> toJson() => {
+        "idAnexo": idAnexo,
+        "idSubsidios": idSubsidios,
+        "idPrograma": idPrograma,
         "estado": estado,
         "observaciones": observaciones,
-        "idSubsidio": idSubsidio,
-        "idProgRequerimiento": idProgRequerimiento,
-        "nombreArchivo": nombreArchivo,
+        "documento": documento,
+        "programa": programa,
+        "requerimiento": requerimiento,
     };
 }
