@@ -12,7 +12,7 @@ class ListaRequisitosWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-          image: AssetImage("assets/images/r.png"),
+          image: AssetImage("assets/images/b.png"),
           fit: BoxFit.cover,
         ),
       ),
