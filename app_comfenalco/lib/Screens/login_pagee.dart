@@ -110,6 +110,7 @@ class _LoginPageState extends State<LoginPage> {
       margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 2.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(45),
+        // ignore: deprecated_member_use
         child: FlatButton(
           onPressed: () async {
             token = await FirebaseMessaging.instance.getToken();

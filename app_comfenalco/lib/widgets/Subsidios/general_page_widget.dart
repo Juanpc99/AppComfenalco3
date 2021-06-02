@@ -109,6 +109,7 @@ InfoGeneralWidget({
               fadeInDuration: Duration(milliseconds: 2000),
               fit: BoxFit.cover,
             ),
+            // ignore: deprecated_member_use
             FlatButton(
               onPressed: () {
                 launch('https://www.youtube.com/watch?v=uyP4wRXjElE');

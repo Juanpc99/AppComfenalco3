@@ -63,6 +63,7 @@ class RecuperarPage extends StatelessWidget {
   }
 
   
+  // ignore: unused_element
   Widget _textoCabeza(String texto) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 60.0),

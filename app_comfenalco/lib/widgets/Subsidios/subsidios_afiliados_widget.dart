@@ -250,17 +250,4 @@ class InfoSubAfilWidget extends StatelessWidget {
     );
   }
 
-  Widget _botonConcepCla(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
-      child: FloatingActionButton.extended(
-        label: Text('Conceptos clave en el subsidio'),
-        icon: Icon(Icons.arrow_forward_rounded),
-        backgroundColor: colorNaranja,
-        onPressed: () {
-          Navigator.pushNamed(context, 'conceptosClave');
-        },
-      ),
-    );
-  }
 }

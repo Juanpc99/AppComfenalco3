@@ -10,6 +10,7 @@ class SolicitudesProvider {
     final Uri url = Uri.parse("$url_api/getUserSubsidios?correo=$correo");
     final resp = await http.get(url);
     final List<dynamic> decodeData = json.decode(resp.body);
+    // ignore: deprecated_member_use
     final List<SolicitudesM> solicitudes = new List();
     if (decodeData == null) return [];
     decodeData.forEach((soli) {
@@ -26,6 +27,7 @@ class SolicitudesProvider {
     final Uri url = Uri.parse("$url_api/getUserSubsidios?correo=$correo");
     final resp = await http.get(url);
     final List<dynamic> decodeData = json.decode(resp.body);
+    // ignore: deprecated_member_use
     final List<SolicitudesM> solicitudes = new List();
     if (decodeData == null) return [];
     decodeData.forEach((soli) {

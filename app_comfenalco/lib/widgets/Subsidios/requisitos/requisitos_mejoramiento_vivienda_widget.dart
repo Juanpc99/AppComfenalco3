@@ -188,17 +188,4 @@ RequisitosMejoramientoWidget({
     );
   }
 
-  Widget _botonConcepCla(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-      child: FloatingActionButton.extended(
-        label: Text('Requisitos para Vivienda en zona rural'),
-        icon: Icon(Icons.arrow_forward_rounded),
-        backgroundColor: colorNaranja,
-        onPressed: () {
-          Navigator.pushNamed(context, 'reqZonaRural');
-        },
-      ),
-    );
-  }
 }

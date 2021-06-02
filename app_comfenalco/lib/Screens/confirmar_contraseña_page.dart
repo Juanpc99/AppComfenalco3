@@ -115,6 +115,7 @@ class _ConfirmarContrasenaState extends State<ConfirmarContrasena> {
       margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100.0),
+        // ignore: deprecated_member_use
         child: FlatButton(
           height: 45.0,
           onPressed: () {

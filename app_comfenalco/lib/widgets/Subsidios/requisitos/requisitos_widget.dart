@@ -212,17 +212,4 @@ class RequisitosWidget extends StatelessWidget {
     );
   }
 
-  Widget _botonConcepCla(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
-      child: FloatingActionButton.extended(
-        label: Text('Req. Sitio Propio y Mejoramiento'),
-        icon: Icon(Icons.arrow_forward_rounded),
-        backgroundColor: colorNaranja,
-        onPressed: () {
-          Navigator.pushNamed(context, 'reqSitioPyMejoramiento');
-        },
-      ),
-    );
-  }
 }

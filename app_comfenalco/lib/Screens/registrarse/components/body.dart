@@ -96,6 +96,7 @@ class RegistroFormState extends State<RegistroForm> {
       new TextEditingController();
   // para el campo de tipo documento
   String _opcSelectId;
+  // ignore: deprecated_member_use
   List _idTipo = List();
   Future cargarDocumentos() async {
     final Uri url = Uri.parse('$url_api/getTiposDocumento');
@@ -114,6 +115,7 @@ class RegistroFormState extends State<RegistroForm> {
 
   // para el campo de pais
   String _opcSelectPais;
+  // ignore: deprecated_member_use
   List _paises = List();
   Future cargarPaises() async {
     final Uri url = Uri.parse('$url_api/getPaises');
@@ -132,6 +134,7 @@ class RegistroFormState extends State<RegistroForm> {
 
   // para la ciudad del valle donde se encuentra
   String _opcSelectCity;
+  // ignore: deprecated_member_use
   List _city = List();
 
   Future cargarCiudades() async {
@@ -152,6 +155,7 @@ class RegistroFormState extends State<RegistroForm> {
 
   // para el campo de genero
   String _opcSelectGenero;
+  // ignore: deprecated_member_use
   List dataGen = List();
   Future cargarGeneros() async {
     final Uri url = Uri.parse('$url_api/getGeneros');
@@ -176,7 +180,7 @@ class RegistroFormState extends State<RegistroForm> {
     cargarPaises();
   }
 
-  bool _guardando = false;
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -603,6 +607,7 @@ class RegistroFormState extends State<RegistroForm> {
       margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100.0),
+        // ignore: deprecated_member_use
         child: FlatButton(
           height: 45.0,
           onPressed: () async {
@@ -626,6 +631,7 @@ class RegistroFormState extends State<RegistroForm> {
       // _fromKey.currentState.save();
 
       try {
+        // ignore: unused_local_variable
         User user = (await _auth.createUserWithEmailAndPassword(
           email: email.text.trim(),
           password: password.text.trim(),
@@ -661,7 +667,7 @@ class RegistroFormState extends State<RegistroForm> {
             duration: Duration(seconds: 5),
           ),
         );
-        _guardando = false;
+      
         print('No se creo');
       }
     }

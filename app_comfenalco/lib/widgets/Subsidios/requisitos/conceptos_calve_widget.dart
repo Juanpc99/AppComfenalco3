@@ -204,22 +204,4 @@ class ConcepClaWidget extends StatelessWidget {
     );
   }
 
-  Widget _botonRequisitos(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
-      child: FloatingActionButton.extended(
-        label: Text(
-          'Requisitos',
-          style: TextStyle(
-            fontSize: 20,
-          ),
-        ),
-        icon: Icon(Icons.arrow_forward_rounded),
-        backgroundColor: colorNaranja,
-        onPressed: () {
-          Navigator.pushNamed(context, 'requisitos');
-        },
-      ),
-    );
-  }
 }

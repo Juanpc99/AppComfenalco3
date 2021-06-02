@@ -148,6 +148,7 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
+                      // ignore: deprecated_member_use
                       FlatButton(
                         onPressed: () => {
                           launch(anexos.documento)
