@@ -42,15 +42,15 @@ class ContactoWidget extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 500,
+              height: 510,
               width: 450,
               child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
                 children: <Widget>[
                   _titulo(),
-                  SizedBox(height: 30),
+                  SizedBox(height: 27),
                   _contactos(),
-                  SizedBox(height: 40),
+                  SizedBox(height: 35),
                   redes(),
                   _gif(),
                   //SizedBox(height: 90),
@@ -91,7 +91,7 @@ class ContactoWidget extends StatelessWidget {
 
   Widget _contactos() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 1.5),
       child: Text(
         'Cali (2) 8862727 opción 2 y luego 2.'
         '\n'
@@ -120,10 +120,10 @@ class ContactoWidget extends StatelessWidget {
 
   Widget _gif() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.50),
       child: Image.asset(
         "assets/icons/contactate.gif",
-        height: 125.0,
+        height: 112.0,
         width: 40.0,
         alignment: Alignment.bottomLeft,
       ),
