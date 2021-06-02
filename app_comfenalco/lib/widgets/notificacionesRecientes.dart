@@ -38,7 +38,9 @@ class NotificacionesRecientes extends StatelessWidget {
         } else if (snapshot.hasData == false) {
           return Center(
             child: Image(
-              // Poner imagen de no hay datos
+                // Poner imagen de no hay datos
+                width: 90.0,
+                height: 90.0,
                 image: AssetImage('assets/images/buzon-de-correo.png')),
           );
         } else {
