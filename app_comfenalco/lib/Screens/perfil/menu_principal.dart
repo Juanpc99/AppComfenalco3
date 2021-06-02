@@ -10,7 +10,6 @@ class MenuPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          MenuWidget(),
           _fondo(context),
           SingleChildScrollView(
             child: Column(
@@ -30,42 +29,36 @@ class MenuPage extends StatelessWidget {
 
   Widget _fondo(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          top: 0,
-          left: -25,
-          child: Image.asset(
-            "assets/images/b4.png",
-            width: size.width * 1.13,
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage("assets/images/b4.png"),
+          fit: BoxFit.cover,
         ),
-      ],
+      ),
+      height: size.height,
+      width: double.infinity,
     );
   }
 
   Widget _appbarNormal(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AppBar(
-          elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          //expandedHeight: 180.0,
-          title: Text(
-            ' Menú Subsidios',
-            //overflow: TextOverflow.ellipsis,
-            textHeightBehavior:
-                TextHeightBehavior(applyHeightToFirstAscent: true),
-            textAlign: TextAlign.end,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
-          centerTitle: true,
+    return AppBar(
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
+      //expandedHeight: 180.0,
+      title: Text(
+        ' Menú Subsidios',
+        //overflow: TextOverflow.ellipsis,
+        textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: true),
+        textAlign: TextAlign.end,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 30,
+          fontWeight: FontWeight.normal,
         ),
-      ],
+      ),
+      centerTitle: true,
     );
   }
 
@@ -122,6 +115,8 @@ class MenuPage extends StatelessWidget {
                 Text(
                   '$texto',
                   style: TextStyle(color: Colors.black87, fontSize: 15.0),
+                  
+                  textAlign: TextAlign.center,
                 )
               ],
             ),
