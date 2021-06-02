@@ -12,7 +12,7 @@ class ListaRequisitosWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-          image: AssetImage("assets/images/t.png"),
+          image: AssetImage("assets/images/m.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -48,7 +48,10 @@ class ListaRequisitosWidget extends StatelessWidget {
         ),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
-        body: _lista(),
+        body: Container(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: _lista(),
+        ),
       ),
     );
   }
@@ -84,7 +87,7 @@ class ListaRequisitosWidget extends StatelessWidget {
       opciones
         ..add(widgetTemp)
         ..add(Divider(
-            height: 0.5, color: Colors.black87, indent: 5, endIndent: 5));
+            height: 0.8, color: Colors.black87, indent: 5, endIndent: 5));
     });
     return opciones;
   }
