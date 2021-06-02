@@ -6,6 +6,7 @@ import 'package:app_comfenalco/providers/solicitudes_provider.dart';
 import 'package:app_comfenalco/providers/ui_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InfoSolicitud extends StatefulWidget {
   @override
@@ -18,14 +19,15 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
   @override
   Widget build(BuildContext context) {
     final SolicitudesM solicitudesM = ModalRoute.of(context).settings.arguments;
+    //final AnexosM anexosM = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: colorVerdeLimon,
       appBar: AppBar(
         backgroundColor: colorVerdeLimon,
         title: Text(
-          '${solicitudesM.estado}',
+          '${solicitudesM.programa}',
           style: TextStyle(
-            fontSize: 28.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
@@ -84,15 +86,16 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        margin: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0, left: 10.0),
+        margin:
+            EdgeInsets.only(top: 20.0, bottom: 5.0, right: 10.0, left: 10.0),
         padding: EdgeInsets.symmetric(
-          horizontal: 20.0,
+          horizontal: 30.0,
           vertical: 10.0,
         ),
         decoration: BoxDecoration(
           // para cambiar el color si la notificacion no ha sido abierta
           // color:chat.unread ? Color(0xFFFFEFEE): Colors.white
-          color: Color(0xFFFFEFEE),
+          color: Colors.grey[350].withOpacity(.76),
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0),
@@ -105,42 +108,80 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
         
           children: <Widget>[
             CircleAvatar(
-              radius: 35.0,
-              backgroundColor: Colors.amber,
+              radius: 25.0,
+              backgroundColor: _colorAvatar(anexos.estado),
             ),
             SizedBox(width: 10.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(height: 5),
-                // aqui se asigna el titulo de la notificacion
-                Text(
-                  anexos.estado,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Colors.grey,
-                  ),
-                ),
-                SizedBox(height: 5.0),
-                // aqui se asigna el texto de la notificación
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  child: Text(
-                    anexos.observaciones,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.blueGrey,
-                      fontWeight: FontWeight.w600,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(height: 5),
+                  // aqui se asigna el titulo de la notificacion
+                  SingleChildScrollView(
+                    child: Text(
+                      anexos.requerimiento,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
+                      overflow: TextOverflow.clip,
+                      textAlign: TextAlign.justify,
                     ),
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                  SizedBox(height: 15.0),
+                  // aqui se asigna el texto de la notificación
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.65,
+                    child: Text(
+                      anexos.observaciones,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blueGrey,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      overflow: TextOverflow.clip,
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      FlatButton(
+                        onPressed: () => {
+                          launch(anexos.documento)
+                        }, // aqui va redireccionado a la otra vista
+                        child: Text('Descargar'),
+                        color: _colorAvatar(anexos.estado),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+_colorAvatar(String estado) {
+  if (estado == 'Postulado') {
+    return Colors.blue;
+  }
+  if (estado == 'Por Verificar') {
+    return Colors.amber;
+  }
+  if (estado == 'Calificado') {
+    return colorVerdeLimon;
+  }
+  if (estado == 'Asignado') {
+    return Colors.teal[400];
+  }
+  if (estado == 'Cancelado') {
+    return Colors.red;
   }
 }
