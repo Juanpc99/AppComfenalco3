@@ -7,6 +7,7 @@ class ListaRequisitosWidget extends StatelessWidget {
   ListaRequisitosWidget({this.atras, this.rutas});
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -15,6 +16,8 @@ class ListaRequisitosWidget extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
+      height: size.height,
+      width: double.infinity,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0.0,

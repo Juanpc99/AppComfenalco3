@@ -5,7 +5,7 @@ import 'package:app_comfenalco/constantes.dart';
 
 class ContactoWidget extends StatelessWidget {
   final String atras;
-ContactoWidget({this.atras});
+  ContactoWidget({this.atras});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +45,7 @@ ContactoWidget({this.atras});
               height: 500,
               width: 450,
               child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
                 children: <Widget>[
                   _titulo(),
                   SizedBox(height: 30),
