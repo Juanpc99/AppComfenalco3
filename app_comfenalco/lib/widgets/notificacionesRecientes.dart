@@ -35,6 +35,12 @@ class NotificacionesRecientes extends StatelessWidget {
             itemCount: solicitudes.length,
             itemBuilder: (context, i) => _crearItems(context, solicitudes[i]),
           );
+        } else if (snapshot.hasData == false) {
+          return Center(
+            child: Image(
+              // Poner imagen de no hay datos
+                image: AssetImage('assets/images/logo.png')),
+          );
         } else {
           return Center(
             child: CircularProgressIndicator(),

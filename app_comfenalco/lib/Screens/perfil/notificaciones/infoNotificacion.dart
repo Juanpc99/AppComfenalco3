@@ -102,42 +102,39 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        
           children: <Widget>[
-            Row(
+            CircleAvatar(
+              radius: 35.0,
+              backgroundColor: Colors.amber,
+            ),
+            SizedBox(width: 10.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                CircleAvatar(
-                  radius: 35.0,
-                  backgroundColor: Colors.amber,
+                SizedBox(height: 5),
+                // aqui se asigna el titulo de la notificacion
+                Text(
+                  anexos.estado,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.grey,
+                  ),
                 ),
-                SizedBox(width: 10.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(height: 5),
-                    // aqui se asigna el titulo de la notificacion
-                    Text(
-                      anexos.estado,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.grey,
-                      ),
+                SizedBox(height: 5.0),
+                // aqui se asigna el texto de la notificación
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Text(
+                    anexos.observaciones,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.w600,
                     ),
-                    SizedBox(height: 5.0),
-                    // aqui se asigna el texto de la notificación
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      child: Text(
-                        anexos.observaciones,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),
