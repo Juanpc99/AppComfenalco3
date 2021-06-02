@@ -39,9 +39,9 @@ class NotificacionesRecientes extends StatelessWidget {
           return Center(
             child: Image(
                 // Poner imagen de no hay datos
-                width: 90.0,
-                height: 90.0,
-                image: AssetImage('assets/images/buzon-de-correo.png')),
+                width: 200.0,
+                height: 200.0,
+                image: AssetImage('assets/images/buzon.png')),
           );
         } else {
           return Center(

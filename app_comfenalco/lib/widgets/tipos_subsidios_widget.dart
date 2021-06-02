@@ -59,22 +59,6 @@ class TiposSubsidiosWidget extends StatelessWidget {
     );
   }
 
-  // Widget _titulo() {
-  //   return Container(
-  //     padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 2),
-  //     child: Text(
-  //       'Menú Subsidios',
-  //       textAlign: TextAlign.center,
-  //       style: TextStyle(
-  //         fontWeight: FontWeight.w600,
-  //         fontSize: 30,
-  //         fontFamily: "Poppins",
-  //         color: Colors.white.withOpacity(.68),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Widget _botones(BuildContext context) {
     return Table(children: [
       TableRow(children: [
@@ -132,6 +116,7 @@ class TiposSubsidiosWidget extends StatelessWidget {
                 Text(
                   '$texto',
                   style: TextStyle(color: Colors.black87, fontSize: 15.0),
+                  textAlign: TextAlign.center,
                 )
               ],
             ),
