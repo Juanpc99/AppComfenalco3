@@ -105,7 +105,6 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        
           children: <Widget>[
             CircleAvatar(
               radius: 25.0,
@@ -149,6 +148,7 @@ class _InfoSolicitudState extends State<InfoSolicitud> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
+                      // ignore: deprecated_member_use
                       FlatButton(
                         onPressed: () => {
                           launch(anexos.documento)

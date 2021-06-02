@@ -60,6 +60,7 @@ class EnvioExitoso extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
+        // ignore: deprecated_member_use
         child: FlatButton(
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           color: colorPrimario,

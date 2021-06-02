@@ -1,5 +1,4 @@
 import 'package:app_comfenalco/constantes.dart';
-import 'package:app_comfenalco/widgets/logo_comfenalco.dart';
 import 'package:flutter/material.dart';
 
 class CodigoPage extends StatelessWidget {
@@ -107,6 +106,7 @@ class CodigoPage extends StatelessWidget {
     );
   }
 
+  // ignore: unused_element
   Widget _textoCabeza(String texto) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 60.0),
@@ -133,6 +133,7 @@ class CodigoPage extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100.0),
+        // ignore: deprecated_member_use
         child: FlatButton(
           height: 45.0,
           onPressed: () {

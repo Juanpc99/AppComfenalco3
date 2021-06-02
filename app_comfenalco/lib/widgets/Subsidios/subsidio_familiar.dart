@@ -103,6 +103,7 @@ class SubsidioWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () {
                     Navigator.pushNamed(context, rut1);
@@ -149,6 +150,7 @@ class SubsidioWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () {
                     Navigator.pushNamed(context, rut2);
@@ -195,6 +197,7 @@ class SubsidioWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () {
                     Navigator.pushNamed(context, rut3);
@@ -241,6 +244,7 @@ class SubsidioWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () {
                     Navigator.pushNamed(context, rut4);
@@ -286,6 +290,7 @@ class SubsidioWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () {
                     Navigator.pushNamed(context, rut5);
@@ -331,6 +336,7 @@ class SubsidioWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () {
                     Navigator.pushNamed(context, rut6);
@@ -379,6 +385,7 @@ class SubsidioWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                // ignore: deprecated_member_use
                 FlatButton(
                   onPressed: () {
                     Navigator.pushNamed(context, rut7);

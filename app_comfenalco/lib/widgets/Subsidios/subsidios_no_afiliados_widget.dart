@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app_comfenalco/constantes.dart';
 
 class InfoSubNoAfilWidget extends StatelessWidget {
   final String atras;
@@ -85,17 +84,4 @@ InfoSubNoAfilWidget({this.atras});
     );
   }
 
-  Widget _botonConcepCla(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
-      child: FloatingActionButton.extended(
-        label: Text('Requisitos a Postulación'),
-        icon: Icon(Icons.arrow_forward_rounded),
-        backgroundColor: colorPrimario,
-        onPressed: () {
-          Navigator.pushNamed(context, 'reqPostulacion');
-        },
-      ),
-    );
-  }
 }

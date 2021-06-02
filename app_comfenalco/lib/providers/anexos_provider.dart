@@ -10,7 +10,8 @@ class AnexosProvider {
     final Uri url = Uri.parse("$url_api/getAnexosPorIdSubsidio?idSubsidio=$id");
     final resp = await http.get(url);
     final List<dynamic> decodeData = json.decode(resp.body);
-    final List<AnexosM> anexos = new List();
+    // ignore: deprecated_member_use
+    final List<AnexosM> anexos = List();
     print(decodeData);
     if (decodeData == null) return [];
     decodeData.forEach((soli) {

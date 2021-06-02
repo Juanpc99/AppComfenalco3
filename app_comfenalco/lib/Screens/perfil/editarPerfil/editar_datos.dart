@@ -27,6 +27,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
   bool _nombre = false, apellido = false, ciudad = false, genero = false;
   // para la ciudad del valle donde se encuentra
   String _opcSelectCity;
+  // ignore: deprecated_member_use
   List _city = List();
 
   Future cargarCiudades() async {
@@ -47,6 +48,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
 
   // para el campo de genero
   String _opcSelectGenero;
+  // ignore: deprecated_member_use
   List dataGen = List();
   Future cargarGeneros() async {
     final Uri url = Uri.parse('$url_api/getGeneros');
@@ -69,7 +71,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
     cargarCiudades();
   }
 
-  bool _guardando = false;
+  
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
@@ -442,6 +444,7 @@ class _ActualizarScreenState extends State<ActualizarScreen> {
       margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100.0),
+        // ignore: deprecated_member_use
         child: FlatButton(
           height: 45.0,
           onPressed: () async {

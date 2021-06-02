@@ -38,8 +38,8 @@ class Background extends StatelessWidget {
   Widget fondoRecuperarContra(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Positioned(
-      top: 0,
-      left: -25,
+      // top: 0,
+      // left: -25,
       child: Image.asset(
         "assets/images/fondo2.png",
         width: size.width * 1.13,
@@ -74,8 +74,8 @@ class FondoRecuperarPassword extends StatelessWidget {
   Widget fondo(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Positioned(
-      top: 0,
-      left: -25,
+      // top: 0,
+      // left: -25,
       child: Image.asset(
         "assets/images/fondo2.png",
         width: size.width * 1.13,

@@ -107,6 +107,7 @@ class _PerfilPageState extends State<PerfilPage> {
               onTap: () {
                 Navigator.pushNamed(context, 'confirmar');
               },
+              // ignore: deprecated_member_use
               child: FlatButton(
                 padding: EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
@@ -145,6 +146,7 @@ class _PerfilPageState extends State<PerfilPage> {
                   'pronto',
                 );
               },
+              // ignore: deprecated_member_use
               child: FlatButton(
                 padding: EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
