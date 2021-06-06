@@ -20,7 +20,7 @@ class AnexosProvider {
 
       anexos.add(soliTemp);
     });
-    print(anexos);
+    // print(anexos);
     return anexos;
   }
 }
