@@ -26,7 +26,14 @@ class AuthService {
               SizedBox(
                 width: 20.0,
               ),
-              Text('${user.email} $textoTry'),
+              Text(
+                '${user.email} $textoTry',
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 12,
+                ),
+              ),
               // inicio sesion
             ],
           ),
@@ -47,7 +54,14 @@ class AuthService {
               SizedBox(
                 width: 20.0,
               ),
-              Text('$textCatch'),
+              Text(
+                '$textCatch',
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 12,
+                ),
+              ),
               //Email o contraseña incorrecta
             ],
           ),
@@ -58,7 +72,6 @@ class AuthService {
   }
 
   Future<void> cerrarSesion() async {
-    
     //Metodo para cambiar token a null
     await _auth.signOut();
   }
