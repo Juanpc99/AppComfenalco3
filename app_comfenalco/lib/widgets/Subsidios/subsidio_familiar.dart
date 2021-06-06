@@ -40,11 +40,11 @@ class SubsidioWidget extends StatelessWidget {
           //iconTheme: IconThemeData(color: colorPrimarioClaro),
           title: Text(
             'Subsidio Familiar De Vivienda',
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
             style: TextStyle(
               fontWeight: FontWeight.normal,
               color: Colors.grey[700].withOpacity(0.66),
-              fontSize: 23,
+              fontSize: 20,
             ),
           ),
           backgroundColor: Colors.transparent,
