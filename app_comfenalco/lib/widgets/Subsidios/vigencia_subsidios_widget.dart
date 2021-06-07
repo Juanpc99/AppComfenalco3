@@ -19,8 +19,8 @@ VigenciaSubWidget({this.atras});
           title: Text(
             'Vigencia de los Subsidios',
             style: TextStyle(
-              color: Colors.grey[850],
-              fontSize: 12,
+              color: Colors.grey,
+              fontSize: 18,
             ),
             textAlign: TextAlign.center,
           ),

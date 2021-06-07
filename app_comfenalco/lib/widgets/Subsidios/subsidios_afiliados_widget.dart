@@ -22,9 +22,9 @@ class InfoSubAfilWidget extends StatelessWidget {
             'Subsidio de Vivienda para Afiliados',
             style: TextStyle(
               color: Colors.grey,
-              fontSize: 20,
+              fontSize: 18,
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,

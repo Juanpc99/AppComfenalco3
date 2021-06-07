@@ -7,9 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class InfoGeneralWidget extends StatelessWidget {
   final String atras;
-InfoGeneralWidget({
-  this.atras
-});
+  InfoGeneralWidget({this.atras});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -59,7 +57,7 @@ InfoGeneralWidget({
           //overflow: TextOverflow.ellipsis,
           textHeightBehavior:
               TextHeightBehavior(applyHeightToFirstAscent: true),
-          textAlign: TextAlign.end,
+          textAlign: TextAlign.start,
           style: TextStyle(
             color: Colors.black,
             fontSize: 12,

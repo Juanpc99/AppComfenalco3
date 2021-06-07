@@ -24,10 +24,10 @@ class RequisitosPostulacionWidget extends StatelessWidget {
           title: Text(
             'Requisitos para Postulación a Subsidio de vivienda',
             style: TextStyle(
-              color: Colors.grey[850],
+              color: Colors.grey,
               fontSize: 12,
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,

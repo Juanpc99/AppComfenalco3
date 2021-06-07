@@ -23,10 +23,10 @@ class PagoSubWidget extends StatelessWidget {
           title: Text(
             'Pago del Subsidio de Vivienda',
             style: TextStyle(
-              color: Colors.grey[350],
-              fontSize: 20,
+              color: Colors.grey,
+              fontSize: 18,
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
